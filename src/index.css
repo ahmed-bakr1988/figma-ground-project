@@ -1,0 +1,202 @@
+/* Import Arabic font - must be at the top */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Ground Tech Brand Colors */
+  --color-navy: #0E3A5D;
+  --color-blue: #1F6FA8;
+  --color-gold: #F2C94C;
+  --color-gold-dark: #D4A832;
+  --color-earth: #8A5A2B;
+  --color-light: #F7F9FB;
+  --color-dark: #2C2C2C;
+  
+  /* Legacy aliases */
+  --color-primary: #0E3A5D;
+  --color-primary-dark: #0A2E4A;
+  --color-dark: #0E3A5D;
+  --color-dark-light: #1F6FA8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support - Font Family */
+html[dir="rtl"] body {
+  font-family: 'Cairo', 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========================================
+   LOGICAL CSS PROPERTIES FOR RTL/LTR
+   ======================================== */
+
+/* Flip directional icons in RTL (arrows, chevrons) */
+html[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Logical position utilities */
+.inset-inline-start-0 { inset-inline-start: 0; }
+.inset-inline-end-0 { inset-inline-end: 0; }
+.inset-inline-start-1\/2 { inset-inline-start: 50%; }
+.inset-inline-end-1\/2 { inset-inline-end: 50%; }
+
+/* Logical margin utilities */
+.ms-auto { margin-inline-start: auto; }
+.me-auto { margin-inline-end: auto; }
+
+/* Logical padding utilities (if not using Tailwind v3.3+) */
+.ps-4 { padding-inline-start: 1rem; }
+.pe-4 { padding-inline-end: 1rem; }
+.ps-6 { padding-inline-start: 1.5rem; }
+.pe-6 { padding-inline-end: 1.5rem; }
+.ps-8 { padding-inline-start: 2rem; }
+.pe-8 { padding-inline-end: 2rem; }
+.ps-16 { padding-inline-start: 4rem; }
+.pe-16 { padding-inline-end: 4rem; }
+
+/* Logical gradient directions */
+.bg-gradient-to-start {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+html[dir="rtl"] .bg-gradient-to-start {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-end {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+html[dir="rtl"] .bg-gradient-to-end {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+
+/* ========================================
+   RTL-AWARE ANIMATIONS (Zero Layout Shift)
+   ======================================== */
+
+/* Slide from inline-start (left in LTR, right in RTL) */
+@keyframes slide-in-start-ltr {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-start-rtl {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-in-start {
+  animation: slide-in-start-ltr 0.8s ease-out forwards;
+}
+html[dir="rtl"] .animate-slide-in-start {
+  animation: slide-in-start-rtl 0.8s ease-out forwards;
+}
+
+/* Slide from inline-end (right in LTR, left in RTL) */
+@keyframes slide-in-end-ltr {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-end-rtl {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-slide-in-end {
+  animation: slide-in-end-ltr 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+html[dir="rtl"] .animate-slide-in-end {
+  animation: slide-in-end-rtl 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* ========================================
+   FLEXBOX & GRID - INHERENTLY RTL-AWARE
+   ======================================== 
+   
+   Flexbox and CSS Grid automatically flip in RTL
+   when using logical properties. No additional
+   CSS needed - just use:
+   - flex (auto-flips with dir)
+   - gap (direction-agnostic)
+   - justify-content, align-items (direction-agnostic)
+   - grid-template-columns (auto-flips with dir)
+   
+   AVOID:
+   - left, right, margin-left, margin-right
+   - padding-left, padding-right
+   - Use inline-start/end instead
+*/
+
+/* ========================================
+   CENTERING PATTERNS (RTL-SAFE)
+   ======================================== */
+
+/* For horizontal centering, prefer these patterns:
+   
+   1. Flexbox centering (BEST - works in both RTL/LTR):
+      - Parent: flex justify-center
+      - No transform needed
+   
+   2. Grid centering:
+      - Parent: grid place-items-center
+   
+   3. Margin auto centering:
+      - mx-auto (margin-inline: auto)
+   
+   AVOID for centering:
+   - left: 50% + translateX(-50%) - breaks in RTL
+   - Use inset-inline-start with logical transforms instead
+*/
+
+/* Border logical utilities */
+.border-s { border-inline-start-width: 1px; }
+.border-e { border-inline-end-width: 1px; }
+.border-s-2 { border-inline-start-width: 2px; }
+.border-e-2 { border-inline-end-width: 2px; }
+
+/* Text alignment logical utilities */
+.text-start { text-align: start; }
+.text-end { text-align: end; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0E3A5D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F2C94C;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4A832;
+}
+
+/* Selection Color */
+::selection {
+  background: #F2C94C;
+  color: #0E3A5D;
+}

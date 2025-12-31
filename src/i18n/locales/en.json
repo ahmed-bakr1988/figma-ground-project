@@ -1,0 +1,349 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "badge": "Professional Protection",
+    "title": "Shielding Your Property With",
+    "titleHighlight": "Reliable Lightning",
+    "titleEnd": "Protection Services",
+    "description": "Professional lightning protection systems installed by certified engineers. We safeguard homes, businesses, and industrial facilities from electrical storms.",
+    "cta": "Get Free Consultation",
+    "ctaSecondary": "Our Services",
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects Done",
+      "satisfaction": "Client Satisfaction"
+    }
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Why Choose",
+    "titleHighlight": " GroundTec?",
+    "description": "With over 10 years of experience in the lightning protection industry, we have built a reputation for excellence, reliability, and customer satisfaction. Our team of certified professionals is dedicated to providing the highest quality protection systems for residential, commercial, and industrial properties.",
+    "features": {
+      "certified": "Certified and experienced engineers",
+      "premium": "Premium quality materials and equipment",
+      "support": "24/7 emergency support available",
+      "warranty": "Comprehensive warranty coverage",
+      "pricing": "Competitive and transparent pricing",
+      "fast": "Fast and efficient installation"
+    },
+    "stats": {
+      "excellence": "Years of Excellence",
+      "clients": "Happy Clients",
+      "available": "Support Available"
+    },
+    "cta": "Learn More About Us",
+    "imageAlt": "Lightning Protection Installation",
+    "teamAlt": "Team at work"
+  },
+  "services": {
+    "badge": "What We Offer",
+    "title": "Our Professional",
+    "titleHighlight": "Services",
+    "description": "We provide comprehensive lightning protection solutions tailored to your specific needs, ensuring complete safety for your property and loved ones.",
+    "learnMore": "Learn More",
+    "viewAll": "View All Services",
+    "items": {
+      "lightningRod": {
+        "title": "Lightning Rod Installation",
+        "description": "Professional installation of lightning rods and air terminals to intercept lightning strikes before they can damage your structure."
+      },
+      "commercial": {
+        "title": "Commercial Protection",
+        "description": "Comprehensive lightning protection systems for office buildings, shopping centers, and commercial facilities."
+      },
+      "industrial": {
+        "title": "Industrial Solutions",
+        "description": "Heavy-duty protection systems for factories, warehouses, and industrial complexes with critical equipment."
+      },
+      "maintenance": {
+        "title": "Maintenance & Repair",
+        "description": "Regular inspection and maintenance services to ensure your protection system remains effective year-round."
+      },
+      "surge": {
+        "title": "Surge Protection",
+        "description": "Installation of surge protection devices to safeguard electrical systems and sensitive electronics."
+      },
+      "risk": {
+        "title": "Risk Assessment",
+        "description": "Detailed lightning risk analysis and customized protection recommendations for your property."
+      }
+    }
+  },
+  "stats": {
+    "experience": "Years Experience",
+    "projects": "Projects Completed",
+    "satisfaction": "Client Satisfaction",
+    "awards": "Awards Won",
+    "trusted": "Trusted & Certified",
+    "certifications": {
+      "ul": "UL Certified",
+      "lpi": "LPI Certified",
+      "iso": "ISO 9001",
+      "nfpa": "NFPA Compliant"
+    }
+  },
+  "projects": {
+    "badge": "Our Portfolio",
+    "title": "Recent",
+    "titleHighlight": "Projects",
+    "description": "Explore our portfolio of successful lightning protection installations across various industries.",
+    "viewProject": "View Project",
+    "categories": {
+      "all": "All",
+      "industrial": "Industrial",
+      "commercial": "Commercial",
+      "residential": "Residential",
+      "healthcare": "Healthcare",
+      "technology": "Technology"
+    },
+    "items": {
+      "factory": {
+        "title": "Industrial Factory Protection",
+        "category": "Industrial",
+        "description": "Complete lightning protection system for a 50,000 sq ft manufacturing facility."
+      },
+      "office": {
+        "title": "Corporate Office Complex",
+        "category": "Commercial",
+        "description": "Multi-building protection network for a corporate headquarters."
+      },
+      "residential": {
+        "title": "Luxury Residential Estate",
+        "category": "Residential",
+        "description": "Premium lightning protection for a high-end residential property."
+      },
+      "hospital": {
+        "title": "Hospital & Medical Center",
+        "category": "Healthcare",
+        "description": "Critical infrastructure protection for sensitive medical equipment."
+      },
+      "mall": {
+        "title": "Shopping Mall Complex",
+        "category": "Commercial",
+        "description": "Comprehensive protection for a large retail shopping center."
+      },
+      "dataCenter": {
+        "title": "Data Center Facility",
+        "category": "Technology",
+        "description": "High-security lightning and surge protection for data storage."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Testimonials",
+    "title": "What Our",
+    "titleHighlight": "Clients Say",
+    "description": "Don't just take our word for it. Here's what our satisfied customers have to say about our services.",
+    "items": {
+      "john": {
+        "name": "John Anderson",
+        "role": "Factory Owner",
+        "company": "Anderson Manufacturing",
+        "text": "LightningGuard installed a comprehensive protection system for our entire facility. Their team was professional, efficient, and the quality of work exceeded our expectations. We feel much safer now."
+      },
+      "sarah": {
+        "name": "Sarah Mitchell",
+        "role": "Property Manager",
+        "company": "Elite Properties LLC",
+        "text": "We manage over 50 commercial properties and LightningGuard has been our trusted partner for years. Their maintenance program keeps all our buildings protected year-round."
+      },
+      "michael": {
+        "name": "Michael Chen",
+        "role": "IT Director",
+        "company": "TechFlow Data Centers",
+        "text": "For a data center, lightning protection is critical. LightningGuard designed a custom solution that protects our sensitive equipment. Their expertise in surge protection is unmatched."
+      },
+      "emily": {
+        "name": "Emily Roberts",
+        "role": "Homeowner",
+        "company": "Residential Client",
+        "text": "After a neighbor's house was struck by lightning, we immediately called LightningGuard. They responded quickly and installed a top-notch system. Peace of mind is priceless!"
+      }
+    }
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Contact",
+    "titleHighlight": "Us",
+    "description": "Ready to protect your property? Get in touch with our team for a free consultation and quote.",
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "hours": "Working Hours",
+      "emergency": "Emergency: 24/7"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "subtitle": "We'll get back to you within 24 hours",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Select Service Type",
+      "services": {
+        "residential": "Residential Protection",
+        "commercial": "Commercial Protection",
+        "industrial": "Industrial Protection",
+        "maintenance": "Maintenance & Inspection",
+        "consultation": "Consultation"
+      },
+      "message": "Tell us about your project and requirements...",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "cta": {
+      "title": "Ready to Protect Your Property?",
+      "description": "Get a free consultation and quote from our expert team today.",
+      "button": "Get Free Quote"
+    },
+    "description": "Professional lightning protection services for residential, commercial, and industrial properties. Protecting your investments with certified expertise since 2016.",
+    "services": "Services",
+    "company": "Company",
+    "support": "Support",
+    "links": {
+      "services": {
+        "rod": "Lightning Rod Installation",
+        "commercial": "Commercial Protection",
+        "industrial": "Industrial Solutions",
+        "surge": "Surge Protection",
+        "risk": "Risk Assessment",
+        "maintenance": "Maintenance & Repair"
+      },
+      "company": {
+        "about": "About Us",
+        "team": "Our Team",
+        "careers": "Careers",
+        "blog": "News & Blog",
+        "cases": "Case Studies",
+        "contact": "Contact Us"
+      },
+      "support": {
+        "faq": "FAQs",
+        "docs": "Documentation",
+        "emergency": "Emergency Support",
+        "warranty": "Warranty Info",
+        "areas": "Service Areas",
+        "quote": "Get a Quote"
+      }
+    },
+    "copyright": "© 2025 LightningGuard. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "language": {
+    "switch": "العربية",
+    "label": "Language"
+  },
+  "aboutPage": {
+    "nav": {
+      "ourStory": "Our Story",
+      "values": "Values",
+      "team": "Team"
+    },
+    "hero": {
+      "badge": "About LightningGuard",
+      "title": "Protecting Lives and Property",
+      "titleHighlight": "Since 2008",
+      "description": "We are a leading lightning protection company dedicated to safeguarding your assets with innovative solutions and unmatched expertise."
+    },
+    "achievements": {
+      "clients": "Happy Clients",
+      "awards": "Industry Awards",
+      "experience": "Years Experience",
+      "satisfaction": "Satisfaction Rate"
+    },
+    "story": {
+      "badge": "Our Story",
+      "title": "Building a Safer Future Together",
+      "paragraph1": "Founded in 2008, LightningGuard began with a simple mission: to provide the highest quality lightning protection systems to keep people and properties safe. What started as a small team of dedicated engineers has grown into one of the most trusted names in the industry.",
+      "paragraph2": "Today, we serve thousands of clients across residential, commercial, and industrial sectors. Our commitment to innovation, quality, and customer satisfaction has earned us numerous industry awards and, more importantly, the trust of our clients.",
+      "imageAlt": "LightningGuard Team at Work",
+      "yearsExperience": "Years of Excellence"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To protect lives and property by delivering the most reliable, innovative, and effective lightning protection solutions. We are committed to excellence in every installation, ensuring peace of mind for our clients."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be the global leader in lightning protection technology, setting industry standards for safety, innovation, and customer service. We envision a world where lightning-related damages and injuries are preventable."
+    },
+    "values": {
+      "badge": "Core Values",
+      "title": "What Drives Us Forward",
+      "description": "Our values guide every decision we make and every project we undertake.",
+      "safety": {
+        "title": "Safety First",
+        "description": "Your safety is our top priority. We never compromise on quality or safety standards."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for perfection in every installation and maintain the highest industry standards."
+      },
+      "integrity": {
+        "title": "Integrity",
+        "description": "Honest, transparent, and ethical practices in all our business relationships."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Continuously improving our technology and methods to provide better protection."
+      }
+    },
+    "timeline": {
+      "badge": "Our Journey",
+      "title": "Milestones That Shaped Us",
+      "founded": {
+        "title": "Company Founded",
+        "description": "LightningGuard was established with a vision to revolutionize lightning protection services."
+      },
+      "expansion": {
+        "title": "Regional Expansion",
+        "description": "Expanded operations to serve clients across multiple regions, growing our team of experts."
+      },
+      "certification": {
+        "title": "International Certifications",
+        "description": "Achieved major industry certifications including ISO 9001, UL, and LPI certifications."
+      },
+      "leader": {
+        "title": "Industry Leader",
+        "description": "Recognized as one of the top lightning protection companies with 2,500+ completed projects."
+      }
+    },
+    "team": {
+      "badge": "Our Team",
+      "title": "Meet the Experts Behind Our Success",
+      "description": "Our team of certified professionals brings decades of combined experience in lightning protection.",
+      "member1": {
+        "name": "David Thompson",
+        "role": "Chief Executive Officer"
+      },
+      "member2": {
+        "name": "Jennifer Martinez",
+        "role": "Chief Technical Officer"
+      },
+      "member3": {
+        "name": "Robert Williams",
+        "role": "Lead Engineer"
+      },
+      "member4": {
+        "name": "Lisa Anderson",
+        "role": "Operations Manager"
+      }
+    },
+    "cta": {
+      "title": "Ready to Protect Your Property?",
+      "description": "Join thousands of satisfied clients who trust LightningGuard for their protection needs.",
+      "button": "Get Free Consultation"
+    }
+  }
+}
