@@ -11,6 +11,8 @@ import ContactSection from './components/sections/ContactSection'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/common/ScrollToTop'
 import AboutUsPage from './pages/AboutUsPage'
+import ServicesPage from './pages/ServicesPage'
+import ProjectsPage from './pages/ProjectsPage'
 
 function HomePage() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
         </Routes>
         
         <Footer />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import Logo from '../common/Logo';
 
@@ -95,13 +96,36 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">{t('footer.services')}</h4>
             <ul className="space-y-3">
-              {footerLinks.services.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-white/70 hover:text-accent transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.rod')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.commercial')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.industrial')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.surge')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.risk')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.maintenance')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -109,7 +133,12 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">{t('footer.company')}</h4>
             <ul className="space-y-3">
-              {footerLinks.company.map((link, index) => (
+              <li>
+                <Link to="/about" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.company.about')}
+                </Link>
+              </li>
+              {footerLinks.company.slice(1).map((link, index) => (
                 <li key={index}>
                   <a href="#" className="text-white/70 hover:text-accent transition-colors">
                     {link}

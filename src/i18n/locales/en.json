@@ -345,5 +345,329 @@
       "description": "Join thousands of satisfied clients who trust LightningGuard for their protection needs.",
       "button": "Get Free Consultation"
     }
+  },
+  "servicesPage": {
+    "hero": {
+      "badge": "Professional Protection Services",
+      "title": "Complete Lightning Protection",
+      "titleHighlight": "& Grounding Solutions",
+      "description": "We provide comprehensive protection systems designed to safeguard your facilities from lightning strikes, power surges, and electrical hazards. Our certified engineers deliver customized solutions for every industry.",
+      "cta": "Explore Our Services",
+      "ctaSecondary": "Contact Us Now",
+      "yearsExp": "Years Experience",
+      "projects": "Projects Completed"
+    },
+    "servicesSection": {
+      "badge": "What We Offer",
+      "title": "Our Comprehensive",
+      "titleHighlight": "Protection Services",
+      "description": "From initial risk assessment to complete installation and ongoing maintenance, we deliver end-to-end lightning protection solutions that meet international standards and exceed client expectations."
+    },
+    "services": {
+      "lightning": {
+        "title": "Lightning Protection Systems",
+        "description": "State-of-the-art lightning rod installation and air terminal systems designed to intercept lightning strikes and safely conduct electrical current to the ground, protecting your structure from direct lightning damage.",
+        "features": [
+          "Franklin rod and ESE systems installation",
+          "Down conductor network design",
+          "Air terminal placement optimization",
+          "Complete system integration"
+        ]
+      },
+      "grounding": {
+        "title": "Grounding & Earthing Systems",
+        "description": "Professional grounding systems that provide a safe path for electrical fault currents to dissipate into the earth, ensuring equipment safety and personnel protection.",
+        "features": [
+          "Soil resistivity testing & analysis",
+          "Ground rod and grid installation",
+          "Equipment bonding solutions",
+          "Ground resistance optimization"
+        ]
+      },
+      "surge": {
+        "title": "Surge Protection Devices (SPD)",
+        "description": "Multi-level surge protection systems that safeguard sensitive electronics and electrical equipment from transient voltage spikes caused by lightning or power grid disturbances.",
+        "features": [
+          "Type 1, 2 & 3 SPD installation",
+          "Coordinated protection design",
+          "Panel-level surge suppression",
+          "Equipment-specific protection"
+        ]
+      },
+      "risk": {
+        "title": "Lightning Risk Assessment",
+        "description": "Comprehensive risk analysis following IEC 62305 and NFPA 780 standards to evaluate your facility's vulnerability and determine the optimal protection strategy.",
+        "features": [
+          "IEC 62305-2 compliant assessment",
+          "Site-specific risk calculations",
+          "Protection level recommendations",
+          "Detailed technical reports"
+        ]
+      },
+      "maintenance": {
+        "title": "Maintenance & Inspection",
+        "description": "Regular inspection and maintenance services to ensure your lightning protection system remains effective and compliant with safety standards throughout its lifetime.",
+        "features": [
+          "Annual system inspections",
+          "Ground resistance testing",
+          "Connection integrity checks",
+          "Compliance certification"
+        ]
+      },
+      "consultation": {
+        "title": "Engineering Consultation",
+        "description": "Expert engineering consultation for new construction projects, facility upgrades, or complex protection challenges. Our engineers work with your team to design optimal solutions.",
+        "features": [
+          "New construction design support",
+          "Retrofit planning assistance",
+          "Code compliance consulting",
+          "Value engineering services"
+        ]
+      }
+    },
+    "requestQuote": "Request a Quote",
+    "sectorsSection": {
+      "badge": "Industries We Serve",
+      "title": "Protection Solutions for",
+      "titleHighlight": "Every Industry",
+      "description": "We deliver specialized lightning protection solutions tailored to the unique requirements of various industries, from critical infrastructure to residential properties."
+    },
+    "sectors": {
+      "industrial": "Industrial Facilities",
+      "commercial": "Commercial Buildings",
+      "residential": "Residential Properties",
+      "datacenters": "Data Centers",
+      "healthcare": "Healthcare Facilities",
+      "oilgas": "Oil & Gas Sector",
+      "telecom": "Telecommunications",
+      "renewable": "Renewable Energy"
+    },
+    "standardsSection": {
+      "badge": "Quality Assurance",
+      "title": "International Standards",
+      "titleHighlight": "& Certifications",
+      "description": "All our installations comply with leading international standards and are performed by certified professionals to ensure maximum protection and safety."
+    },
+    "standards": {
+      "iec": "International Electrotechnical Commission Standard",
+      "nfpa": "National Fire Protection Association Standard",
+      "bsen": "British/European Lightning Protection Standard",
+      "ieee": "IEEE Grounding Standard for Safety"
+    },
+    "whyUs": {
+      "badge": "Why Choose Us",
+      "title": "Your Trusted Partner in",
+      "titleHighlight": "Protection Solutions",
+      "description": "With over a decade of experience and thousands of successful installations, we deliver unmatched expertise and reliability in lightning protection services."
+    },
+    "benefits": {
+      "protection": {
+        "title": "Complete Protection",
+        "description": "End-to-end solutions covering all aspects of lightning and surge protection."
+      },
+      "certified": {
+        "title": "Certified Experts",
+        "description": "Our team holds leading industry certifications including LPI and UL credentials."
+      },
+      "experts": {
+        "title": "Experienced Team",
+        "description": "10+ years of experience with 2,500+ successful projects completed."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock emergency support and rapid response services."
+      }
+    },
+    "cta": {
+      "title": "Ready to Protect Your Assets?",
+      "description": "Contact our team today for a free consultation and customized protection solution for your facility.",
+      "button": "Get Free Consultation",
+      "call": "Call Us Now"
+    }
+  },
+  "projectsPage": {
+    "hero": {
+      "badge": "Our Portfolio",
+      "title": "Protecting Properties",
+      "titleHighlight": "Across Industries",
+      "description": "Explore our portfolio of successful lightning protection installations. From industrial facilities to residential properties, we deliver excellence in every project."
+    },
+    "stats": {
+      "clients": "Happy Clients",
+      "awards": "Industry Awards",
+      "experience": "Years Experience",
+      "satisfaction": "Satisfaction Rate"
+    },
+    "viewDetails": "View Details",
+    "getSimilar": "Get Similar Solution",
+    "featured": "Featured Project",
+    "categoriesSection": {
+      "badge": "Project Categories",
+      "title": "Browse by",
+      "titleHighlight": "Industry",
+      "description": "We specialize in lightning protection solutions across diverse industries, each with unique requirements and challenges."
+    },
+    "categories": {
+      "all": {
+        "name": "All Projects",
+        "count": "50+ Projects"
+      },
+      "industrial": {
+        "name": "Industrial",
+        "count": "15+ Projects"
+      },
+      "commercial": {
+        "name": "Commercial",
+        "count": "20+ Projects"
+      },
+      "residential": {
+        "name": "Residential",
+        "count": "10+ Projects"
+      },
+      "healthcare": {
+        "name": "Healthcare",
+        "count": "5+ Projects"
+      },
+      "technology": {
+        "name": "Technology",
+        "count": "8+ Projects"
+      }
+    },
+    "featuredSection": {
+      "badge": "Featured Project",
+      "title": "Our Latest",
+      "titleHighlight": "Success Story"
+    },
+    "gridSection": {
+      "badge": "All Projects",
+      "title": "Explore Our",
+      "titleHighlight": "Complete Portfolio",
+      "description": "Browse through our extensive collection of completed projects across various industries and sectors."
+    },
+    "projects": {
+      "factory": {
+        "title": "Industrial Manufacturing Facility",
+        "description": "Complete lightning protection system for a large manufacturing plant.",
+        "fullDescription": "We designed and installed a comprehensive lightning protection system for a 50,000 sq ft manufacturing facility. The project included air terminals, down conductors, grounding system, and surge protection for sensitive machinery.",
+        "location": "Riyadh Industrial City",
+        "size": "50,000 sq ft",
+        "details": [
+          "ESE air terminal system",
+          "120 ground rods installation",
+          "Surge protection for machinery",
+          "Annual maintenance contract"
+        ]
+      },
+      "office": {
+        "title": "Corporate Office Complex",
+        "description": "Multi-building protection network for corporate headquarters.",
+        "fullDescription": "A sophisticated multi-building lightning protection network connecting three corporate towers. The system ensures seamless protection across all structures with centralized monitoring.",
+        "location": "Jeddah Business District",
+        "size": "120,000 sq ft",
+        "details": [
+          "Multi-structure bonding",
+          "Centralized monitoring system",
+          "Type 1 & 2 surge protection",
+          "Emergency backup systems"
+        ]
+      },
+      "residential": {
+        "title": "Luxury Residential Estate",
+        "description": "Premium lightning protection for a high-end residential property.",
+        "fullDescription": "Custom-designed protection system for a luxury estate featuring discrete installation that maintains the property's aesthetic while providing complete protection.",
+        "location": "Al Khobar Corniche",
+        "size": "15,000 sq ft",
+        "details": [
+          "Aesthetic copper air terminals",
+          "Hidden conductor routes",
+          "Pool & water feature protection",
+          "Smart home integration"
+        ]
+      },
+      "hospital": {
+        "title": "Regional Medical Center",
+        "description": "Critical infrastructure protection for medical equipment.",
+        "fullDescription": "Life-saving protection system for a major hospital, ensuring uninterrupted operation of critical medical equipment including MRI machines, operating theaters, and ICU systems.",
+        "location": "Dammam Healthcare Zone",
+        "size": "200,000 sq ft",
+        "details": [
+          "Medical-grade grounding",
+          "Isolated ground systems",
+          "Equipment-specific SPDs",
+          "24/7 monitoring system"
+        ]
+      },
+      "mall": {
+        "title": "Shopping Mall Complex",
+        "description": "Comprehensive protection for large retail center.",
+        "fullDescription": "Full-scale lightning protection installation for a major shopping mall including parking structures, main buildings, and outdoor areas with integrated fire safety systems.",
+        "location": "Riyadh North",
+        "size": "350,000 sq ft",
+        "details": [
+          "Rooftop air terminal array",
+          "Parking structure protection",
+          "Fire system integration",
+          "Public area safety design"
+        ]
+      },
+      "dataCenter": {
+        "title": "Cloud Data Center",
+        "description": "High-security protection for critical data infrastructure.",
+        "fullDescription": "Mission-critical lightning and surge protection for a Tier 4 data center, featuring redundant grounding systems and ultra-fast surge suppression to protect sensitive servers.",
+        "location": "King Abdullah Economic City",
+        "size": "80,000 sq ft",
+        "details": [
+          "Redundant grounding grid",
+          "Sub-nanosecond SPDs",
+          "Raised floor bonding",
+          "99.999% uptime guarantee"
+        ]
+      },
+      "warehouse": {
+        "title": "Logistics Distribution Hub",
+        "description": "Large-scale protection for logistics facility.",
+        "fullDescription": "Comprehensive lightning protection for a major logistics hub featuring protection for high-bay storage, loading docks, and automated systems.",
+        "location": "Riyadh Logistics Zone",
+        "size": "180,000 sq ft",
+        "details": [
+          "High-bay rack protection",
+          "Loading dock coverage",
+          "Automation system SPDs",
+          "Steel structure bonding"
+        ]
+      },
+      "hotel": {
+        "title": "5-Star Resort & Hotel",
+        "description": "Elegant protection for luxury hospitality property.",
+        "fullDescription": "Sophisticated lightning protection designed to complement the hotel's architecture while providing comprehensive safety for guests and operations.",
+        "location": "Red Sea Coast",
+        "size": "250,000 sq ft",
+        "details": [
+          "Architectural integration",
+          "Pool complex protection",
+          "Conference center coverage",
+          "Guest safety systems"
+        ]
+      },
+      "villa": {
+        "title": "Private Villa Compound",
+        "description": "Residential compound protection system.",
+        "fullDescription": "Custom protection solution for a private villa compound featuring individual unit protection with shared grounding infrastructure.",
+        "location": "Jeddah North",
+        "size": "45,000 sq ft",
+        "details": [
+          "Individual villa terminals",
+          "Shared ground network",
+          "Garden & landscape protection",
+          "Gate & fence bonding"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Start Your Project Today",
+      "description": "Join our growing list of satisfied clients. Get a customized lightning protection solution for your property.",
+      "button": "Get Free Consultation",
+      "call": "Call Us Now"
+    }
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Award, Users, Clock, ArrowRight } from 'lucide-react';
@@ -6,6 +7,7 @@ import { CheckCircle2, Award, Users, Clock, ArrowRight } from 'lucide-react';
 export default function AboutSection() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const navigate = useNavigate();
 
   const features = [
     t('about.features.certified'),
@@ -40,7 +42,7 @@ export default function AboutSection() {
                 alt={t('about.imageAlt')}
                 className="rounded-2xl shadow-2xl w-full"
               />
-              
+
               {/* Floating Card */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -53,7 +55,7 @@ export default function AboutSection() {
                 <div className="text-sm opacity-90">{t('hero.stats.experience')}</div>
               </motion.div>
             </div>
-            
+
             {/* Secondary Image */}
             <div className={`absolute -top-8 ${isRTL ? '-right-8' : '-left-8'} w-48 h-48 hidden lg:block`}>
               <img
@@ -77,11 +79,11 @@ export default function AboutSection() {
                 {t('about.badge')}
               </span>
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               {t('about.title')} <span className="text-accent">{t('about.titleHighlight')}</span>
             </h2>
-            
+
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               {t('about.description')}
             </p>
@@ -121,7 +123,10 @@ export default function AboutSection() {
               })}
             </div>
 
-            <button className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2">
+            <button
+              className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2"
+              onClick={() => navigate('/about')}
+            >
               {t('about.cta')}
               <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
             </button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   Shield, 
   Target, 
@@ -45,22 +46,22 @@ export default function AboutUsPage() {
 
   const milestones = [
     {
-      year: '2008',
+      year: '2016',
       title: t('aboutPage.timeline.founded.title'),
       description: t('aboutPage.timeline.founded.description')
     },
     {
-      year: '2012',
+      year: '2018',
       title: t('aboutPage.timeline.expansion.title'),
       description: t('aboutPage.timeline.expansion.description')
     },
     {
-      year: '2018',
+      year: '2020',
       title: t('aboutPage.timeline.certification.title'),
       description: t('aboutPage.timeline.certification.description')
     },
     {
-      year: '2024',
+      year: '2025',
       title: t('aboutPage.timeline.leader.title'),
       description: t('aboutPage.timeline.leader.description')
     }
@@ -70,22 +71,22 @@ export default function AboutUsPage() {
     {
       name: t('aboutPage.team.member1.name'),
       role: t('aboutPage.team.member1.role'),
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=300'
+      image: '/assets/images/person/oaner-Image-1.jpeg'
     },
     {
       name: t('aboutPage.team.member2.name'),
       role: t('aboutPage.team.member2.role'),
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300'
+      image: '/assets/images/person/oaner-Image-2.png'
     },
     {
       name: t('aboutPage.team.member3.name'),
       role: t('aboutPage.team.member3.role'),
-      image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=300'
+      image: '/assets/images/person/oaner-Image-3.png'
     },
     {
       name: t('aboutPage.team.member4.name'),
       role: t('aboutPage.team.member4.role'),
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300'
+      image: '/assets/images/person/oaner-Image-4.jpeg'
     }
   ];
 
@@ -103,31 +104,34 @@ export default function AboutUsPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url(":image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `url("/assets/images/aboutUs/Image-4.png")`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              transform: isRTL ? 'scaleX(-1)' : 'none'
             }}></div>
           </div>
         </div>
 
         {/* Navigation - Matching Homepage Style */}
-        <nav className="relative z-20 flex items-center justify-between px-6 lg:px-16 py-6">
-          <a href="/" className="flex items-center">
+        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-16 py-6">
+          <Link to="/" className="flex items-center">
             <Logo size="default" showText={true} textColor="white" />
-          </a>
+          </Link>
           
           <div className="hidden md:flex items-center gap-8 text-white/90">
-            <a href="/" className="hover:text-accent transition-colors">{t('nav.home')}</a>
-            <a href="/about" className="text-accent transition-colors">{t('nav.about')}</a>
-            <a href="/#services" className="hover:text-accent transition-colors">{t('nav.services')}</a>
-            <a href="/#projects" className="hover:text-accent transition-colors">{t('nav.projects')}</a>
+            <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
+            <Link to="/about" className="text-accent transition-colors">{t('nav.about')}</Link>
+            <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
+            <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
             <a href="/#contact" className="hover:text-accent transition-colors">{t('nav.contact')}</a>
           </div>
           
           <div className="flex items-center gap-4">
             <LanguageSwitcher variant="minimal" />
-            <a href="/#contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
+            <Link to="/#contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
               <Phone className="w-4 h-4" />
               <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-            </a>
+            </Link>
           </div>
         </nav>
         
@@ -216,7 +220,7 @@ export default function AboutUsPage() {
               className="relative"
             >
               <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800"
+                src="/assets/images/aboutUs/Image-2.png"
                 alt={t('aboutPage.story.imageAlt')}
                 className="rounded-2xl shadow-2xl w-full"
               />

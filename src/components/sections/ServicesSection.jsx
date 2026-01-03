@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Zap, Building2, Factory, Wrench, ShieldCheck, FileCheck, ArrowRight } from 'lucide-react';
@@ -33,6 +34,7 @@ const ServiceCard = ({ service, index, isRTL, learnMore }) => {
 export default function ServicesSection() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const navigate = useNavigate();
 
   const services = [
     {
@@ -127,7 +129,10 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <button className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2">
+          <button 
+          className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2"
+          onClick={() => navigate('/services')}
+          >
             {t('services.viewAll')}
             <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
           </button>

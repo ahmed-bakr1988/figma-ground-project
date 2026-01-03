@@ -1,47 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Shield, Phone, ChevronRight } from 'lucide-react';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import Logo from '../common/Logo';
 
 export default function HeroSection() {
   const { t } = useTranslation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Background images array
+  const backgroundImages = [
+    '/assets/images/backgroundImage/backgroundImage1.jpeg',
+    '/assets/images/backgroundImage/backgroundImage5.jpeg',
+    '/assets/images/backgroundImage/backgroundImage7.avif'
+  ];
+
+  // Auto-rotate images every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background Image with Lightning */}
+      {/* Background Image with Lightning - Auto Rotating */}
       <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/assets/images/backgroundImage/backgroundImage1.jpeg')`,
-          }}
-        />
+        {backgroundImages.map((image, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            style={{
+              backgroundImage: `url('${image}')`,
+              opacity: currentImageIndex === index ? 1 : 0,
+              zIndex: currentImageIndex === index ? 1 : 0
+            }}
+          />
+        ))}
         {/* Gradient uses logical direction - start means left in LTR, right in RTL */}
-        <div className="absolute inset-0 bg-gradient-to-end from-slate-900/95 via-slate-900/80 to-slate-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-end from-slate-900/95 via-slate-900/80 to-slate-900/60" style={{ zIndex: 2 }} />
       </div>
 
       {/* Navigation */}
       <nav className="relative z-20 flex items-center justify-between px-6 lg:px-16 py-6">
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <Logo size="default" showText={true} textColor="white" />
-        </a>
+        </Link>
         
         <div className="hidden md:flex items-center gap-8 text-white/90">
-          <a href="/" className="hover:text-accent transition-colors">{t('nav.home')}</a>
-          <a href="/about" className="hover:text-accent transition-colors">{t('nav.about')}</a>
-          <a href="/#services" className="hover:text-accent transition-colors">{t('nav.services')}</a>
-          <a href="/#projects" className="hover:text-accent transition-colors">{t('nav.projects')}</a>
-          <a href="/#contact" className="hover:text-accent transition-colors">{t('nav.contact')}</a>
+          <Link to="/" className="text-accent transition-colors">{t('nav.home')}</Link>
+          <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
+          <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
+          <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
+          <a href="#contact" className="hover:text-accent transition-colors">{t('nav.contact')}</a>
         </div>
         
         <div className="flex items-center gap-4">
           <LanguageSwitcher variant="minimal" />
-          <button className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
+          <a href="#contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
             <Phone className="w-4 h-4" />
             <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-          </button>
+          </a>
         </div>
       </nav>
 
