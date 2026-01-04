@@ -187,13 +187,13 @@ const FeaturedProject = ({ project, isRTL }) => {
                         )}
                     </div>
 
-                    <a
-                        href="#contact"
+                    <Link
+                        to="/contact"
                         className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all w-fit"
                     >
                         {project.cta}
                         <ExternalLink className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </motion.div>
@@ -267,13 +267,13 @@ const ProjectModal = ({ project, isOpen, onClose, isRTL }) => {
                         )}
                     </div>
 
-                    <a
-                        href="#contact"
+                    <Link
+                        to="/contact"
                         className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all"
                     >
                         {project.cta || 'Get Similar Solution'}
                         <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                    </a>
+                    </Link>
                 </div>
             </motion.div>
         </motion.div>
@@ -554,15 +554,15 @@ export default function ProjectsPage() {
                         <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
                         <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
                         <Link to="/projects" className="text-accent transition-colors">{t('nav.projects')}</Link>
-                        <a href="/#contact" className="hover:text-accent transition-colors">{t('nav.contact')}</a>
+                        <Link to="/contact" className="hover:text-accent transition-colors">{t('nav.contact')}</Link>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <LanguageSwitcher variant="minimal" />
-                        <a href="/#contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
+                        <Link to="/contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
                             <Phone className="w-4 h-4" />
                             <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-                        </a>
+                        </Link>
                     </div>
                 </nav>
 
@@ -764,13 +764,13 @@ export default function ProjectsPage() {
                             {t('projectsPage.cta.description')}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="/#contact"
+                            <Link
+                                to="/contact"
                                 className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all"
                             >
                                 {t('projectsPage.cta.button')}
                                 <CheckCircle2 className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
-                            </a>
+                            </Link>
                             <a
                                 href="tel:+1234567890"
                                 className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all"

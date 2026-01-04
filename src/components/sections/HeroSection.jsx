@@ -58,15 +58,15 @@ export default function HeroSection() {
           <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
           <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
           <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
-          <a href="#contact" className="hover:text-accent transition-colors">{t('nav.contact')}</a>
+          <Link to="/contact" className="hover:text-accent transition-colors">{t('nav.contact')}</Link>
         </div>
         
         <div className="flex items-center gap-4">
           <LanguageSwitcher variant="minimal" />
-          <a href="#contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
+          <Link to="/contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
             <Phone className="w-4 h-4" />
             <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-          </a>
+          </Link>
         </div>
       </nav>
 

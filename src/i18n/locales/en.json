@@ -669,5 +669,116 @@
       "button": "Get Free Consultation",
       "call": "Call Us Now"
     }
+  },
+  "contactPage": {
+    "hero": {
+      "badge": "We're Here to Help",
+      "title": "Get in Touch",
+      "titleHighlight": "With Our Team",
+      "description": "Have questions about lightning protection? Our expert team is ready to assist you with personalized solutions for your property."
+    },
+    "stats": {
+      "clients": "Happy Clients",
+      "experience": "Years Experience",
+      "satisfaction": "Satisfaction Rate",
+      "support": "Support Available"
+    },
+    "info": {
+      "badge": "Contact Information",
+      "title": "Multiple Ways to",
+      "titleHighlight": "Reach Us",
+      "description": "Choose the most convenient way to get in touch with our team. We're always ready to help.",
+      "phone": {
+        "title": "Call Us",
+        "primary": "+1 (555) 123-4567",
+        "secondary": "+1 (555) 987-6543",
+        "action": "Call Now"
+      },
+      "email": {
+        "title": "Email Us",
+        "primary": "info@groundtech.com",
+        "secondary": "support@groundtech.com",
+        "action": "Send Email"
+      },
+      "address": {
+        "title": "Visit Us",
+        "line1": "123 Protection Avenue",
+        "line2": "Business District, Cairo, Egypt",
+        "action": "Get Directions"
+      },
+      "hours": {
+        "title": "Working Hours",
+        "weekdays": "Mon - Fri: 8:00 AM - 6:00 PM",
+        "emergency": "Emergency: 24/7 Available"
+      }
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "subtitle": "We'll get back to you within 24 hours",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number (Optional)",
+      "service": "Select Service Type",
+      "services": {
+        "lightning": "Lightning Protection Systems",
+        "grounding": "Grounding & Earthing",
+        "surge": "Surge Protection",
+        "maintenance": "Maintenance & Inspection",
+        "consultation": "Engineering Consultation"
+      },
+      "message": "Tell us about your project and requirements...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! Your message has been sent successfully. We'll contact you soon."
+    },
+    "map": {
+      "title": "Our Location",
+      "label": "GroundTech Headquarters"
+    },
+    "quickContact": {
+      "office": {
+        "title": "Visit Our Office",
+        "description": "Schedule an in-person consultation at our main office."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Emergency support available around the clock."
+      }
+    },
+    "faq": {
+      "badge": "Frequently Asked Questions",
+      "title": "Common",
+      "titleHighlight": "Questions",
+      "description": "Find quick answers to the most common questions about our services.",
+      "items": {
+        "response": {
+          "question": "How quickly can I expect a response?",
+          "answer": "We typically respond to all inquiries within 24 business hours. For urgent matters, please call our direct line for immediate assistance."
+        },
+        "quote": {
+          "question": "How do I get a quote for my project?",
+          "answer": "You can request a quote through our contact form, by phone, or by email. We'll schedule a site visit to assess your needs and provide a detailed proposal."
+        },
+        "emergency": {
+          "question": "Do you offer emergency services?",
+          "answer": "Yes! We provide 24/7 emergency support for all our clients. Our rapid response team is always ready to address urgent lightning protection issues."
+        },
+        "areas": {
+          "question": "What areas do you serve?",
+          "answer": "We serve clients throughout Egypt and the Middle East region. For international projects, please contact us to discuss your specific requirements."
+        },
+        "warranty": {
+          "question": "What warranty do you offer?",
+          "answer": "All our installations come with a comprehensive warranty covering materials and workmanship. Typical warranties range from 5-10 years depending on the system type."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Contact us today for a free consultation and protect your property with our certified lightning protection solutions.",
+      "call": "Call Us Now",
+      "email": "Send Email"
+    }
   }
 }

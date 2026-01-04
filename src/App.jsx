@@ -13,6 +13,7 @@ import ScrollToTop from './components/common/ScrollToTop'
 import AboutUsPage from './pages/AboutUsPage'
 import ServicesPage from './pages/ServicesPage'
 import ProjectsPage from './pages/ProjectsPage'
+import ContactPage from './pages/ContactPage'
 
 function HomePage() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
         
         <Footer />
