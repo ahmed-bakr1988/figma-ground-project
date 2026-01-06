@@ -3,6 +3,8 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
+    "products": "Products",
+    "tools": "Tools",
     "projects": "Projects",
     "contact": "Contact",
     "getQuote": "Get a Quote",
@@ -840,5 +842,235 @@
   "caseStudies": {
     "title": "Case Studies",
     "subtitle": "Examples of Our Successful Projects"
+  },
+  "whatsapp": {
+    "tooltip": "Chat on WhatsApp",
+    "defaultMessage": "Hello! I would like to inquire about your lightning protection services."
+  },
+  "certifications": {
+    "badge": "Certifications & Standards",
+    "title": "Certified by",
+    "titleHighlight": "International Standards",
+    "description": "We adhere to the highest international standards in lightning protection and grounding systems to ensure the safety and quality of our installations.",
+    "ul": {
+      "name": "UL - Underwriters Laboratories",
+      "description": "International safety certification for electrical equipment"
+    },
+    "iso": {
+      "name": "ISO 9001:2015",
+      "description": "Quality management systems certification"
+    },
+    "lpi": {
+      "name": "LPI - Lightning Protection Institute",
+      "description": "Professional certification in lightning protection"
+    },
+    "nfpa": {
+      "name": "NFPA 780",
+      "description": "Standard for Lightning Protection Systems"
+    },
+    "iec": {
+      "name": "IEC 62305",
+      "description": "International standard for lightning protection"
+    },
+    "trustBadge": {
+      "title": "Certified Excellence You Can Trust",
+      "description": "Our commitment to international standards ensures that every installation meets the highest safety and quality requirements."
+    }
+  },
+  "tools": {
+    "riskCalculator": {
+      "title": "Lightning Risk Calculator",
+      "subtitle": "According to IEC 62305 standards",
+      "buildingType": "Building Type",
+      "height": "Building Height (meters)",
+      "area": "Building Area (m²)",
+      "location": "Geographical Location",
+      "electronics": "Sensitive Electronics",
+      "flammable": "Flammable Materials",
+      "select": "Select...",
+      "yes": "Yes",
+      "no": "No",
+      "calculate": "Calculate Risk",
+      "types": {
+        "residential": "Residential",
+        "commercial": "Commercial",
+        "industrial": "Industrial",
+        "medical": "Medical/Healthcare",
+        "educational": "Educational"
+      },
+      "locations": {
+        "open": "Open Area",
+        "urban": "Urban Area",
+        "mountain": "Mountainous Area"
+      },
+      "levels": {
+        "low": "Low Risk",
+        "medium": "Medium Risk",
+        "high": "High Risk",
+        "critical": "Critical Risk"
+      },
+      "results": {
+        "title": "Risk Assessment Results",
+        "score": "Risk Score"
+      },
+      "recommendations": {
+        "title": "Recommendations",
+        "critical": {
+          "0": "Immediate installation of a comprehensive lightning protection system is essential",
+          "1": "Professional risk assessment and detailed protection plan required",
+          "2": "Installation of surge protection devices (SPD) for all critical equipment"
+        },
+        "high": {
+          "0": "Lightning protection system installation is highly recommended",
+          "1": "Conduct a professional site assessment",
+          "2": "Install surge protection for sensitive equipment"
+        },
+        "medium": {
+          "0": "Consider installing a lightning protection system",
+          "1": "Regular inspection and maintenance of existing systems",
+          "2": "Surge protection for valuable equipment"
+        },
+        "low": {
+          "0": "Basic protection measures are sufficient",
+          "1": "Regular inspection and maintenance recommended"
+        }
+      }
+    },
+    "groundingCalculator": {
+      "title": "Grounding System Calculator",
+      "subtitle": "According to BS-7430 standards",
+      "soilResistivity": "Soil Resistivity (Ω.m)",
+      "soilResistivityHint": "Typical values: Sandy soil 50-500, Clay 10-100, Rocky 1000-10000",
+      "numberOfRods": "Number of Ground Rods",
+      "rodLength": "Rod Length (meters)",
+      "rodDiameter": "Rod Diameter (mm)",
+      "soilType": "Soil Type",
+      "select": "Select...",
+      "calculate": "Calculate Resistance",
+      "soilTypes": {
+        "sandy": "Sandy Soil",
+        "clay": "Clay Soil",
+        "rocky": "Rocky Soil",
+        "mixed": "Mixed Soil"
+      },
+      "status": {
+        "excellent": "Excellent",
+        "acceptable": "Acceptable",
+        "unacceptable": "Needs Improvement"
+      },
+      "results": {
+        "title": "Calculation Results",
+        "resistance": "Grounding Resistance",
+        "singleRod": "Single Rod Resistance"
+      },
+      "recommendations": {
+        "title": "Recommendations",
+        "excellent": {
+          "0": "The grounding system is excellent (< 5Ω)",
+          "1": "Maintain regular inspection and testing"
+        },
+        "acceptable": {
+          "0": "The grounding resistance is acceptable (5-10Ω)",
+          "1": "Consider improvement for critical installations",
+          "2": "Regular testing and maintenance recommended"
+        },
+        "unacceptable": {
+          "0": "The grounding resistance is too high (> 10Ω)",
+          "1": "Add more ground rods to the system",
+          "2": "Consider using ground enhancement material",
+          "3": "Increase the depth of ground rods"
+        }
+      }
+    }
+  },
+  "toolsPage": {
+    "hero": {
+      "badge": "Engineering Tools",
+      "title": "Professional",
+      "titleHighlight": "Calculation Tools",
+      "description": "Use our professional engineering calculators to assess lightning risks and design grounding systems according to international standards.",
+      "toolsCount": "Available Tools",
+      "free": "Free",
+      "noCharge": "No Charge"
+    },
+    "section": {
+      "title": "Available Calculators",
+      "description": "Professional tools designed to help you make informed decisions about lightning protection and grounding systems."
+    },
+    "features": {
+      "accurate": {
+        "title": "Accurate Calculations",
+        "description": "Based on international standards IEC 62305 and BS-7430"
+      },
+      "instant": {
+        "title": "Instant Results",
+        "description": "Get immediate results with personalized recommendations"
+      },
+      "easy": {
+        "title": "Easy to Use",
+        "description": "Simple interface designed for both professionals and clients"
+      }
+    },
+    "cta": {
+      "title": "Need Professional Consultation?",
+      "description": "Our expert engineers are ready to help you with detailed assessments and customized solutions.",
+      "button": "Contact Us",
+      "services": "View Our Services"
+    }
+  },
+  "productsPage": {
+    "hero": {
+      "badge": "Our Products",
+      "title": "Quality",
+      "titleHighlight": "Protection Products",
+      "description": "Explore our comprehensive range of high-quality lightning protection and grounding products from leading international manufacturers."
+    },
+    "categories": {
+      "all": "All Products",
+      "accessories": "Grounding Accessories",
+      "arresters": "Lightning Arresters",
+      "spd": "Surge Protection Devices",
+      "rods": "Ground Rods",
+      "cables": "Conductors & Cables"
+    },
+    "products": {
+      "clamps": {
+        "name": "Ground Clamps & Connectors",
+        "description": "High-quality copper and brass clamps for secure grounding connections"
+      },
+      "arresters": {
+        "name": "Lightning Arresters",
+        "description": "Air terminals and lightning rods for direct strike protection"
+      },
+      "spd": {
+        "name": "Surge Protection Devices",
+        "description": "Advanced SPD units for protecting electrical and electronic equipment"
+      },
+      "rods": {
+        "name": "Copper Ground Rods",
+        "description": "Premium copper-bonded ground rods in various lengths and diameters"
+      },
+      "cables": {
+        "name": "Grounding Cables",
+        "description": "Flexible copper conductors and cables for grounding systems"
+      },
+      "testPoints": {
+        "name": "Test Points & Inspection",
+        "description": "Ground test points and inspection chambers for system monitoring"
+      }
+    },
+    "download": "Download Catalog",
+    "quote": "Request Quote",
+    "section": {
+      "allTitle": "All Our Products",
+      "categoryTitle": "{{category}}",
+      "description": "All products comply with international standards and are backed by manufacturer warranties."
+    },
+    "cta": {
+      "title": "Looking for Specific Products?",
+      "description": "Contact us for customized solutions and bulk orders. Our team will help you select the right products for your project.",
+      "button": "Contact Sales Team",
+      "tools": "Use Engineering Tools"
+    }
   }
 }

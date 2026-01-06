@@ -57,6 +57,8 @@ export default function HeroSection() {
           <Link to="/" className="text-accent transition-colors">{t('nav.home')}</Link>
           <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
           <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
+          <Link to="/products" className="hover:text-accent transition-colors">{t('nav.products')}</Link>
+          <Link to="/tools" className="hover:text-accent transition-colors">{t('nav.tools')}</Link>
           <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
           <Link to="/blog" className="hover:text-accent transition-colors">{t('nav.blog')}</Link>
           <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
