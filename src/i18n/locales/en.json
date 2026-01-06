@@ -5,7 +5,10 @@
     "services": "Services",
     "projects": "Projects",
     "contact": "Contact",
-    "getQuote": "Get a Quote"
+    "getQuote": "Get a Quote",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "caseStudies": "Case Studies"
   },
   "hero": {
     "badge": "Professional Protection",
@@ -780,5 +783,62 @@
       "call": "Call Us Now",
       "email": "Send Email"
     }
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Everything You Need to Know",
+    "heroTitle": "Answers to All Your Questions",
+    "heroDescription": "We're here to help! Browse the most common questions or contact us directly",
+    "searchPlaceholder": "Search questions...",
+    "categories": {
+      "all": "All",
+      "general": "General",
+      "installation": "Installation",
+      "maintenance": "Maintenance",
+      "pricing": "Pricing"
+    },
+    "noResults": "No matching results",
+    "noResultsDesc": "Try searching with different keywords or browse categories",
+    "cta": {
+      "title": "Didn't find your answer?",
+      "description": "Our expert team is ready to answer all your questions",
+      "button": "Contact Us"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Latest Articles & News",
+    "heroTitle": "Insights and Expertise in Protection",
+    "heroDescription": "Discover the latest news, tips, and studies in lightning protection and grounding systems",
+    "searchPlaceholder": "Search articles...",
+    "featured": "Featured Article",
+    "readMore": "Read More",
+    "minRead": "min read",
+    "categories": {
+      "all": "All Articles",
+      "educational": "Educational",
+      "technical": "Technical",
+      "news": "News",
+      "tips": "Tips"
+    },
+    "newsletter": {
+      "title": "Subscribe to Newsletter",
+      "description": "Get the latest articles and tips directly in your inbox",
+      "placeholder": "Your email",
+      "button": "Subscribe Now"
+    },
+    "relatedPosts": "Related Articles",
+    "backToBlog": "Back to Blog",
+    "notFound": "Article Not Found",
+    "notFoundDesc": "Sorry, we could not find the requested article",
+    "cta": {
+      "title": "Need Expert Consultation?",
+      "subtitle": "Our team of experts is ready to help you assess your facility's protection needs",
+      "button": "Book Free Consultation"
+    }
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Examples of Our Successful Projects"
   }
 }

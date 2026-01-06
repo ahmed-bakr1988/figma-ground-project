@@ -10,10 +10,16 @@ import TestimonialsSection from './components/sections/TestimonialsSection'
 import ContactSection from './components/sections/ContactSection'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/common/ScrollToTop'
+import LiveChat from './components/common/LiveChat'
 import AboutUsPage from './pages/AboutUsPage'
 import ServicesPage from './pages/ServicesPage'
 import ProjectsPage from './pages/ProjectsPage'
 import ContactPage from './pages/ContactPage'
+import FAQPage from './pages/FAQPage'
+import BlogPage from './pages/BlogPage'
+import BlogPostPage from './pages/BlogPostPage'
+import CaseStudiesPage from './pages/CaseStudiesPage'
+import CaseStudyDetailPage from './pages/CaseStudyDetailPage'
 
 function HomePage() {
   return (
@@ -43,10 +49,16 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
         </Routes>
         
         <Footer />
         <ScrollToTop />
+        <LiveChat />
       </div>
     </Router>
   )

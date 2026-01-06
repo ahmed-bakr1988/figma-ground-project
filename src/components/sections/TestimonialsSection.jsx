@@ -1,11 +1,59 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight, Shield, Award, CheckCircle, Building2 } from 'lucide-react';
+
+// Trust Badges Component
+const TrustBadges = ({ isRTL, lang }) => {
+  const badges = [
+    {
+      icon: Shield,
+      title: lang === 'ar' ? 'معتمد من UL' : 'UL Certified',
+      description: lang === 'ar' ? 'شهادة السلامة الدولية' : 'International Safety Certification'
+    },
+    {
+      icon: Award,
+      title: lang === 'ar' ? 'ISO 9001' : 'ISO 9001',
+      description: lang === 'ar' ? 'معتمد لإدارة الجودة' : 'Quality Management Certified'
+    },
+    {
+      icon: CheckCircle,
+      title: lang === 'ar' ? '15+ سنة خبرة' : '15+ Years Experience',
+      description: lang === 'ar' ? 'خبرة موثوقة في المجال' : 'Trusted Industry Expertise'
+    },
+    {
+      icon: Building2,
+      title: lang === 'ar' ? '500+ مشروع' : '500+ Projects',
+      description: lang === 'ar' ? 'مشاريع ناجحة مكتملة' : 'Successfully Completed Projects'
+    }
+  ];
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      {badges.map((badge, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 text-center hover:border-accent/50 transition-all"
+        >
+          <div className="w-12 h-12 mx-auto mb-3 bg-accent/10 rounded-full flex items-center justify-center">
+            <badge.icon className="w-6 h-6 text-accent" />
+          </div>
+          <h4 className="text-white font-bold text-sm mb-1">{badge.title}</h4>
+          <p className="text-white/50 text-xs">{badge.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
 
 export default function TestimonialsSection() {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === 'ar';
+  const lang = i18n.language;
+  const isRTL = lang === 'ar';
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const testimonials = [
@@ -82,6 +130,9 @@ export default function TestimonialsSection() {
             {t('testimonials.description')}
           </p>
         </motion.div>
+
+        {/* Trust Badges */}
+        <TrustBadges isRTL={isRTL} lang={lang} />
 
         {/* Testimonials Grid - Desktop */}
         <div className="hidden lg:grid grid-cols-2 gap-8">

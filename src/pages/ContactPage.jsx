@@ -249,6 +249,8 @@ export default function ContactPage() {
             <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
             <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
             <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
+            <Link to="/blog" className="hover:text-accent transition-colors">{t('nav.blog')}</Link>
+            <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
             <Link to="/contact" className="text-accent transition-colors">{t('nav.contact')}</Link>
           </div>
           

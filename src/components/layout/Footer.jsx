@@ -138,13 +138,31 @@ export default function Footer() {
                   {t('footer.links.company.about')}
                 </Link>
               </li>
-              {footerLinks.company.slice(1).map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-white/70 hover:text-accent transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/about" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.company.team')}
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.company.careers')}
+                </a>
+              </li>
+              <li>
+                <Link to="/blog" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.company.blog')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/case-studies" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.company.cases')}
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.company.contact')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -152,13 +170,36 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">{t('footer.support')}</h4>
             <ul className="space-y-3">
-              {footerLinks.support.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="text-white/70 hover:text-accent transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/faq" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.support.faq')}
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.support.docs')}
+                </a>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.support.emergency')}
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.support.warranty')}
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.support.areas')}
+                </a>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.support.quote')}
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
