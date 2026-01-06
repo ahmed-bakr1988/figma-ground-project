@@ -11,6 +11,7 @@ import ContactSection from './components/sections/ContactSection'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/common/ScrollToTop'
 import LiveChat from './components/common/LiveChat'
+import WhatsAppButton from './components/common/WhatsAppButton'
 import AboutUsPage from './pages/AboutUsPage'
 import ServicesPage from './pages/ServicesPage'
 import ProjectsPage from './pages/ProjectsPage'
@@ -20,6 +21,8 @@ import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 import CaseStudiesPage from './pages/CaseStudiesPage'
 import CaseStudyDetailPage from './pages/CaseStudyDetailPage'
+import ProductsPage from './pages/ProductsPage'
+import ToolsPage from './pages/ToolsPage'
 
 function HomePage() {
   return (
@@ -47,6 +50,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/tools" element={<ToolsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/faq" element={<FAQPage />} />
@@ -59,6 +64,7 @@ function App() {
         <Footer />
         <ScrollToTop />
         <LiveChat />
+        <WhatsAppButton />
       </div>
     </Router>
   )
