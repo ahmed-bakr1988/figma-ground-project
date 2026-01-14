@@ -20,8 +20,6 @@ import {
   Check
 } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
-import LanguageSwitcher from '../components/common/LanguageSwitcher';
-import Logo from '../components/common/Logo';
 
 // Simple Markdown Renderer
 const MarkdownContent = ({ content }) => {
@@ -229,30 +227,6 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <Logo size="small" showText={true} textColor="dark" />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-8 text-gray-600">
-            <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
-            <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
-            <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
-            <Link to="/blog" className="text-accent transition-colors">{t('nav.blog')}</Link>
-            <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
-            <Link to="/contact" className="hover:text-accent transition-colors">{t('nav.contact')}</Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher variant="minimal" />
-            <Link to="/contact" className="bg-accent hover:bg-accent-dark text-primary px-4 py-2 rounded-lg font-semibold transition-all text-sm">
-              {t('nav.getQuote')}
-            </Link>
-          </div>
-        </div>
-      </nav>
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -19,8 +19,7 @@ import {
   Users,
   Zap
 } from 'lucide-react';
-import LanguageSwitcher from '../components/common/LanguageSwitcher';
-import Logo from '../components/common/Logo';
+import { useContactForm } from '../services/hooks';
 
 // Contact Info Card Component
 const ContactInfoCard = ({ info, index, isRTL }) => {
@@ -109,6 +108,8 @@ export default function ContactPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const [openFAQ, setOpenFAQ] = useState(0);
+  const { loading: isSubmitting, error: formError, success: submitSuccess, sendMessage, reset } = useContactForm();
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -117,8 +118,24 @@ export default function ContactPage() {
     service: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // إعادة تعيين رسالة النجاح بعد 5 ثوانٍ
+  useEffect(() => {
+    if (submitSuccess) {
+      const timer = setTimeout(() => {
+        reset();
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitSuccess, reset]);
 
   const contactInfo = [
     {
@@ -206,24 +223,37 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    // التحقق من البيانات
+    if (!formData.firstName.trim() || formData.firstName.trim().length < 2) {
+      alert(t('contact.form.firstNameError', 'الاسم الأول مطلوب'));
+      return;
+    }
     
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+    if (!formData.email.trim() || !formData.email.includes('@')) {
+      alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
+      return;
+    }
+    
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      alert(t('contact.form.messageError', 'الرسالة مطلوبة وتجب أن تكون أكثر من 10 أحرف'));
+      return;
+    }
+    
+    // تحضير البيانات للإرسال
+    const submitData = {
+      name: `${formData.firstName} ${formData.lastName}`.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      subject: formData.service || t('contactPage.form.generalInquiry', 'استفسار عام'),
+      message: formData.message.trim(),
+      message_type: 'general',
+      source_page: 'contact_page',
+      preferred_language: i18n.language
+    };
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setSubmitSuccess(false), 5000);
+    console.log('جارٍ إرسال البيانات من صفحة التواصل:', submitData);
+    await sendMessage(submitData);
   };
 
   return (
@@ -238,30 +268,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Navigation - Matching Homepage Style */}
-        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-16 py-6">
-          <Link to="/" className="flex items-center">
-            <Logo size="default" showText={true} textColor="white" />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-8 text-white/90">
-            <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
-            <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
-            <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
-            <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
-            <Link to="/blog" className="hover:text-accent transition-colors">{t('nav.blog')}</Link>
-            <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
-            <Link to="/contact" className="text-accent transition-colors">{t('nav.contact')}</Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher variant="minimal" />
-            <a href="tel:+15551234567" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-            </a>
-          </div>
-        </nav>
         
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto text-center px-6 lg:px-16 pt-8">
@@ -367,6 +373,16 @@ export default function ContactPage() {
                   >
                     <CheckCircle2 className="w-5 h-5 text-green-600" />
                     <p className="text-green-700 font-medium">{t('contactPage.form.success')}</p>
+                  </motion.div>
+                )}
+
+                {formError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg"
+                  >
+                    <p className="text-red-700 font-medium">{formError}</p>
                   </motion.div>
                 )}
                 

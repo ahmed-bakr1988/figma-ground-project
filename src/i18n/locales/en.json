@@ -202,7 +202,13 @@
         "consultation": "Consultation"
       },
       "message": "Tell us about your project and requirements...",
-      "submit": "Send Message"
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Your message has been sent successfully!",
+      "nameError": "Name is required and must be at least 2 characters",
+      "emailError": "Email is required and must be valid",
+      "messageError": "Message is required and must be more than 10 characters",
+      "quickInquiry": "Quick Inquiry"
     }
   },
   "footer": {
@@ -329,20 +335,28 @@
       "title": "Meet the Experts Behind Our Success",
       "description": "Our team of certified professionals brings decades of combined experience in lightning protection.",
       "member1": {
-        "name": "David Thompson",
-        "role": "Chief Executive Officer"
+        "nickname": "Engineer",
+        "name": "Abdel Fattah Said",
+        "role": "Chairman of the Board",
+        "description": "Leads GroundTech with clear engineering and management vision, overseeing the company's strategic direction to ensure reliable lightning protection and grounding solutions aligned with international standards."
       },
       "member2": {
-        "name": "Jennifer Martinez",
-        "role": "Chief Technical Officer"
+        "nickname": "Chief Engineer",
+        "name": "Ahmed Jaffar",
+        "role": "Chief Engineering Officer",
+        "description": "Responsible for comprehensive oversight of all engineering aspects, including technical studies, designs, risk calculations, and solution reviews to ensure the highest safety standards and compliance with international codes."
       },
       "member3": {
-        "name": "Robert Williams",
-        "role": "Lead Engineer"
+        "nickname": "Engineer",
+        "name": "Hossam Amin",
+        "role": "Executive Manager",
+        "description": "Oversees daily operations and ensures seamless execution of all company activities and client projects."
       },
       "member4": {
-        "name": "Lisa Anderson",
-        "role": "Operations Manager"
+        "nickname": "Professor",
+        "name": "Mohamed Ali Ziad",
+        "role": "Financial Manager",
+        "description": "Manages financial affairs, planning, and financial oversight at GroundTech, ensuring cost efficiency, financial stability, and supporting sustainable project growth."
       }
     },
     "cta": {

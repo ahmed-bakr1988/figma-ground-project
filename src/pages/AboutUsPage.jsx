@@ -14,8 +14,6 @@ import {
   Lightbulb,
   Phone
 } from 'lucide-react';
-import LanguageSwitcher from '../components/common/LanguageSwitcher';
-import Logo from '../components/common/Logo';
 
 export default function AboutUsPage() {
   const { t, i18n } = useTranslation();
@@ -69,21 +67,25 @@ export default function AboutUsPage() {
 
   const teamMembers = [
     {
+      nickname: t('aboutPage.team.member1.nickname'),
       name: t('aboutPage.team.member1.name'),
       role: t('aboutPage.team.member1.role'),
       image: '/assets/images/person/oaner-Image-1.jpeg'
     },
     {
+      nickname: t('aboutPage.team.member2.nickname'),
       name: t('aboutPage.team.member2.name'),
       role: t('aboutPage.team.member2.role'),
       image: '/assets/images/person/oaner-Image-2.png'
     },
     {
+      nickname: t('aboutPage.team.member3.nickname'),
       name: t('aboutPage.team.member3.name'),
       role: t('aboutPage.team.member3.role'),
       image: '/assets/images/person/oaner-Image-3.png'
     },
     {
+      nickname: t('aboutPage.team.member4.nickname'),
       name: t('aboutPage.team.member4.name'),
       role: t('aboutPage.team.member4.role'),
       image: '/assets/images/person/oaner-Image-4.jpeg'
@@ -96,7 +98,7 @@ export default function AboutUsPage() {
     { icon: Shield, value: '10+', label: t('aboutPage.achievements.experience') },
     { icon: TrendingUp, value: '99%', label: t('aboutPage.achievements.satisfaction') }
   ];
-
+ 
   return (
     <>
       {/* Hero Section with Navigation */}
@@ -112,30 +114,6 @@ export default function AboutUsPage() {
           </div>
         </div>
 
-        {/* Navigation - Matching Homepage Style */}
-        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-16 py-6">
-          <Link to="/" className="flex items-center">
-            <Logo size="default" showText={true} textColor="white" />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-8 text-white/90">
-            <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
-            <Link to="/about" className="text-accent transition-colors">{t('nav.about')}</Link>
-            <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
-            <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
-            <Link to="/blog" className="hover:text-accent transition-colors">{t('nav.blog')}</Link>
-            <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
-            <Link to="/contact" className="hover:text-accent transition-colors">{t('nav.contact')}</Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher variant="minimal" />
-            <Link to="/contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-            </Link>
-          </div>
-        </nav>
         
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto text-center px-6 lg:px-16 pt-8">
@@ -414,16 +392,21 @@ export default function AboutUsPage() {
                 viewport={{ once: true }}
                 className="group"
               >
-                <div className="relative overflow-hidden rounded-2xl mb-4">
+                <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[4/5] bg-gray-100">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center'
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
+
                 <h3 className="text-xl font-bold text-gray-900 mb-1">
-                  {member.name}
+                  {member.nickname} / {member.name}
                 </h3>
                 <p className="text-accent font-medium">
                   {member.role}

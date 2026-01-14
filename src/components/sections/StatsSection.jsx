@@ -1,25 +1,72 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Award, Shield, CheckCircle, Trophy } from 'lucide-react';
+import { Award, Shield, CheckCircle, Trophy, Building2 } from 'lucide-react';
+// Trust Badges Component
+const TrustBadges = ({ t, lang }) => {
+  const badges = [
+    {
+      icon: Shield,
+      title: lang === 'ar' ? 'معتمد من UL' : 'UL Certified',
+      description: lang === 'ar' ? 'شهادة السلامة الدولية' : 'International Safety Certification'
+    },
+    {
+      icon: Award,
+      title: lang === 'ar' ? 'ISO 9001' : 'ISO 9001',
+      description: lang === 'ar' ? 'معتمد لإدارة الجودة' : 'Quality Management Certified'
+    },
+    {
+      icon: CheckCircle,
+      title: lang === 'ar' ? '15+ سنة خبرة' : '15+ Years Experience',
+      description: lang === 'ar' ? 'خبرة موثوقة في المجال' : 'Trusted Industry Expertise'
+    },
+    {
+      icon: Building2,
+      title: lang === 'ar' ? '500+ مشروع' : '500+ Projects',
+      description: lang === 'ar' ? 'مشاريع ناجحة مكتملة' : 'Successfully Completed Projects'
+    }
+  ];
 
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      {badges.map((badge, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center hover:border-accent/50 transition-all"
+        >
+          <div className="w-12 h-12 mx-auto mb-3 bg-white/20 rounded-full flex items-center justify-center">
+            <badge.icon className="w-6 h-6 text-white" />
+          </div>
+          <h4 className="text-white font-bold text-sm mb-1">{badge.title}</h4>
+          <p className="text-white/70 text-xs">{badge.description}</p>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
 export default function StatsSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
 
   const stats = [
     { value: '10+', label: t('stats.experience'), icon: Trophy },
-    { value: '2,500+', label: t('stats.projects'), icon: CheckCircle },
+    { value: '1,500+', label: t('stats.projects'), icon: CheckCircle },
     { value: '99%', label: t('stats.satisfaction'), icon: Shield },
-    { value: '50+', label: t('stats.awards'), icon: Award }
+    { value: '10+', label: t('stats.awards'), icon: Award }
   ];
 
-  const certifications = [
-    { name: t('stats.certifications.ul'), logo: '🏆' },
-    { name: t('stats.certifications.lpi'), logo: '⚡' },
-    { name: t('stats.certifications.iso'), logo: '✓' },
-    { name: t('stats.certifications.nfpa'), logo: '🛡️' }
-  ];
+ 
+  //   { name: t('stats.certifications.ul'), logo: '🏆' },
+  //   { name: t('stats.certifications.lpi'), logo: '⚡' },
+  //   { name: t('stats.certifications.iso'), logo: '✓' },
+  //   { name: t('stats.certifications.nfpa'), logo: '🛡️' }
+  // ];
   return (
+    {/* Stats Section */},
     <section className="py-24 px-6 lg:px-16 bg-gradient-to-r from-primary to-primary-light relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -51,36 +98,10 @@ export default function StatsSection() {
           })}
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/20 my-12"></div>
+        {/* Trust Badges */}
+        <TrustBadges t={t} lang={lang} />
 
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-8">{t('stats.trusted')}</h3>
-          
-          <div className="flex flex-wrap justify-center gap-8">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.1 }}
-                className="bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl flex items-center gap-3 border border-white/20"
-              >
-                <span className="text-3xl">{cert.logo}</span>
-                <span className="text-white font-semibold">{cert.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );

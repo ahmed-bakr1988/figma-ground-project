@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -10,11 +10,11 @@ import {
   BookOpen,
   Phone,
   Mail,
-  Tag
+  Tag,
+  CheckCircle2
 } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
-import LanguageSwitcher from '../components/common/LanguageSwitcher';
-import Logo from '../components/common/Logo';
+import { useNewsletterSubscribe } from '../services/hooks';
 
 // Blog Card Component
 const BlogCard = ({ post, index, isRTL, lang }) => {
@@ -160,6 +160,20 @@ export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [email, setEmail] = useState('');
+  
+  // Newsletter subscription hook
+  const { loading: newsletterLoading, error: newsletterError, success: newsletterSuccess, subscribe, reset: resetNewsletter } = useNewsletterSubscribe();
+
+  // إعادة تعيين رسالة النجاح بعد 5 ثوانٍ
+  useEffect(() => {
+    if (newsletterSuccess) {
+      const timer = setTimeout(() => {
+        resetNewsletter();
+        setEmail('');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [newsletterSuccess, resetNewsletter]);
 
   // Get featured post
   const featuredPost = blogPosts.find(post => post.featured);
@@ -184,11 +198,9 @@ export default function BlogPage() {
     });
   }, [searchTerm, selectedCategory, lang]);
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    alert(lang === 'ar' ? 'شكراً للاشتراك!' : 'Thank you for subscribing!');
-    setEmail('');
+    await subscribe(email, null);
   };
 
   return (
@@ -203,30 +215,7 @@ export default function BlogPage() {
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-16 py-6">
-          <Link to="/" className="flex items-center">
-            <Logo size="default" showText={true} textColor="white" />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-8 text-white/90">
-            <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
-            <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
-            <Link to="/services" className="hover:text-accent transition-colors">{t('nav.services')}</Link>
-            <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
-            <Link to="/blog" className="text-accent transition-colors">{t('nav.blog')}</Link>
-            <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
-            <Link to="/contact" className="hover:text-accent transition-colors">{t('nav.contact')}</Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher variant="minimal" />
-            <Link to="/contact" className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-            </Link>
-          </div>
-        </nav>
+
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center px-6 lg:px-16 pt-8">
@@ -355,6 +344,29 @@ export default function BlogPage() {
             <p className="text-xl text-white/80 mb-8">
               {t('blog.newsletter.subtitle')}
             </p>
+
+            {/* رسالة النجاح */}
+            {newsletterSuccess && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-green-500/20 border border-green-400/50 rounded-lg flex items-center justify-center gap-3 max-w-md mx-auto"
+              >
+                <CheckCircle2 className="w-5 h-5 text-green-300 flex-shrink-0" />
+                <p className="text-green-100 font-medium">{t('blog.newsletter.success', 'تم الاشتراك بنجاح!')}</p>
+              </motion.div>
+            )}
+
+            {/* رسالة الخطأ */}
+            {newsletterError && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-6 p-4 bg-red-500/20 border border-red-400/50 rounded-lg max-w-md mx-auto"
+              >
+                <p className="text-red-100 font-medium">{newsletterError}</p>
+              </motion.div>
+            )}
             
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
@@ -363,13 +375,22 @@ export default function BlogPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:ring-2 focus:ring-accent outline-none"
+                disabled={newsletterLoading}
+                className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:ring-2 focus:ring-accent outline-none disabled:opacity-70"
               />
               <button 
                 type="submit"
-                className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold whitespace-nowrap transition-all"
+                disabled={newsletterLoading}
+                className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold whitespace-nowrap transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {t('blog.newsletter.button')}
+                {newsletterLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+                    {t('blog.newsletter.subscribing', 'جارٍ الاشتراك...')}
+                  </>
+                ) : (
+                  t('blog.newsletter.button')
+                )}
               </button>
             </form>
           </motion.div>

@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
   const isRTL = i18n.language === 'ar';
 
   // Replace with actual company WhatsApp number
-  const whatsappNumber = '201234567890'; // Example: Egypt number format
+  const whatsappNumber = '+201044044855'; // Example: Egypt number format
   const message = encodeURIComponent(t('whatsapp.defaultMessage'));
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-6 ${isRTL ? 'left-6' : 'right-6'} z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all flex items-center justify-center group`}
+      className={`fixed bottom-28 ${isRTL ? 'left-6' : 'right-6'} z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all flex items-center justify-center group`}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ 

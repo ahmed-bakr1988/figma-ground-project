@@ -1,11 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, Zap } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Zap, CheckCircle2 } from 'lucide-react';
+import { useContactForm } from '../../services/hooks';
 
 export default function ContactSection() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { loading, error, success, sendMessage, reset } = useContactForm();
+  
+  // حالة النموذج
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: ''
+  });
+
+  // إعادة تعيين رسالة النجاح بعد 5 ثوانٍ
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        reset();
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [success, reset]);
+
+  // معالجة تغيير الحقول
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  // معالجة إرسال النموذج
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // التحقق من البيانات
+    if (!formData.firstName.trim() || formData.firstName.trim().length < 2) {
+      alert(t('contact.form.firstNameError', 'الاسم الأول مطلوب'));
+      return;
+    }
+    
+    if (!formData.email.trim() || !formData.email.includes('@')) {
+      alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
+      return;
+    }
+    
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      alert(t('contact.form.messageError', 'الرسالة مطلوبة وتجب أن تكون أكثر من 10 أحرف'));
+      return;
+    }
+    
+    // تحضير البيانات للإرسال
+    const submitData = {
+      name: `${formData.firstName} ${formData.lastName}`.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      subject: formData.service || t('contact.form.generalInquiry', 'استفسار عام'),
+      message: formData.message.trim(),
+      message_type: 'general',
+      source_page: 'home_contact_section',
+      preferred_language: i18n.language
+    };
+
+    console.log('جارٍ إرسال البيانات من قسم التواصل:', submitData);
+    await sendMessage(submitData);
+  };
 
   const contactInfo = [
     {
@@ -139,34 +211,77 @@ export default function ContactSection() {
                   <p className="text-gray-500 text-sm">{t('contact.form.subtitle')}</p>
                 </div>
               </div>
+
+              {/* رسالة النجاح */}
+              {success && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <p className="text-green-700 font-medium text-sm">{t('contact.form.successMessage', 'تم إرسال رسالتك بنجاح!')}</p>
+                </motion.div>
+              )}
+
+              {/* رسالة الخطأ */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg"
+                >
+                  <p className="text-red-700 font-medium text-sm">{error}</p>
+                </motion.div>
+              )}
               
-              <form className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <input 
-                    type="text" 
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
                     placeholder={t('contact.form.firstName')}
+                    required
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                   />
                   <input 
-                    type="text" 
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
                     placeholder={t('contact.form.lastName')}
+                    required
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                   />
                 </div>
                 
                 <input 
-                  type="email" 
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder={t('contact.form.email')}
+                  required
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                 />
                 
                 <input 
-                  type="tel" 
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
                   placeholder={t('contact.form.phone')}
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                 />
                 
-                <select className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-gray-500">
+                <select 
+                  name="service"
+                  value={formData.service}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-gray-500"
+                >
                   <option value="">{t('contact.form.service')}</option>
                   <option value="residential">{t('contact.form.services.residential')}</option>
                   <option value="commercial">{t('contact.form.services.commercial')}</option>
@@ -176,17 +291,31 @@ export default function ContactSection() {
                 </select>
                 
                 <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   rows="4" 
                   placeholder={t('contact.form.message')}
+                  required
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none"
                 />
                 
                 <button 
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent-dark text-primary py-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
+                  disabled={loading}
+                  className="w-full bg-accent hover:bg-accent-dark text-primary py-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  {t('contact.form.submit')}
-                  <Send className="w-5 h-5" />
+                  {loading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
+                      {t('contact.form.sending', 'جارٍ الإرسال...')}
+                    </>
+                  ) : (
+                    <>
+                      {t('contact.form.submit')}
+                      <Send className="w-5 h-5" />
+                    </>
+                  )}
                 </button>
               </form>
             </div>

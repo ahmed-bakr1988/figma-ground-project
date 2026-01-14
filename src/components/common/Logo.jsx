@@ -30,7 +30,7 @@ export default function Logo({ size = 'default', showText = true, textColor = 'w
       />
       {showText && (
         <span className={`${textSizes[size]} font-bold ${textColors[textColor]}`}>
-          GroundTech
+          Ground Tech
         </span>
       )}
     </div>

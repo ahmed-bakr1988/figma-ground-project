@@ -28,6 +28,22 @@
   box-sizing: border-box;
 }
 
+/* Fix for fixed navbar overlay issue */
+body {
+  padding-top: 120px; /* Height of fixed navbar */
+}
+
+/* Hero section should start from top, ignoring body padding */
+.hero-section {
+  margin-top: -120px;
+  padding-top: 120px;
+}
+
+/* Ensure dropdowns appear above content */
+.dropdown-menu {
+  z-index: 9999 !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
