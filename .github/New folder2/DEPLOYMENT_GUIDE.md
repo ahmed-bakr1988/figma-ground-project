@@ -68,7 +68,8 @@ MAIL_PASSWORD=كلمة_مرور_البريد
 ```bash
 cd /home/username/ground-eg.com/backend
 composer install --optimize-autoloader --no-dev
-```
+``` 
+
 
 #### 4. Generate Application Key:
 
