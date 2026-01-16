@@ -10,7 +10,9 @@
     "getQuote": "Get a Quote",
     "blog": "Blog",
     "faq": "FAQ",
-    "caseStudies": "Case Studies"
+    "caseStudies": "Case Studies",
+    "allServices": "All Services",
+    "allProjects": "All Projects"
   },
   "hero": {
     "badge": "Professional Protection",

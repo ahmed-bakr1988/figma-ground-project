@@ -33,6 +33,15 @@ npm run build
 
 ✅ سيتم إنشاء مجلد `dist/` يحتوي على الملفات الجاهزة للرفع
 
+ملاحظات تحسين الحجم والأداء:
+
+- تم تفعيل تقسيم الكود ديناميكياً (React.lazy + Suspense) لصفحات الراوتر لتقليل حجم الحِمل الأولي.
+- تم ضبط Vite على إنشاء حزَم منفصلة للمكتبات الثقيلة (react, router, i18n, framer-motion, axios, icons).
+- تم تمكين إنشاء ملفات مضغوطة `.gz` تلقائياً داخل `dist/` لتسريع التحميل على cPanel.
+- تم تعيين `base: './'` في Vite لضمان عمل الأصول عند النشر في الجذر أو في مجلد فرعي.
+
+للاستفادة من ملفات `.gz` على cPanel، انسخ محتوى الملف: `cpanel/htaccess-gzip.sample` إلى `public_html/.htaccess` (أو أضِفه إلى الملف الموجود) بجانب قواعد الـ SPA أدناه.
+
 ---
 
 ### المرحلة 2️⃣: تجهيز Backend للـ Production
@@ -158,6 +167,30 @@ php artisan view:cache
        Header set X-Frame-Options "DENY"
        Header set X-XSS-Protection "1; mode=block"
    </IfModule>
+
+    # Optional: Gzip/Cache for built assets
+    <IfModule mod_mime.c>
+        AddEncoding gzip .gz
+        AddType application/javascript .js
+        AddType text/css .css
+        AddType application/javascript js.gz
+        AddType text/css css.gz
+    </IfModule>
+    <IfModule mod_rewrite.c>
+        RewriteCond %{REQUEST_FILENAME}.gz -f
+        RewriteRule ^(.+\.js)$ $1.gz [QSA]
+        RewriteCond %{REQUEST_FILENAME}.gz -f
+        RewriteRule ^(.+\.css)$ $1.gz [QSA]
+    </IfModule>
+    <IfModule mod_headers.c>
+        <FilesMatch "\.(js|css)\.gz$">
+            Header set Content-Encoding gzip
+            Header set Cache-Control "public, max-age=31536000, immutable"
+        </FilesMatch>
+        <FilesMatch "\.(js|css)$">
+            Header set Cache-Control "public, max-age=31536000, immutable"
+        </FilesMatch>
+    </IfModule>
    ```
 
 4. **إعداد .htaccess للـ API** في `public_html/api/public/.htaccess`:

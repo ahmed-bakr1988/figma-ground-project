@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   const handleDropdownLeave = () => {
-    const timeout = setTimeout(() => setOpenDropdown(null), 200);
+    const timeout = setTimeout(() => setOpenDropdown(null), 400);
     setDropdownTimeout(timeout);
   };
 
@@ -31,7 +31,7 @@ const Navbar = () => {
       href: '/services',
       hasDropdown: true,
       dropdownItems: [
-        { name: t('nav.services'), href: '/services' },
+        { name: t('nav.allServices', 'جميع الخدمات'), href: '/services' },
         { name: t('nav.products'), href: '/products' },
         { name: t('nav.tools'), href: '/tools' },
       ]
@@ -41,7 +41,7 @@ const Navbar = () => {
       href: '/projects',
       hasDropdown: true,
       dropdownItems: [
-        { name: t('nav.projects'), href: '/projects' },
+        { name: t('nav.allProjects', 'جميع المشاريع'), href: '/projects' },
         { name: t('nav.caseStudies'), href: '/case-studies' },
       ]
     },

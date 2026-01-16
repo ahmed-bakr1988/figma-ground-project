@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import Logo from '../common/Logo';
 
+// روابط السوشيال ميديا - قم بتحديثها بالروابط الفعلية للشركة
 const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Instagram, href: '#', label: 'Instagram' }
+  { icon: Facebook, href: 'https://facebook.com/groundtecheg', label: 'Facebook', ariaLabel: 'تابعنا على فيسبوك' },
+  { icon: Twitter, href: 'https://twitter.com/groundtecheg', label: 'Twitter', ariaLabel: 'تابعنا على تويتر' },
+  { icon: Linkedin, href: 'https://linkedin.com/company/groundtecheg', label: 'LinkedIn', ariaLabel: 'تابعنا على لينكد إن' },
+  { icon: Instagram, href: 'https://instagram.com/groundtecheg', label: 'Instagram', ariaLabel: 'تابعنا على انستجرام' }
 ];
 
 export default function Footer() {
@@ -55,10 +56,14 @@ export default function Footer() {
                 {t('footer.cta.description')}
               </p>
             </div>
-            <button className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all flex items-center gap-2 whitespace-nowrap">
+            <Link 
+              to="/contact" 
+              className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all flex items-center gap-2 whitespace-nowrap"
+              aria-label={t('footer.cta.button')}
+            >
               {t('footer.cta.button')}
               <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -222,7 +227,10 @@ export default function Footer() {
                   <a
                     key={index}
                     href={social.href}
-                    aria-label={social.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.ariaLabel || social.label}
+                    title={social.label}
                     className="w-10 h-10 bg-slate-800 hover:bg-accent rounded-lg flex items-center justify-center transition-colors"
                   >
                     <Icon className="w-5 h-5" />

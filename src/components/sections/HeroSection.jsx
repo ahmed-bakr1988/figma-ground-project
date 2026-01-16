@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Phone, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Shield, Phone, ChevronRight, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useContactForm } from '../../services/hooks';
+
+// Email validation regex
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function HeroSection() {
   const { t, i18n } = useTranslation();
@@ -18,6 +21,9 @@ export default function HeroSection() {
     service: '',
     message: ''
   });
+
+  // حالة أخطاء التحقق
+  const [validationErrors, setValidationErrors] = useState({});
 
   // Background images array
   const backgroundImages = [
@@ -58,6 +64,30 @@ export default function HeroSection() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // إزالة خطأ الحقل عند الكتابة
+    if (validationErrors[name]) {
+      setValidationErrors(prev => ({ ...prev, [name]: null }));
+    }
+  };
+
+  // التحقق من صحة البيانات
+  const validateForm = () => {
+    const errors = {};
+    
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
+      errors.name = t('contact.form.nameError', 'الاسم مطلوب ويجب أن يكون حرفين على الأقل');
+    }
+    
+    if (!formData.email.trim() || !EMAIL_REGEX.test(formData.email.trim())) {
+      errors.email = t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح');
+    }
+    
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      errors.message = t('contact.form.messageError', 'الرسالة مطلوبة ويجب أن تكون أكثر من 10 أحرف');
+    }
+    
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   // معالجة إرسال النموذج
@@ -65,18 +95,7 @@ export default function HeroSection() {
     e.preventDefault();
     
     // التحقق من البيانات
-    if (!formData.name.trim() || formData.name.trim().length < 2) {
-      alert(t('contact.form.nameError', 'الاسم مطلوب ويجب أن يكون حرفين على الأقل'));
-      return;
-    }
-    
-    if (!formData.email.trim() || !formData.email.includes('@')) {
-      alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
-      return;
-    }
-    
-    if (!formData.message.trim() || formData.message.trim().length < 10) {
-      alert(t('contact.form.messageError', 'الرسالة مطلوبة وتجب أن تكون أكثر من 10 أحرف'));
+    if (!validateForm()) {
       return;
     }
     
@@ -91,8 +110,6 @@ export default function HeroSection() {
       source_page: 'hero_section',
       preferred_language: i18n.language
     };
-
-    console.log('جارٍ إرسال البيانات:', submitData);
    
     await sendMessage(submitData);
   };
@@ -220,36 +237,60 @@ export default function HeroSection() {
               )}
               
               <form onSubmit={handleSubmit} className="space-y-4">
-                <input 
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder={t('contact.form.firstName')}
-                  required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                />
-                <input 
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder={t('contact.form.email')}
-                  required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
-                />
+                <div>
+                  <input 
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder={t('contact.form.firstName')}
+                    aria-label={t('contact.form.firstName')}
+                    aria-invalid={!!validationErrors.name}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
+                      validationErrors.name ? 'border-red-400 bg-red-50' : 'border-gray-200'
+                    }`}
+                  />
+                  {validationErrors.name && (
+                    <p className="mt-1 text-red-500 text-xs flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
+                      {validationErrors.name}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <input 
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder={t('contact.form.email')}
+                    aria-label={t('contact.form.email')}
+                    aria-invalid={!!validationErrors.email}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none ${
+                      validationErrors.email ? 'border-red-400 bg-red-50' : 'border-gray-200'
+                    }`}
+                  />
+                  {validationErrors.email && (
+                    <p className="mt-1 text-red-500 text-xs flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
+                      {validationErrors.email}
+                    </p>
+                  )}
+                </div>
                 <input 
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder={t('contact.form.phone')}
+                  aria-label={t('contact.form.phone')}
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
                 />
                 <select 
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
+                  aria-label={t('contact.form.service')}
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-gray-500"
                 >
                   <option value="">{t('contact.form.service')}</option>
@@ -258,14 +299,26 @@ export default function HeroSection() {
                   <option value="industrial">{t('contact.form.services.industrial')}</option>
                   <option value="maintenance">{t('contact.form.services.maintenance')}</option>
                 </select>
-                <textarea 
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows="3" 
-                  placeholder={t('contact.form.message')}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none"
-                />
+                <div>
+                  <textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows="3" 
+                    placeholder={t('contact.form.message')}
+                    aria-label={t('contact.form.message')}
+                    aria-invalid={!!validationErrors.message}
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none resize-none ${
+                      validationErrors.message ? 'border-red-400 bg-red-50' : 'border-gray-200'
+                    }`}
+                  />
+                  {validationErrors.message && (
+                    <p className="mt-1 text-red-500 text-xs flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" />
+                      {validationErrors.message}
+                    </p>
+                  )}
+                </div>
                 <button 
                   type="submit"
                   disabled={loading}

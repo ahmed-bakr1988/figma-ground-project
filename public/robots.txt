@@ -1,0 +1,19 @@
+# ================================
+# robots.txt - Ground Tech Egypt
+# ================================
+# https://ground-eg.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+
+# Sitemap location
+Sitemap: https://ground-eg.com/sitemap.xml
+
+# Crawl delay (optional - be nice to our server)
+Crawl-delay: 1
