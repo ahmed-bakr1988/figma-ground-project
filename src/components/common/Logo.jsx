@@ -1,15 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function Logo({ size = 'default', showText = true, textColor = 'white' }) {
+export default function Logo({ size = 'default', showText = false, textColor = 'dark' }) {
   const { i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   
+  // أحجام أكبر للـ Logo
   const sizes = {
-    small: 'h-8',
-    default: 'h-10',
-    large: 'h-14',
-    xl: 'h-20'
+    small: 'h-10 w-10',
+    default: 'h-14 w-14',
+    large: 'h-16 w-16',
+    xl: 'h-20 w-20',
+    '2xl': 'h-24 w-24'
   };
 
   const textSizes = {
@@ -30,12 +32,12 @@ export default function Logo({ size = 'default', showText = true, textColor = 'w
     : 'Ground Tech - Lightning Protection Services in Egypt';
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-3">
       <img 
         src="/assets/logo/logo.png" 
         alt={altText}
         loading="eager"
-        className={`${sizes[size]} w-auto object-contain`}
+        className={`${sizes[size]} object-contain`}
       />
       {showText && (
         <span className={`${textSizes[size]} font-bold ${textColors[textColor]}`}>

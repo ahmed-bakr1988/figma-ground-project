@@ -74,7 +74,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <Logo size="default" showText={true} textColor="white" />
+              <Logo size="large" showText={false} />
             </div>
             
             <p className="text-white/70 mb-6 leading-relaxed">

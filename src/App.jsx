@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { MobileMenuProvider, useMobileMenu } from './context/MobileMenuContext'
 import Navbar from './components/layout/Navbar'
 import HeroSection from './components/sections/HeroSection'
 import AboutSection from './components/sections/AboutSection'
@@ -58,42 +59,50 @@ function HomePage() {
   )
 }
 
-function App() {
+// مكون داخلي للوصول إلى Context
+function AppContent() {
   const { i18n } = useTranslation()
+  const { isMobileMenuOpen } = useMobileMenu()
 
-  // Direction is controlled via <html dir> in i18n/index.js
-  // Font family is controlled via CSS html[dir="rtl"] selector
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          {/* 404 Page - يجب أن يكون آخر Route */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+      
+      <Footer />
+      <ScrollToTop hidden={isMobileMenuOpen} />
+      <LiveChat />
+      <WhatsAppButton hidden={isMobileMenuOpen} />
+    </div>
+  )
+}
+
+function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <div className="min-h-screen bg-white">
-          <Navbar />
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/tools" element={<ToolsPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogPostPage />} />
-              <Route path="/case-studies" element={<CaseStudiesPage />} />
-              <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              {/* 404 Page - يجب أن يكون آخر Route */}
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Suspense>
-          
-          <Footer />
-          <ScrollToTop />
-          <LiveChat />
-          <WhatsAppButton />
-        </div>
+        <MobileMenuProvider>
+          <AppContent />
+        </MobileMenuProvider>
       </Router>
     </ErrorBoundary>
   )

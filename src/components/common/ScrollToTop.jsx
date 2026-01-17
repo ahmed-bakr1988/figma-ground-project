@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 
-export default function ScrollToTop() {
+export default function ScrollToTop({ hidden = false }) {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
 
@@ -42,7 +42,7 @@ export default function ScrollToTop() {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !hidden && (
         <motion.button
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
