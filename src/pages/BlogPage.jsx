@@ -2,11 +2,11 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Calendar, 
-  Clock, 
-  ArrowRight, 
-  Search, 
+import {
+  Calendar,
+  Clock,
+  ArrowRight,
+  Search,
   BookOpen,
   Phone,
   Mail,
@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import { useNewsletterSubscribe } from '../services/hooks';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
 
 // Blog Card Component
 const BlogCard = ({ post, index, isRTL, lang }) => {
@@ -39,7 +41,7 @@ const BlogCard = ({ post, index, isRTL, lang }) => {
               </span>
             </div>
           </div>
-          
+
           <div className="p-6 flex flex-col flex-grow">
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
               <div className="flex items-center gap-1">
@@ -51,15 +53,15 @@ const BlogCard = ({ post, index, isRTL, lang }) => {
                 <span>{new Date(post.publishedAt).toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US')}</span>
               </div>
             </div>
-            
+
             <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 flex-grow">
               {post.title[lang]}
             </h3>
-            
+
             <p className="text-gray-600 text-sm mb-4 line-clamp-3">
               {post.excerpt[lang]}
             </p>
-            
+
             <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
               <div className="flex items-center gap-2">
                 <img
@@ -71,7 +73,7 @@ const BlogCard = ({ post, index, isRTL, lang }) => {
                   {post.author.name[lang]}
                 </span>
               </div>
-              
+
               <div className="flex items-center gap-1 text-accent font-semibold text-sm">
                 {lang === 'ar' ? 'اقرأ المزيد' : 'Read More'}
                 <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
@@ -103,7 +105,7 @@ const FeaturedPost = ({ post, isRTL, lang }) => {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
-            
+
             <div className="p-8 lg:p-10 flex flex-col justify-center">
               <div className="flex items-center gap-4 mb-4">
                 <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-sm font-semibold">
@@ -114,15 +116,15 @@ const FeaturedPost = ({ post, isRTL, lang }) => {
                   <span>{post.readTime} {lang === 'ar' ? 'دقائق قراءة' : 'min read'}</span>
                 </div>
               </div>
-              
+
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
                 {post.title[lang]}
               </h2>
-              
+
               <p className="text-gray-600 mb-6 line-clamp-3">
                 {post.excerpt[lang]}
               </p>
-              
+
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img
@@ -139,7 +141,7 @@ const FeaturedPost = ({ post, isRTL, lang }) => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-2 text-accent font-semibold">
                   {lang === 'ar' ? 'اقرأ المقال' : 'Read Article'}
                   <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
@@ -160,7 +162,7 @@ export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [email, setEmail] = useState('');
-  
+
   // Newsletter subscription hook
   const { loading: newsletterLoading, error: newsletterError, success: newsletterSuccess, subscribe, reset: resetNewsletter } = useNewsletterSubscribe();
 
@@ -187,13 +189,13 @@ export default function BlogPage() {
   // Filter posts
   const filteredPosts = useMemo(() => {
     return blogPosts.filter(post => {
-      const matchesSearch = searchTerm === '' || 
+      const matchesSearch = searchTerm === '' ||
         post.title[lang].toLowerCase().includes(searchTerm.toLowerCase()) ||
         post.excerpt[lang].toLowerCase().includes(searchTerm.toLowerCase());
-      
-      const matchesCategory = selectedCategory === 'all' || 
+
+      const matchesCategory = selectedCategory === 'all' ||
         post.category[lang] === selectedCategory;
-      
+
       return matchesSearch && matchesCategory && !post.featured;
     });
   }, [searchTerm, selectedCategory, lang]);
@@ -203,14 +205,38 @@ export default function BlogPage() {
     await subscribe(email, null);
   };
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'المدونة' : 'Blog', url: `${companyInfo.urls.website}/blog` },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* SEO Head */}
+      <SEOHead
+        title={locale === 'ar' 
+          ? 'المدونة | مقالات الحماية من الصواعق والتأريض - جراوند' 
+          : 'Blog | Lightning Protection & Grounding Articles - Ground'}
+        description={locale === 'ar'
+          ? 'اقرأ أحدث المقالات والأخبار عن أنظمة الحماية من الصواعق، تقنيات التأريض، معايير السلامة، ونصائح الخبراء. محتوى تعليمي متخصص.'
+          : 'Read the latest articles and news about lightning protection systems, grounding techniques, safety standards, and expert tips. Specialized educational content.'}
+        keywords={locale === 'ar'
+          ? 'مقالات حماية صواعق, مدونة تأريض, نصائح سلامة كهربائية, تقنيات حماية, معايير NFPA'
+          : 'lightning protection articles, grounding blog, electrical safety tips, protection techniques, NFPA standards'}
+        breadcrumbs={breadcrumbs}
+      />
+
       {/* Hero Section with Navigation */}
       <section className="relative py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(5px)'
             }}></div>
           </div>
         </div>
@@ -230,11 +256,11 @@ export default function BlogPage() {
                 {t('blog.badge')}
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               {t('blog.title')}
             </h1>
-            
+
             <p className="text-xl text-white/80 max-w-2xl mx-auto">
               {t('blog.subtitle')}
             </p>
@@ -257,7 +283,7 @@ export default function BlogPage() {
                 className={`w-full ${isRTL ? 'pr-12 pl-4' : 'pl-12 pr-4'} py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all`}
               />
             </div>
-            
+
             {/* Category Filter */}
             <div className="flex items-center gap-2">
               <Tag className="w-5 h-5 text-gray-400" />
@@ -285,7 +311,7 @@ export default function BlogPage() {
               {t('blog.featured')}
             </span>
           </div>
-          
+
           <FeaturedPost post={featuredPost} isRTL={isRTL} lang={lang} />
         </section>
       )}
@@ -298,7 +324,7 @@ export default function BlogPage() {
             {t('blog.allPosts')}
           </span>
         </div>
-        
+
         {filteredPosts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post, index) => (
@@ -367,7 +393,7 @@ export default function BlogPage() {
                 <p className="text-red-100 font-medium">{newsletterError}</p>
               </motion.div>
             )}
-            
+
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
@@ -378,7 +404,7 @@ export default function BlogPage() {
                 disabled={newsletterLoading}
                 className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:ring-2 focus:ring-accent outline-none disabled:opacity-70"
               />
-              <button 
+              <button
                 type="submit"
                 disabled={newsletterLoading}
                 className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold whitespace-nowrap transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"

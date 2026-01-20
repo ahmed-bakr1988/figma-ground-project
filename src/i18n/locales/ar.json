@@ -711,14 +711,14 @@
       "description": "اختر الطريقة الأنسب للتواصل مع فريقنا. نحن دائماً جاهزون للمساعدة.",
       "phone": {
         "title": "اتصل بنا",
-        "primary": "+20 (2) 123-4567",
-        "secondary": "+20 (2) 987-6543",
+        "primary": "+02 (44) 55-8904",
+        "secondary": "+2 (010) 440-44855",
         "action": "اتصل الآن"
       },
       "email": {
         "title": "راسلنا",
-        "primary": "info@groundtech.com",
-        "secondary": "support@groundtech.com",
+        "primary": "info@ground-eg.com",
+        "secondary": "email@ground-eg.com",
         "action": "أرسل بريد"
       },
       "address": {

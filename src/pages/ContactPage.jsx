@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
   Send,
   MessageSquare,
   CheckCircle2,
@@ -19,6 +19,8 @@ import {
   Users,
   Zap
 } from 'lucide-react';
+import companyInfo from '../config/companyInfo';
+import SEOHead from '../components/common/SEOHead';
 import { useContactForm } from '../services/hooks';
 
 // Contact Info Card Component
@@ -107,6 +109,7 @@ const StatCard = ({ stat, index }) => {
 export default function ContactPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const locale = isRTL ? 'ar' : 'en';
   const [openFAQ, setOpenFAQ] = useState(0);
   const { loading: isSubmitting, error: formError, success: submitSuccess, sendMessage, reset } = useContactForm();
   
@@ -142,44 +145,44 @@ export default function ContactPage() {
       icon: Phone,
       title: t('contactPage.info.phone.title'),
       details: [
-        t('contactPage.info.phone.primary'),
-        t('contactPage.info.phone.secondary')
+        companyInfo.contact.phone.primary,
+        companyInfo.contact.phone.secondary
       ],
       bgColor: 'bg-blue-100',
       iconColor: 'text-blue-600',
       action: t('contactPage.info.phone.action'),
-      actionLink: 'tel:+15551234567'
+      actionLink: companyInfo.contact.phone.telHref
     },
     {
       icon: Mail,
       title: t('contactPage.info.email.title'),
       details: [
-        t('contactPage.info.email.primary'),
-        t('contactPage.info.email.secondary')
+        companyInfo.contact.email.primary,
+        companyInfo.contact.email.secondary
       ],
       bgColor: 'bg-green-100',
       iconColor: 'text-green-600',
       action: t('contactPage.info.email.action'),
-      actionLink: 'mailto:info@groundtech.com'
+      actionLink: companyInfo.contact.email.mailto
     },
     {
       icon: MapPin,
       title: t('contactPage.info.address.title'),
       details: [
-        t('contactPage.info.address.line1'),
-        t('contactPage.info.address.line2')
+        companyInfo.contact.address.line1[locale],
+        companyInfo.contact.address.line2[locale]
       ],
       bgColor: 'bg-purple-100',
       iconColor: 'text-purple-600',
       action: t('contactPage.info.address.action'),
-      actionLink: 'https://maps.google.com'
+      actionLink: companyInfo.contact.address.mapLink
     },
     {
       icon: Clock,
       title: t('contactPage.info.hours.title'),
       details: [
-        t('contactPage.info.hours.weekdays'),
-        t('contactPage.info.hours.emergency')
+        companyInfo.contact.hours.weekdays[locale],
+        companyInfo.contact.hours.emergency[locale]
       ],
       bgColor: 'bg-accent/20',
       iconColor: 'text-accent'
@@ -210,10 +213,10 @@ export default function ContactPage() {
   ];
 
   const stats = [
-    { icon: Users, value: '2,500+', label: t('contactPage.stats.clients') },
-    { icon: Award, value: '15+', label: t('contactPage.stats.experience') },
-    { icon: Shield, value: '99%', label: t('contactPage.stats.satisfaction') },
-    { icon: Headphones, value: '24/7', label: t('contactPage.stats.support') }
+    { icon: Users, value: companyInfo.stats.clients, label: t('contactPage.stats.clients') },
+    { icon: Award, value: companyInfo.stats.experience, label: t('contactPage.stats.experience') },
+    { icon: Shield, value: companyInfo.stats.satisfaction, label: t('contactPage.stats.satisfaction') },
+    { icon: Headphones, value: companyInfo.stats.support, label: t('contactPage.stats.support') }
   ];
 
   const handleInputChange = (e) => {
@@ -256,14 +259,31 @@ export default function ContactPage() {
     await sendMessage(submitData);
   };
 
+  // SEO Breadcrumbs
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'اتصل بنا' : 'Contact', url: `${companyInfo.urls.website}/contact` },
+  ];
+
   return (
     <>
+      {/* SEO Head */}
+      <SEOHead
+        title={companyInfo.seo.titles.contact[locale]}
+        description={t('contactPage.hero.description')}
+        url={`${companyInfo.urls.website}/contact`}
+        breadcrumbs={breadcrumbs}
+      />
+
       {/* Hero Section with Navigation */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(5px)'
             }}></div>
           </div>
         </div>
@@ -479,7 +499,7 @@ export default function ContactPage() {
               {/* Map Container */}
               <div className="bg-slate-200 rounded-2xl h-80 lg:h-96 overflow-hidden relative shadow-lg">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.8!2d31.4833!3d30.2333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE0JzAwLjAiTiAzMcKwMjknMDAuMCJF!5e0!3m2!1sen!2seg!4v1704000000000!5m2!1sen!2seg"
+                  src={companyInfo.contact.address.mapEmbedUrl}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -493,8 +513,8 @@ export default function ContactPage() {
                   <div className="flex items-center gap-2 text-white">
                     <MapPin className="w-5 h-5 text-accent" />
                     <div>
-                      <p className="font-semibold text-sm">{t('contactPage.map.label')}</p>
-                      <p className="text-white/80 text-xs">{t('contactPage.info.address.line2')}</p>
+                      <p className="font-semibold text-sm">{companyInfo.contact.address.label[locale]}</p>
+                      <p className="text-white/80 text-xs">{companyInfo.contact.address.line2[locale]}</p>
                     </div>
                   </div>
                 </div>

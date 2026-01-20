@@ -13,6 +13,8 @@ import {
   Wrench,
   ArrowDown
 } from 'lucide-react';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
 
 // Product Card Component
 const ProductCard = ({ product, index, isRTL }) => {
@@ -160,8 +162,29 @@ export default function ProductsPage() {
     ? products 
     : products.filter(p => p.categoryId === selectedCategory);
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'المنتجات' : 'Products', url: `${companyInfo.urls.website}/products` },
+  ];
+
   return (
     <>
+      {/* SEO Head */}
+      <SEOHead
+        title={locale === 'ar' 
+          ? 'منتجات الحماية من الصواعق والتأريض | جراوند مصر' 
+          : 'Lightning Protection & Grounding Products | Ground Egypt'}
+        description={locale === 'ar'
+          ? 'تسوق منتجات الحماية من الصواعق عالية الجودة: مانعات صواعق، أجهزة حماية التيار، قضبان تأريض، كابلات نحاسية، وملحقات التركيب. منتجات معتمدة دولياً.'
+          : 'Shop high-quality lightning protection products: lightning arresters, surge protection devices, grounding rods, copper cables, and installation accessories. Internationally certified products.'}
+        keywords={locale === 'ar'
+          ? 'منتجات حماية صواعق, مانعة صواعق للبيع, قضبان تأريض, كابلات نحاس, أجهزة SPD'
+          : 'lightning protection products, lightning arresters for sale, grounding rods, copper cables, SPD devices'}
+        breadcrumbs={breadcrumbs}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         {/* Background */}
@@ -169,7 +192,10 @@ export default function ProductsPage() {
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(5px)'
             }} />
           </div>
           {/* Lightning Effect */}

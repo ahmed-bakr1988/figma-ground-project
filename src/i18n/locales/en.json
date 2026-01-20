@@ -266,7 +266,7 @@
     "hero": {
       "badge": "About LightningGuard",
       "title": "Protecting Lives and Property",
-      "titleHighlight": "Since 2008",
+      "titleHighlight": "Since 2016",
       "description": "We are a leading lightning protection company dedicated to safeguarding your assets with innovative solutions and unmatched expertise."
     },
     "achievements": {
@@ -278,7 +278,7 @@
     "story": {
       "badge": "Our Story",
       "title": "Building a Safer Future Together",
-      "paragraph1": "Founded in 2008, LightningGuard began with a simple mission: to provide the highest quality lightning protection systems to keep people and properties safe. What started as a small team of dedicated engineers has grown into one of the most trusted names in the industry.",
+      "paragraph1": "Founded in 2016, LightningGuard began with a simple mission: to provide the highest quality lightning protection systems to keep people and properties safe. What started as a small team of dedicated engineers has grown into one of the most trusted names in the industry.",
       "paragraph2": "Today, we serve thousands of clients across residential, commercial, and industrial sectors. Our commitment to innovation, quality, and customer satisfaction has earned us numerous industry awards and, more importantly, the trust of our clients.",
       "imageAlt": "LightningGuard Team at Work",
       "yearsExperience": "Years of Excellence"
@@ -711,14 +711,14 @@
       "description": "Choose the most convenient way to get in touch with our team. We're always ready to help.",
       "phone": {
         "title": "Call Us",
-        "primary": "+1 (555) 123-4567",
-        "secondary": "+1 (555) 987-6543",
+        "primary": "+02 (44) 55-8904",
+        "secondary": "+2 (010) 440-44855",
         "action": "Call Now"
       },
       "email": {
         "title": "Email Us",
-        "primary": "info@groundtech.com",
-        "secondary": "support@groundtech.com",
+        "primary": "info@ground-eg.com",
+        "secondary": "email@ground-eg.com",
         "action": "Send Email"
       },
       "address": {

@@ -21,6 +21,8 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { getCaseStudyBySlug, getRelatedCaseStudies } from '../data/caseStudies';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
 
 // Markdown-like content parser
 const ContentSection = ({ content }) => {
@@ -194,6 +196,9 @@ export default function CaseStudyDetailPage() {
 
   const c = content[lang];
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+
   if (!study) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -213,8 +218,27 @@ export default function CaseStudyDetailPage() {
     );
   }
 
+  // Breadcrumbs for SEO
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'دراسات الحالة' : 'Case Studies', url: `${companyInfo.urls.website}/case-studies` },
+    { name: study.title[lang], url: `${companyInfo.urls.website}/case-study/${study.slug}` },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Head */}
+      <SEOHead
+        title={`${study.title[lang]} | ${locale === 'ar' ? 'دراسة حالة - جراوند' : 'Case Study - Ground'}`}
+        description={study.description?.[lang] || study.excerpt?.[lang] || (locale === 'ar' 
+          ? `دراسة حالة تفصيلية لمشروع ${study.title[lang]} - الحماية من الصواعق والتأريض`
+          : `Detailed case study for ${study.title[lang]} project - Lightning protection and grounding`)}
+        keywords={locale === 'ar'
+          ? `دراسة حالة ${study.title.ar}, مشروع حماية صواعق, ${study.type?.[lang] || ''}`
+          : `${study.title.en} case study, lightning protection project, ${study.type?.[lang] || ''}`}
+        image={study.image}
+        breadcrumbs={breadcrumbs}
+      />
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">

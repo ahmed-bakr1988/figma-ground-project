@@ -6,6 +6,7 @@ import Logo from '../common/Logo';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import UserMenu from '../common/UserMenu';
 import { Phone, Mail, ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
+import companyInfo from '../../config/companyInfo';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -83,13 +84,13 @@ const Navbar = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`flex items-center justify-between text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
             <div className="flex items-center gap-4">
-              <a href="tel:+201044044855" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <a href={companyInfo.contact.phone.telHref} className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" />
-                <span>+201044044855</span>
+                <span>{companyInfo.contact.phone.shortDisplay}</span>
               </a>
-              <a href="mailto:info@ground-eg.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <a href={companyInfo.contact.email.mailto} className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail className="w-4 h-4" />
-                <span>info@ground-eg.com</span>
+                <span>{companyInfo.contact.email.primary}</span>
               </a>
             </div>
             <LanguageSwitcher />
@@ -209,13 +210,13 @@ const Navbar = () => {
         <div className="overflow-y-auto h-[calc(100%-80px)] pb-20">
           {/* Contact Info */}
           <div className="p-4 bg-primary/5 border-b border-gray-100">
-            <a href="tel:+201044044855" className="flex items-center gap-3 text-gray-700 py-2">
+            <a href={companyInfo.contact.phone.telHref} className="flex items-center gap-3 text-gray-700 py-2">
               <Phone className="w-5 h-5 text-accent" />
-              <span className="font-medium">+201044044855</span>
+              <span className="font-medium">{companyInfo.contact.phone.shortDisplay}</span>
             </a>
-            <a href="mailto:info@ground-eg.com" className="flex items-center gap-3 text-gray-700 py-2">
+            <a href={companyInfo.contact.email.mailto} className="flex items-center gap-3 text-gray-700 py-2">
               <Mail className="w-5 h-5 text-accent" />
-              <span className="font-medium">info@ground-eg.com</span>
+              <span className="font-medium">{companyInfo.contact.email.primary}</span>
             </a>
           </div>
 

@@ -28,6 +28,9 @@ import {
 } from 'lucide-react';
 import LanguageSwitcher from '../components/common/LanguageSwitcher';
 import Logo from '../components/common/Logo';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
+import { getAllServicesSchema } from '../config/seoSchema';
 
 // Service Card Component
 const ServiceCard = ({ service, index, isRTL }) => {
@@ -53,7 +56,7 @@ const ServiceCard = ({ service, index, isRTL }) => {
           <div className={`w-14 h-14 rounded-xl bg-accent flex items-center justify-center mb-3`}>
             <Icon className="w-7 h-7 text-primary" />
           </div>
-          <h3 className="text-xl font-bold text-white">{service.title}</h3>
+          <h3 className="text-xl  font-bold text-white">{service.title}</h3>
         </div>
       </div>
       
@@ -123,6 +126,13 @@ const StandardBadge = ({ standard }) => (
 export default function ServicesPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const locale = isRTL ? 'ar' : 'en';
+
+  // SEO Breadcrumbs
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'الخدمات' : 'Services', url: `${companyInfo.urls.website}/services` },
+  ];
 
   // Main Services
   const services = [
@@ -242,6 +252,15 @@ export default function ServicesPage() {
 
   return (
     <>
+      {/* SEO Head */}
+      <SEOHead
+        title={companyInfo.seo.titles.services[locale]}
+        description={t('servicesPage.servicesSection.description')}
+        url={`${companyInfo.urls.website}/services`}
+        breadcrumbs={breadcrumbs}
+        schema={getAllServicesSchema(locale)}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         {/* Background */}
@@ -249,41 +268,17 @@ export default function ServicesPage() {
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(5px)'
             }} />
           </div>
           {/* Lightning Effect */}
           <div className="absolute top-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
           <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent/10 rounded-full blur-2xl" />
         </div>
-
-        {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 lg:px-16 py-6">
-          <Link to="/" className="flex items-center">
-            <Logo size="default" showText={true} textColor="white" />
-          </Link>
-          
-          <div className="hidden md:flex items-center gap-8 text-white/90">
-            <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
-            <Link to="/about" className="hover:text-accent transition-colors">{t('nav.about')}</Link>
-            <Link to="/services" className="text-accent transition-colors">{t('nav.services')}</Link>
-            <Link to="/projects" className="hover:text-accent transition-colors">{t('nav.projects')}</Link>
-            <Link to="/blog" className="hover:text-accent transition-colors">{t('nav.blog')}</Link>
-            <Link to="/case-studies" className="hover:text-accent transition-colors">{t('nav.caseStudies')}</Link>
-            <Link to="/contact" className="hover:text-accent transition-colors">{t('nav.contact')}</Link>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <LanguageSwitcher variant="minimal" />
-            <Link 
-              to="/contact"
-              className="bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('nav.getQuote')}</span>
-            </Link>
-          </div>
-        </nav>
+  
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 py-32">
@@ -300,8 +295,8 @@ export default function ServicesPage() {
                 </span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl   text-2xl font-bold text-white mb-6 leading-tight  leading-6">
-                {t('servicesPage.hero.title')} <span className="text-accent">{t('servicesPage.hero.titleHighlight')}</span>
+              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-6 leading-snug">{t('servicesPage.hero.title')}
+                <span className="text-accent">{t('servicesPage.hero.titleHighlight')}</span>
               </h1>
               
               <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-xl">
@@ -334,7 +329,7 @@ export default function ServicesPage() {
             >
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1504309092620-4d0ec726efa4?q=80&w=800"
+                  src="assets/images/services/LightningProtection6-scaled.JPG"
                   alt="Lightning Protection"
                   className="rounded-2xl shadow-2xl"
                 />

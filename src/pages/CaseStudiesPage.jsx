@@ -17,6 +17,8 @@ import {
   Phone
 } from 'lucide-react';
 import { caseStudies } from '../data/caseStudies';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
 
 // Stats data
 const stats = {
@@ -157,8 +159,28 @@ export default function CaseStudiesPage() {
   const c = content[lang];
   const currentStats = stats[lang];
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'دراسات الحالة' : 'Case Studies', url: `${companyInfo.urls.website}/case-studies` },
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Head */}
+      <SEOHead
+        title={locale === 'ar' 
+          ? 'دراسات الحالة | مشاريع ناجحة في الحماية من الصواعق - جراوند' 
+          : 'Case Studies | Successful Lightning Protection Projects - Ground'}
+        description={locale === 'ar'
+          ? 'استكشف دراسات حالة تفصيلية لمشاريعنا الناجحة في الحماية من الصواعق والتأريض. مصانع، مباني تجارية، مستشفيات، ومنشآت صناعية في مصر.'
+          : 'Explore detailed case studies of our successful lightning protection and grounding projects. Factories, commercial buildings, hospitals, and industrial facilities in Egypt.'}
+        keywords={locale === 'ar'
+          ? 'دراسات حالة, مشاريع حماية صواعق, نجاحات تأريض, مشاريع كهربائية ناجحة'
+          : 'case studies, lightning protection projects, grounding successes, successful electrical projects'}
+        breadcrumbs={breadcrumbs}
+      />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary text-white py-24 overflow-hidden">

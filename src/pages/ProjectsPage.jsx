@@ -20,6 +20,8 @@ import {
     Ruler,
     ExternalLink
 } from 'lucide-react';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
 
 // Project Card Component
 const ProjectCard = ({ project, index, isRTL, onViewDetails }) => {
@@ -523,8 +525,29 @@ export default function ProjectsPage() {
         { icon: TrendingUp, value: '99%', label: t('projectsPage.stats.satisfaction') }
     ];
 
+    // SEO Data
+    const locale = isRTL ? 'ar' : 'en';
+    const breadcrumbs = [
+        { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+        { name: locale === 'ar' ? 'مشاريعنا' : 'Projects', url: `${companyInfo.urls.website}/projects` },
+    ];
+
     return (
         <>
+            {/* SEO Head */}
+            <SEOHead
+                title={locale === 'ar' 
+                    ? 'مشاريعنا | أعمال الحماية من الصواعق والتأريض - جراوند' 
+                    : 'Our Projects | Lightning Protection & Grounding Work - Ground'}
+                description={locale === 'ar'
+                    ? 'استعرض مشاريعنا المنجزة في مجال الحماية من الصواعق وأنظمة التأريض. مشاريع صناعية، تجارية، سكنية، ومستشفيات في جميع أنحاء مصر.'
+                    : 'Browse our completed projects in lightning protection and grounding systems. Industrial, commercial, residential, and healthcare projects across Egypt.'}
+                keywords={locale === 'ar'
+                    ? 'مشاريع حماية صواعق, أعمال تأريض مصر, مشاريع كهربائية, حماية مصانع, حماية مباني تجارية'
+                    : 'lightning protection projects, grounding work Egypt, electrical projects, factory protection, commercial building protection'}
+                breadcrumbs={breadcrumbs}
+            />
+
             {/* Hero Section with Navigation */}
             <section className="relative py-20 lg:py-32 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">

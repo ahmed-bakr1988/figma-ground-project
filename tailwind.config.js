@@ -38,6 +38,8 @@ export default {
       fontSize: {
         'hero': ['60px', { lineHeight: '1.2', fontWeight: '700' }],
         'title': ['42px', { lineHeight: '1.3', fontWeight: '700' }],
+        '5xl': ['3rem', { lineHeight: '1.2' }],
+        '6xl': ['3.75rem', { lineHeight: '1.2' }],
       },
       spacing: {
         '128': '32rem',

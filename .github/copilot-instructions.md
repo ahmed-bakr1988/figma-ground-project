@@ -34,21 +34,26 @@ Frontend (React 18 + Vite)  →  Backend API (Laravel 11 + Sanctum)  →  MySQL
 src/services/
 ├── api.js          # Axios instance with interceptors + all API service objects
 ├── AuthContext.jsx # React Context for auth state management
-├── hooks.js        # Custom hooks: useServices(), useFaqs(), useContactForm()
+├── hooks.js        # Custom hooks: useFetch(), useServices(), useFaqs(), useContactForm()
 ```
 
 **Pattern:** Always use custom hooks from `hooks.js`, never call API services directly:
 ```javascript
-// ✅ Do this in components
+// ✅ Do this in components - use generic useFetch for any endpoint
+const { data, loading, error, refetch } = useFetch(() => servicesService.getAll(), []);
+
+// ✅ Or use specific resource hooks
 const { data, loading, error } = useServices({ featured: true });
 
 // ❌ Never do this in components
 const data = await servicesService.getAll();
 ```
 
-**Axios Interceptors (in api.js):**
-- Request: Auto-adds `Authorization: Bearer {token}` and `Accept-Language: ar|en`
-- Response: Auto-logout on 401, redirect to /maintenance on 503
+**Axios Configuration (in api.js):**
+- Base URL: `VITE_API_URL` environment variable (default: `http://localhost:8000/api`)
+- `withCredentials: false` - Bearer tokens only, NO cookies/sessions (critical for avoiding CSRF conflicts)
+- Request interceptors: Auto-adds `Authorization: Bearer {token}` and `Accept-Language: ar|en`
+- Response interceptors: Auto-logout on 401, redirect to /maintenance on 503
 
 ### Backend API Structure
 ```
@@ -120,6 +125,24 @@ const title = service.title_ar;  // Or pick based on i18n.language
 - **Icons:** Lucide React (`import { Zap, Shield } from 'lucide-react'`)
 - **Routing:** React Router v6, pages in `src/pages/`
 - **i18n:** react-i18next with localStorage detection
+- **State Management:** React Context API (MobileMenuContext for UI state)
+
+**Component Structure:**
+```
+src/components/
+├── common/        # Reusable UI components (buttons, cards, etc.)
+├── layout/        # Layout components (header, footer, navbar)
+├── sections/      # Page section components (hero, features, testimonials)
+└── tools/         # Utility/tool components
+
+src/pages/
+└── *Page.jsx      # Full page components with layout
+```
+
+**Frontend Initialization (src/main.jsx):**
+- Wraps App with MobileMenuProvider, i18n provider, and Router
+- Language preference stored in localStorage (`i18nextLng`)
+- Direction attribute set dynamically: `document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'`
 
 **Brand Colors (from tailwind.config.js):**
 ```javascript
@@ -134,8 +157,11 @@ brand: {
 
 **RTL-aware Tailwind:**
 ```jsx
-// Use conditional classes for directional spacing
-<div className={`${isRTL ? 'pr-4 ml-2' : 'pl-4 mr-2'}`}>
+// Use Tailwind's built-in RTL support with conditional utilities
+<div className={`${isRTL ? 'text-right pr-4' : 'text-left pl-4'}`}>
+  // Or use Tailwind's ltr:/rtl: modifiers (if using Tailwind v3+)
+  <div className="rtl:pr-4 ltr:pl-4 rtl:text-right ltr:text-left">
+</div>
 ```
 
 ## 🔌 API Endpoints Quick Reference
@@ -180,6 +206,29 @@ php artisan make:filament-user    # Create admin user interactively
 # Terminal 1: cd backend && php artisan serve
 # Terminal 2: npm run dev
 ```
+
+## 🔧 Environment Setup
+
+**Frontend (.env or .env.local):**
+```
+VITE_API_URL=http://localhost:8000/api
+```
+
+**Backend (.env):**
+```
+DB_DATABASE=ground_protection
+DB_USERNAME=root
+DB_PASSWORD=
+FRONTEND_URL=http://localhost:3000
+API_VERSION=v1
+SANCTUM_STATEFUL_DOMAINS=  # Leave empty for Bearer tokens only
+```
+
+Key points:
+- Frontend uses `.env` via `import.meta.env.VITE_*`
+- Backend uses `.env` via `env()` helper
+- Database: MySQL, default name `ground_protection`
+- Sanctum configured for stateless Bearer auth (no stateful domains)
 
 ## ⚠️ Important Notes
 

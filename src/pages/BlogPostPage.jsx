@@ -20,6 +20,9 @@ import {
   Check
 } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
+import { getArticleSchema } from '../config/seoSchema';
 
 // Simple Markdown Renderer
 const MarkdownContent = ({ content }) => {
@@ -225,8 +228,37 @@ export default function BlogPostPage() {
     .filter(p => p.id !== post.id && p.category[lang] === post.category[lang])
     .slice(0, 3);
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'المدونة' : 'Blog', url: `${companyInfo.urls.website}/blog` },
+    { name: post.title[lang], url: `${companyInfo.urls.website}/blog/${post.slug}` },
+  ];
+
+  // Prepare article data for Schema
+  const articleData = {
+    title: post.title[lang],
+    description: post.excerpt[lang],
+    image: post.image,
+    url: `${companyInfo.urls.website}/blog/${post.slug}`,
+    datePublished: post.publishDate || post.date,
+    dateModified: post.modifiedDate || post.publishDate || post.date,
+    author: post.author?.[lang] || companyInfo.name[locale],
+    category: post.category[lang],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Head */}
+      <SEOHead
+        title={`${post.title[lang]} | ${locale === 'ar' ? 'مدونة جراوند' : 'Ground Blog'}`}
+        description={post.excerpt[lang]}
+        keywords={post.tags?.[lang]?.join(', ') || (locale === 'ar' ? 'حماية صواعق, تأريض' : 'lightning protection, grounding')}
+        image={post.image}
+        breadcrumbs={breadcrumbs}
+        schema={getArticleSchema(articleData, locale)}
+      />
 
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">

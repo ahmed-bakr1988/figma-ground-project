@@ -3,18 +3,19 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import Logo from '../common/Logo';
+import companyInfo from '../../config/companyInfo';
 
-// روابط السوشيال ميديا - قم بتحديثها بالروابط الفعلية للشركة
 const socialLinks = [
-  { icon: Facebook, href: 'https://facebook.com/groundtecheg', label: 'Facebook', ariaLabel: 'تابعنا على فيسبوك' },
-  { icon: Twitter, href: 'https://twitter.com/groundtecheg', label: 'Twitter', ariaLabel: 'تابعنا على تويتر' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/groundtecheg', label: 'LinkedIn', ariaLabel: 'تابعنا على لينكد إن' },
-  { icon: Instagram, href: 'https://instagram.com/groundtecheg', label: 'Instagram', ariaLabel: 'تابعنا على انستجرام' }
+  { icon: Facebook, href: '#', label: 'Facebook' },
+  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Instagram, href: '#', label: 'Instagram' }
 ];
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const locale = isRTL ? 'ar' : 'en';
 
   const footerLinks = {
     services: [
@@ -56,13 +57,11 @@ export default function Footer() {
                 {t('footer.cta.description')}
               </p>
             </div>
-            <Link 
-              to="/contact" 
-              className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all flex items-center gap-2 whitespace-nowrap"
-              aria-label={t('footer.cta.button')}
-            >
-              {t('footer.cta.button')}
-              <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+            <Link to="/contact">
+              <button className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all flex items-center gap-2 whitespace-nowrap">
+                {t('footer.cta.button')}
+                <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+              </button>
             </Link>
           </div>
         </div>
@@ -74,25 +73,25 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <Logo size="large" showText={false} />
+              <Logo size="default" showText={true} textColor="white" />
             </div>
-            
+
             <p className="text-white/70 mb-6 leading-relaxed">
               {t('footer.description')}
             </p>
-            
+
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-white/70">
                 <Phone className="w-5 h-5 text-accent" />
-                <span dir={isRTL ? 'rtl' : ''}>+2(010) 440-44855</span>
+                <span dir="ltr" className={isRTL ? 'text-right w-full' : ''}>{companyInfo.contact.phone.secondary}</span>
               </div>
               <div className="flex items-center gap-3 text-white/70">
                 <Mail className="w-5 h-5 text-accent" />
-                <span>info@ground-eg.com</span>
+                <span dir="ltr">{companyInfo.contact.email.primary}</span>
               </div>
               <div className="flex items-center gap-3 text-white/70">
                 <MapPin className="w-5 h-5 text-accent" />
-                <span>123 Protection St, New York, NY</span>
+                <span>{companyInfo.contact.address.line1[locale]}, {companyInfo.contact.address.line2[locale]}</span>
               </div>
             </div>
           </div>
@@ -215,11 +214,11 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-16 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/50 text-sm text-center md:text-start">
-              {t('footer.copyright')} | 
-              <a href="#" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.privacy')}</a> | 
+              {t('footer.copyright')} |
+              <a href="#" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.privacy')}</a> |
               <a href="#" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.terms')}</a>
             </p>
-            
+
             <div className="flex items-center gap-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -227,10 +226,7 @@ export default function Footer() {
                   <a
                     key={index}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.ariaLabel || social.label}
-                    title={social.label}
+                    aria-label={social.label}
                     className="w-10 h-10 bg-slate-800 hover:bg-accent rounded-lg flex items-center justify-center transition-colors"
                   >
                     <Icon className="w-5 h-5" />

@@ -14,6 +14,9 @@ import {
   Lightbulb,
   Phone
 } from 'lucide-react';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
+import { getOrganizationSchema, getBreadcrumbSchema } from '../config/seoSchema';
 
 export default function AboutUsPage() {
   const { t, i18n } = useTranslation();
@@ -98,9 +101,31 @@ export default function AboutUsPage() {
     { icon: Shield, value: '10+', label: t('aboutPage.achievements.experience') },
     { icon: TrendingUp, value: '99%', label: t('aboutPage.achievements.satisfaction') }
   ];
+
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'من نحن' : 'About Us', url: `${companyInfo.urls.website}/about` },
+  ];
  
   return (
     <>
+      {/* SEO Head */}
+      <SEOHead
+        title={locale === 'ar' 
+          ? 'من نحن | جراوند للحماية من الصواعق - خبرة +10 سنوات' 
+          : 'About Us | Ground Protection Egypt - 10+ Years Experience'}
+        description={locale === 'ar'
+          ? 'تعرف على شركة جراوند للحماية من الصواعق. أكثر من 10 سنوات خبرة في أنظمة الحماية الكهربائية. فريق معتمد من NFPA و IEEE. خدمنا أكثر من 2500 عميل.'
+          : 'Learn about Ground Protection Company. Over 10 years experience in electrical protection systems. NFPA & IEEE certified team. Served 2500+ clients.'}
+        keywords={locale === 'ar'
+          ? 'شركة حماية صواعق, فريق خبراء تأريض, شهادات NFPA, IEEE معتمد, حماية كهربائية مصر'
+          : 'lightning protection company, grounding experts team, NFPA certifications, IEEE certified, electrical protection Egypt'}
+        breadcrumbs={breadcrumbs}
+        schema={getOrganizationSchema(locale)}
+      />
+
       {/* Hero Section with Navigation */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">

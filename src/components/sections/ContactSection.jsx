@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, Zap, CheckCircle2 } from 'lucide-react';
+import companyInfo from '../../config/companyInfo';
 import { useContactForm } from '../../services/hooks';
 
 export default function ContactSection() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const locale = isRTL ? 'ar' : 'en';
   const { loading, error, success, sendMessage, reset } = useContactForm();
   
   // حالة النموذج
@@ -83,25 +85,31 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: t('contact.info.phone'),
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
+      details: [companyInfo.contact.phone.primary, companyInfo.contact.phone.secondary],
       color: 'bg-blue-500'
     },
     {
       icon: Mail,
       title: t('contact.info.email'),
-      details: ['info@ground-eg.com', 'support@ground-eg.com'],
+      details: [companyInfo.contact.email.primary, companyInfo.contact.email.secondary],
       color: 'bg-green-500'
     },
     {
       icon: MapPin,
       title: t('contact.info.address'),
-      details: ['123 Protection Street', 'New York, NY 10001', isRTL ? 'مدينة العبور /الحي الخامس /قطعة3 /بلوك 16079' : 'Obour City / Fifth District / Piece 3 / Block 16079'],
+      details: [
+        companyInfo.contact.address.line1[locale],
+        companyInfo.contact.address.line2[locale]
+      ],
       color: 'bg-purple-500'
     },
     {
       icon: Clock,
       title: t('contact.info.hours'),
-      details: ['Mon - Fri: 8:00 AM - 6:00 PM', t('contact.info.emergency')],
+      details: [
+        companyInfo.contact.hours.weekdays[locale],
+        companyInfo.contact.hours.emergency[locale]
+      ],
       color: 'bg-accent'
     }
   ];
@@ -168,7 +176,7 @@ export default function ContactSection() {
             {/* Google Maps */}
             <div className="bg-slate-200 rounded-2xl h-72 overflow-hidden relative shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.8!2d31.4833!3d30.2333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE0JzAwLjAiTiAzMcKwMjknMDAuMCJF!5e0!3m2!1sen!2seg!4v1704000000000!5m2!1sen!2seg"
+                src={companyInfo.contact.address.mapEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -182,12 +190,8 @@ export default function ContactSection() {
                 <div className="flex items-center gap-2 text-white">
                   <MapPin className="w-5 h-5 text-accent" />
                   <div>
-                    <p className="font-semibold text-sm">
-                      {isRTL ? 'عنوان مكتب الشركة' : 'Company Office Address'}
-                    </p>
-                    <p className="text-white/80 text-xs">
-                      {isRTL ? 'مدينة العبور / الحي الخامس / قطعة 3 / بلوك 16079' : 'Obour City / Fifth District / Piece 3 / Block 16079'}
-                    </p>
+                    <p className="font-semibold text-sm">{companyInfo.contact.address.label[locale]}</p>
+                    <p className="text-white/80 text-xs">{companyInfo.contact.address.line2[locale]}</p>
                   </div>
                 </div>
               </div>

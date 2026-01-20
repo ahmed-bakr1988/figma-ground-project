@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Star, Shield, Award, Users, Briefcase, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom'; 
 
 export default function TeamSection() {
   const { t, i18n } = useTranslation();
@@ -15,32 +16,32 @@ export default function TeamSection() {
       name: t('aboutPage.team.member1.name'),
       role: t('aboutPage.team.member1.role'),
       image: '/assets/images/person/oaner-Image-1.jpeg',
-      specialties: ['حماية البنية التحتية', 'أنظمة الطاقة الكهربائية', 'إدارة المشاريع الكبرى'],
-      experience: '15+ سنوات'
+      specialties: [isRTL ? 'حماية البنية التحتية' : 'Infrastructure Protection', isRTL ? 'أنظمة الطاقة الكهربائية' : 'Electrical Power Systems', isRTL ? 'إدارة المشاريع الكبرى' : 'Major Project Management'],
+      experience: [ isRTL ? '15+ سنوات' : '15+ years']
     },
     {
       nickname: t('aboutPage.team.member2.nickname'),
       name: t('aboutPage.team.member2.name'),
       role: t('aboutPage.team.member2.role'),
       image: '/assets/images/person/oaner-Image-2.png',
-      specialties: ['تصميم أنظمة الحماية', 'التحليل الكهربائي', 'الاستشارات التقنية'],
-      experience: '12+ سنوات'
+      specialties: [isRTL ? 'تصميم أنظمة الحماية' : 'Protection Systems Design', isRTL ? 'التحليل الكهربائي' : 'Electrolytic Analysis', isRTL ? 'الاستشارات التقنية' : 'Technical Consulting'],
+      experience: [ isRTL ? '12+ سنوات' : '12+ years']
     },
     {
       nickname: t('aboutPage.team.member3.nickname'),
       name: t('aboutPage.team.member3.name'),
       role: t('aboutPage.team.member3.role'),
       image: '/assets/images/person/oaner-Image-3.png',
-      specialties: ['التركيب والصيانة', 'ضمان الجودة', 'التدريب التقني'],
-      experience: '10+ سنوات'
+      specialties: [isRTL ? 'التركيب والصيانة' : 'Installation and Maintenance', isRTL ? 'ضمان الجودة' : 'Quality Assurance', isRTL ? 'التدريب التقني' : 'Technical Training'],
+      experience: [ isRTL ? '10+ سنوات' : '10+ years']
     },
     {
       nickname: t('aboutPage.team.member4.nickname'),
       name: t('aboutPage.team.member4.name'),
       role: t('aboutPage.team.member4.role'),
       image: '/assets/images/person/oaner-Image-4.jpeg',
-      specialties: ['إدارة العمليات', 'خدمة العملاء', 'تطوير الأعمال'],
-      experience: '8+ سنوات'
+      specialties: [isRTL ? 'إدارة العمليات' : 'Operations Management', isRTL ? 'خدمة العملاء' : 'Customer Service', isRTL ? 'تطوير الأعمال' : 'Business Development'],
+      experience: [ isRTL ? '8+ سنوات' : '8+ years']
     }
   ];
 
@@ -191,9 +192,11 @@ export default function TeamSection() {
               : 'We are looking for exceptional talents to join our excellence journey in lightning protection'
             }
           </p>
+          <Link to="/contact">
           <button className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg">
             {lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}
           </button>
+          </Link>
         </motion.div>
       </div>
     </section>

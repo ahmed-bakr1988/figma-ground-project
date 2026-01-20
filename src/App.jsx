@@ -7,7 +7,7 @@ import HeroSection from './components/sections/HeroSection'
 import AboutSection from './components/sections/AboutSection'
 import ServicesSection from './components/sections/ServicesSection'
 import ProjectsSection from './components/sections/ProjectsSection'
-import StatsSection from './components/sections/StatsSection'
+import StatsSection from './components/tools/StatsSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
 import ContactSection from './components/sections/ContactSection'
 import Footer from './components/layout/Footer'
@@ -15,6 +15,8 @@ import ScrollToTop from './components/common/ScrollToTop'
 import LiveChat from './components/common/LiveChat'
 import WhatsAppButton from './components/common/WhatsAppButton'
 import ErrorBoundary from './components/common/ErrorBoundary'
+import SEOHead from './components/common/SEOHead'
+import companyInfo from './config/companyInfo'
 
 // Loading Component محسّن
 const LoadingSpinner = () => (
@@ -46,8 +48,19 @@ const RegisterPage = lazy(() => import('./pages/RegisterPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 function HomePage() {
+  const { i18n } = useTranslation()
+  const locale = i18n.language === 'ar' ? 'ar' : 'en'
+
   return (
     <>
+      <SEOHead
+        title={companyInfo.seo.titles.home[locale]}
+        description={companyInfo.description.long[locale]}
+        url={companyInfo.urls.website}
+        breadcrumbs={[
+          { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website }
+        ]}
+      />
       <HeroSection />
       <AboutSection />
       <ServicesSection />

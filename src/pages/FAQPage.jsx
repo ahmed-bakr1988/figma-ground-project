@@ -14,6 +14,9 @@ import {
   MessageSquare,
   ArrowRight
 } from 'lucide-react';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
+import { getFAQSchema } from '../config/seoSchema';
 
 // FAQ Item Component
 const FAQItem = ({ faq, index, isOpen, onToggle, isRTL }) => {
@@ -196,14 +199,38 @@ export default function FAQPage() {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'الأسئلة الشائعة' : 'FAQ', url: `${companyInfo.urls.website}/faq` },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* SEO Head */}
+      <SEOHead
+        title={locale === 'ar' 
+          ? 'الأسئلة الشائعة | جراوند للحماية من الصواعق' 
+          : 'FAQ | Ground Protection Egypt'}
+        description={locale === 'ar'
+          ? 'إجابات على الأسئلة الشائعة حول أنظمة الحماية من الصواعق، التركيب، الصيانة، والأسعار. خبراء الحماية الكهربائية في مصر.'
+          : 'Answers to frequently asked questions about lightning protection systems, installation, maintenance, and pricing. Electrical protection experts in Egypt.'}
+        keywords={locale === 'ar'
+          ? 'أسئلة شائعة حماية صواعق, تركيب مانعة صواعق, صيانة أنظمة تأريض, أسعار الحماية الكهربائية'
+          : 'lightning protection FAQ, lightning rod installation, grounding system maintenance, electrical protection pricing'}
+        breadcrumbs={breadcrumbs}
+        schema={getFAQSchema(faqs, locale)}
+      />
       {/* Hero Section with Navigation */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(5px)'
             }}></div>
           </div>
         </div>

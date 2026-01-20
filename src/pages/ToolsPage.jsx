@@ -5,13 +5,36 @@ import { Link } from 'react-router-dom';
 import { Calculator, Zap, Activity, Phone, ArrowRight } from 'lucide-react';
 import LightningRiskCalculator from '../components/tools/LightningRiskCalculator';
 import GroundingCalculator from '../components/tools/GroundingCalculator';
+import SEOHead from '../components/common/SEOHead';
+import companyInfo from '../config/companyInfo';
 
 export default function ToolsPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
 
+  // SEO Data
+  const locale = isRTL ? 'ar' : 'en';
+  const breadcrumbs = [
+    { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
+    { name: locale === 'ar' ? 'الأدوات' : 'Tools', url: `${companyInfo.urls.website}/tools` },
+  ];
+
   return (
     <>
+      {/* SEO Head */}
+      <SEOHead
+        title={locale === 'ar' 
+          ? 'أدوات الحساب | حاسبة مخاطر الصواعق والتأريض - جراوند' 
+          : 'Calculators | Lightning Risk & Grounding Calculator - Ground'}
+        description={locale === 'ar'
+          ? 'استخدم أدواتنا المجانية لحساب مخاطر الصواعق ومتطلبات التأريض. حاسبة احترافية وفق معايير NFPA 780 و IEC 62305.'
+          : 'Use our free tools to calculate lightning risks and grounding requirements. Professional calculator according to NFPA 780 and IEC 62305 standards.'}
+        keywords={locale === 'ar'
+          ? 'حاسبة صواعق, حساب تأريض, تقييم مخاطر البرق, أدوات حماية كهربائية مجانية'
+          : 'lightning calculator, grounding calculation, lightning risk assessment, free electrical protection tools'}
+        breadcrumbs={breadcrumbs}
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden">
         {/* Background */}
@@ -19,7 +42,10 @@ export default function ToolsPage() {
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(5px)'
             }} />
           </div>
           {/* Lightning Effect */}
