@@ -42,7 +42,7 @@ export default function ToolsPage() {
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.webp")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               filter: 'blur(5px)'

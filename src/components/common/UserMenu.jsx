@@ -5,6 +5,7 @@ import { User, LogOut, LogIn, UserPlus, Settings, FileText } from 'lucide-react'
 import { useAuth } from '../../services/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
+
 const UserMenu = () => {
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();

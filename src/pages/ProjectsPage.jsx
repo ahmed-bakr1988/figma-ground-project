@@ -192,7 +192,7 @@ const FeaturedProject = ({ project, isRTL }) => {
                         className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-primary px-6 py-3 rounded-lg font-semibold transition-all w-fit"
                     >
                         {project.cta}
-                        <ExternalLink className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                        <ExternalLink className="w-4 h-4" />
                     </Link>
                 </div>
             </div>
@@ -521,7 +521,7 @@ export default function ProjectsPage() {
     const achievements = [
         { icon: Users, value: '2,500+', label: t('projectsPage.stats.clients') },
         { icon: Award, value: '50+', label: t('projectsPage.stats.awards') },
-        { icon: Shield, value: '15+', label: t('projectsPage.stats.experience') },
+        { icon: Shield, value: '10+', label: t('projectsPage.stats.experience') },
         { icon: TrendingUp, value: '99%', label: t('projectsPage.stats.satisfaction') }
     ];
 
@@ -768,7 +768,7 @@ export default function ProjectsPage() {
                                 className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all"
                             >
                                 {t('projectsPage.cta.button')}
-                                <CheckCircle2 className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                                <CheckCircle2 className="w-5 h-5" />
                             </Link>
                             <a
                                 href="tel:+1234567890"

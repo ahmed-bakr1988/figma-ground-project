@@ -20,7 +20,7 @@ const companyInfo = {
     brand: 'GroundTech',
     legal: 'Ground Tech for Lightning Protection Systems',
   },
-  
+
   description: {
     short: {
       en: 'Leading lightning protection and earthing systems company in Egypt',
@@ -144,8 +144,8 @@ const companyInfo = {
   stats: {
     clients: '2,500+',
     clientsNumber: 2500,
-    experience: '15+',
-    experienceYears: 15,
+    experience: '10+',
+    experienceYears: 10,
     projects: '5,000+',
     projectsNumber: 5000,
     satisfaction: '99%',
@@ -171,18 +171,28 @@ const companyInfo = {
         'الحماية من التيار الزائد',
         'أنظمة التأريض',
         'حماية المباني من الصواعق',
+        ' الحماية من الصواعق',
+        'أنظمة الحماية من الصواعق',
+        'مانع الصواعق للمباني',
+        'شركة حماية من الصواعق في مصر',
+
       ],
       en: [
-        'lightning protection',
-        'lightning rod',
-        'earthing system',
-        'grounding system',
-        'surge protection',
-        'lightning protection Egypt',
-        'lightning arrestor',
-        'electrical grounding',
-        'building protection',
-        'industrial lightning protection',
+        'Lightning Protection',
+        'Lightning Rod',
+        'Electrical Grounding',
+        'Lightning Protection System',
+        'Lightning Protection Company Egypt',
+        'Lightning Rod Installation',
+        'Protection System Maintenance',
+        'Overcurrent Protection',
+        'Grounding Systems',
+        'Building Lightning Protection',
+        'Lightning Protection',
+        'Lightning Protection Systems',
+        'Lightning Rod for Buildings',
+        'Lightning Protection Company in Egypt',
+        'lightning protection system Egypt',
       ],
     },
     titles: {

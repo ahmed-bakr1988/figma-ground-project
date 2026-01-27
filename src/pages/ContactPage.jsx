@@ -49,7 +49,7 @@ const ContactInfoCard = ({ info, index, isRTL }) => {
           className="inline-flex items-center gap-2 mt-4 text-accent font-semibold text-sm hover:gap-3 transition-all"
         >
           {info.action}
-          <Send className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+          <Send className="w-4 h-4" />
         </a>
       )}
     </motion.div>
@@ -219,6 +219,14 @@ export default function ContactPage() {
     { icon: Headphones, value: companyInfo.stats.support, label: t('contactPage.stats.support') }
   ];
 
+  const pageDescription = isRTL
+    ? 'اتصل بفريق جراوند تك للدعم الفني، الاستشارات الميدانية، وطلبات الصيانة على مدار الساعة عبر الهاتف أو البريد الإلكتروني.'
+    : 'Contact Ground Tech for field support, consultations, and maintenance requests. Reach our team by phone or email 24/7.';
+  const pageOgImage = `${companyInfo.urls.website}/assets/images/og-contact.webp`;
+  const heroImageAlt = isRTL
+    ? 'مقر جراوند تك وخدمات الدعم الفني'
+    : 'Ground Tech headquarters and support team';
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -226,33 +234,28 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // التحقق من البيانات
+
     if (!formData.firstName.trim() || formData.firstName.trim().length < 2) {
       alert(t('contact.form.firstNameError', 'الاسم الأول مطلوب'));
       return;
     }
-    
+
     if (!formData.email.trim() || !formData.email.includes('@')) {
       alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
       return;
     }
-    
+
     if (!formData.message.trim() || formData.message.trim().length < 10) {
       alert(t('contact.form.messageError', 'الرسالة مطلوبة وتجب أن تكون أكثر من 10 أحرف'));
       return;
     }
-    
-    // تحضير البيانات للإرسال
+
     const submitData = {
       name: `${formData.firstName} ${formData.lastName}`.trim(),
-      email: formData.email.trim(),
-      phone: formData.phone.trim(),
-      subject: formData.service || t('contactPage.form.generalInquiry', 'استفسار عام'),
-      message: formData.message.trim(),
-      message_type: 'general',
-      source_page: 'contact_page',
-      preferred_language: i18n.language
+      email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      message: formData.message
     };
 
     console.log('جارٍ إرسال البيانات من صفحة التواصل:', submitData);
@@ -270,25 +273,29 @@ export default function ContactPage() {
       {/* SEO Head */}
       <SEOHead
         title={companyInfo.seo.titles.contact[locale]}
-        description={t('contactPage.hero.description')}
+        description={pageDescription}
+        keywords={companyInfo.seo.keywords[locale].join(', ')}
+        image={pageOgImage}
         url={`${companyInfo.urls.website}/contact`}
         breadcrumbs={breadcrumbs}
       />
-
       {/* Hero Section with Navigation */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'blur(5px)'
-            }}></div>
+          <div className="absolute inset-0 opacity-15">
+            <picture>
+              <source srcSet="/assets/images/backgroundImage/Image-17.webp" type="image/webp" />
+              <img
+                src="/assets/images/backgroundImage/Image-17.png"
+                alt={heroImageAlt}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover blur-[5px]"
+              />
+            </picture>
           </div>
         </div>
 
-        
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto text-center px-6 lg:px-16 pt-8">
           <motion.div
@@ -312,6 +319,18 @@ export default function ContactPage() {
             <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
               {t('contactPage.hero.description')}
             </p>
+
+            <div className="flex flex-wrap gap-4 justify-center text-sm text-white/80">
+              <Link to="/services" className="underline hover:text-white transition-colors">
+                {locale === 'ar' ? 'جميع الخدمات' : 'All Services'}
+              </Link>
+              <Link to="/projects" className="underline hover:text-white transition-colors">
+                {locale === 'ar' ? 'مشاريعنا' : 'Our Projects'}
+              </Link>
+              <Link to="/case-studies" className="underline hover:text-white transition-colors">
+                {locale === 'ar' ? 'دراسات حالة' : 'Case Studies'}
+              </Link>
+            </div>
           </motion.div>
 
           {/* Stats */}
@@ -480,7 +499,7 @@ export default function ContactPage() {
                     ) : (
                       <>
                         {t('contactPage.form.submit')}
-                        <Send className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                        <Send className="w-5 h-5" />
                       </>
                     )}
                   </button>
@@ -597,14 +616,14 @@ export default function ContactPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+15551234567"
+                href={companyInfo.contact.phone.telHref}
                 className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all"
               >
                 <Phone className="w-5 h-5" />
                 {t('contactPage.cta.call')}
               </a>
               <a
-                href="mailto:info@groundtech.com"
+                href={companyInfo.contact.email.mailto}
                 className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all"
               >
                 <Mail className="w-5 h-5" />

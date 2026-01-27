@@ -1,8 +1,10 @@
 # ================================
-# robots.txt - Ground Tech Egypt
-# ================================
+# Ground Tech Egypt - Robots.txt
 # https://ground-eg.com
+# Last Updated: 2026-01-20
+# ================================
 
+# Allow all legitimate crawlers
 User-agent: *
 Allow: /
 
@@ -11,9 +13,44 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /login
 Disallow: /register
+Disallow: /*.json$
+Disallow: /*?*token=
 
-# Sitemap location
+# Sitemap location (Critical for SEO)
 Sitemap: https://ground-eg.com/sitemap.xml
 
-# Crawl delay (optional - be nice to our server)
+# Crawl delay (be nice to server)
 Crawl-delay: 1
+
+# ================================
+# Specific Bot Rules
+# ================================
+
+# Google (Priority crawler)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: /assets/logo/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ================================
+# Block Bad/Aggressive Bots
+# ================================
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

@@ -34,6 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'maintenance.api' => \App\Http\Middleware\CheckMaintenanceMode::class,
             'log.api' => \App\Http\Middleware\LogApiRequests::class,
             'locale' => \App\Http\Middleware\SetLocale::class,
+            'cache.headers' => \App\Http\Middleware\SetCacheHeaders::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

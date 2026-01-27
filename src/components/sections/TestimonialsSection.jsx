@@ -15,7 +15,7 @@ export default function TeamSection() {
       nickname: t('aboutPage.team.member1.nickname'),
       name: t('aboutPage.team.member1.name'),
       role: t('aboutPage.team.member1.role'),
-      image: '/assets/images/person/oaner-Image-1.jpeg',
+      image: '/assets/images/person/oaner-Image-1.webp',
       specialties: [isRTL ? 'حماية البنية التحتية' : 'Infrastructure Protection', isRTL ? 'أنظمة الطاقة الكهربائية' : 'Electrical Power Systems', isRTL ? 'إدارة المشاريع الكبرى' : 'Major Project Management'],
       experience: [ isRTL ? '15+ سنوات' : '15+ years']
     },
@@ -23,7 +23,7 @@ export default function TeamSection() {
       nickname: t('aboutPage.team.member2.nickname'),
       name: t('aboutPage.team.member2.name'),
       role: t('aboutPage.team.member2.role'),
-      image: '/assets/images/person/oaner-Image-2.png',
+      image: '/assets/images/person/oaner-Image-2.webp',
       specialties: [isRTL ? 'تصميم أنظمة الحماية' : 'Protection Systems Design', isRTL ? 'التحليل الكهربائي' : 'Electrolytic Analysis', isRTL ? 'الاستشارات التقنية' : 'Technical Consulting'],
       experience: [ isRTL ? '12+ سنوات' : '12+ years']
     },
@@ -31,7 +31,7 @@ export default function TeamSection() {
       nickname: t('aboutPage.team.member3.nickname'),
       name: t('aboutPage.team.member3.name'),
       role: t('aboutPage.team.member3.role'),
-      image: '/assets/images/person/oaner-Image-3.png',
+      image: '/assets/images/person/oaner-Image-3.webp',
       specialties: [isRTL ? 'التركيب والصيانة' : 'Installation and Maintenance', isRTL ? 'ضمان الجودة' : 'Quality Assurance', isRTL ? 'التدريب التقني' : 'Technical Training'],
       experience: [ isRTL ? '10+ سنوات' : '10+ years']
     },
@@ -39,9 +39,9 @@ export default function TeamSection() {
       nickname: t('aboutPage.team.member4.nickname'),
       name: t('aboutPage.team.member4.name'),
       role: t('aboutPage.team.member4.role'),
-      image: '/assets/images/person/oaner-Image-4.jpeg',
+      image: '/assets/images/person/oaner-Image-4.webp',
       specialties: [isRTL ? 'إدارة العمليات' : 'Operations Management', isRTL ? 'خدمة العملاء' : 'Customer Service', isRTL ? 'تطوير الأعمال' : 'Business Development'],
-      experience: [ isRTL ? '8+ سنوات' : '8+ years']
+      experience: [ isRTL ? '15+ سنوات' : '15+ years']
     }
   ];
 

@@ -59,6 +59,7 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: t('nav.allServices', 'جميع الخدمات'), href: '/services' },
+        { name: t('nav.earthingSystems', 'أنظمة التأريض'), href: '/services/earthing-systems' },
         { name: t('nav.products'), href: '/products' },
         { name: t('nav.tools'), href: '/tools' },
       ]

@@ -73,25 +73,25 @@ export default function AboutUsPage() {
       nickname: t('aboutPage.team.member1.nickname'),
       name: t('aboutPage.team.member1.name'),
       role: t('aboutPage.team.member1.role'),
-      image: '/assets/images/person/oaner-Image-1.jpeg'
+      image: '/assets/images/person/oaner-Image-1.webp'
     },
     {
       nickname: t('aboutPage.team.member2.nickname'),
       name: t('aboutPage.team.member2.name'),
       role: t('aboutPage.team.member2.role'),
-      image: '/assets/images/person/oaner-Image-2.png'
+      image: '/assets/images/person/oaner-Image-2.webp'
     },
     {
       nickname: t('aboutPage.team.member3.nickname'),
       name: t('aboutPage.team.member3.name'),
       role: t('aboutPage.team.member3.role'),
-      image: '/assets/images/person/oaner-Image-3.png'
+      image: '/assets/images/person/oaner-Image-3.webp'
     },
     {
       nickname: t('aboutPage.team.member4.nickname'),
       name: t('aboutPage.team.member4.name'),
       role: t('aboutPage.team.member4.role'),
-      image: '/assets/images/person/oaner-Image-4.jpeg'
+      image: '/assets/images/person/oaner-Image-4.webp'
     }
   ];
 
@@ -131,7 +131,7 @@ export default function AboutUsPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("/assets/images/aboutUs/Image-4.png")`,
+              backgroundImage: `url("/assets/images/aboutUs/Image-4.webp")`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
               transform: isRTL ? 'scaleX(-1)' : 'none'
@@ -225,7 +225,7 @@ export default function AboutUsPage() {
               className="relative"
             >
               <img
-                src="/assets/images/aboutUs/Image-2.png"
+                src="/assets/images/aboutUs/Image-2.webp"
                 alt={t('aboutPage.story.imageAlt')}
                 className="rounded-2xl shadow-2xl w-full"
               />
@@ -462,7 +462,7 @@ export default function AboutUsPage() {
               className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all"
             >
               {t('aboutPage.cta.button')}
-              <CheckCircle2 className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+              <CheckCircle2 className="w-5 h-5" />
             </a>
           </motion.div>
         </div>

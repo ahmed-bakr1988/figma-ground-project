@@ -2,46 +2,257 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/assets/logo/logo.png" />
-    <link rel="apple-touch-icon" href="/assets/logo/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="جراوند تك - متخصصون في أنظمة الحماية من الصواعق للمنشآت السكنية والتجارية والصناعية في مصر. خدمات احترافية بمعايير عالمية." />
-    <meta name="keywords" content="الحماية من الصواعق, مانعات الصواعق, Ground Tech, جراوند تك, حماية المباني, التأريض, مصر" />
-    <meta name="author" content="Ground Tech Egypt" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://ground-eg.com" />
+    <!-- ⚡ Critical: Preconnect to external origins FIRST (before any other resources) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
     
-    <!-- Open Graph / Facebook -->
+    <!-- ⚡ LCP Image Preload: AVIF (primary) + WebP (fallback) with responsive srcset -->
+    <!-- Mobile-first: preload smallest needed image first for faster LCP -->
+    <link 
+      rel="preload" 
+      as="image" 
+      type="image/avif" 
+      href="/assets/images/backgroundImage/hero-optimized.avif"
+      imagesrcset="/assets/images/backgroundImage/hero-optimized-mobile.avif 640w,
+                   /assets/images/backgroundImage/hero-optimized-tablet.avif 1024w,
+                   /assets/images/backgroundImage/hero-optimized.avif 1920w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+    <!-- WebP fallback for browsers without AVIF support -->
+    <link 
+      rel="preload" 
+      as="image" 
+      type="image/webp" 
+      href="/assets/images/backgroundImage/hero-optimized.webp"
+      imagesrcset="/assets/images/backgroundImage/hero-optimized-mobile.webp 640w,
+                   /assets/images/backgroundImage/hero-optimized-tablet.webp 1024w,
+                   /assets/images/backgroundImage/hero-optimized.webp 1920w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+    
+    <!-- ⚡ Critical: Preload fonts with display=swap (non-blocking) -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2" crossorigin />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/logo/logo.png" />
+    <link rel="apple-touch-icon" href="/assets/logo/logo.png" />
+    
+    <!-- ✅ PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- ✅ SEO: Primary Meta Tags (Optimized) -->
+    <title>جراوند تك | أفضل شركة حماية من الصواعق في مصر - Ground Tech Egypt</title>
+    <meta name="description" content="جراوند تك - الشركة الرائدة في مصر لأنظمة الحماية من الصواعق والتأريض. أكثر من 10 سنوات خبرة، 2000+ مشروع ناجح. احصل على استشارة مجانية الآن! ☎ 01044044855" />
+    <meta name="keywords" content="الحماية من الصواعق مصر, مانعات الصواعق, شركة تأريض, Ground Tech Egypt, جراوند تك, حماية المباني من البرق, Lightning Protection Egypt, نظام الأرضي, surge protection" />
+    <meta name="author" content="Ground Tech Egypt - جراوند تك مصر" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://ground-eg.com/" />
+    
+    <!-- ✅ Hreflang for multilingual -->
+    <link rel="alternate" hreflang="ar" href="https://ground-eg.com/" />
+    <link rel="alternate" hreflang="en" href="https://ground-eg.com/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://ground-eg.com/" />
+    
+    <!-- ✅ Open Graph / Facebook (Optimized) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ground-eg.com/" />
-    <meta property="og:title" content="Ground Tech - خدمات الحماية من الصواعق في مصر" />
-    <meta property="og:description" content="متخصصون في أنظمة الحماية من الصواعق للمنشآت السكنية والتجارية والصناعية. خدمات احترافية بمعايير عالمية." />
-    <meta property="og:image" content="https://ground-eg.com/assets/logo/logo.png" />
+    <meta property="og:site_name" content="جراوند تك - Ground Tech Egypt" />
+    <meta property="og:title" content="جراوند تك | أفضل شركة حماية من الصواعق في مصر" />
+    <meta property="og:description" content="متخصصون في أنظمة الحماية من الصواعق والتأريض للمنشآت السكنية والتجارية والصناعية. 10+ سنوات خبرة، معايير عالمية، ضمان شامل." />
+    <meta property="og:image" content="https://ground-eg.com/assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="جراوند تك - خدمات الحماية من الصواعق في مصر" />
     <meta property="og:locale" content="ar_EG" />
     <meta property="og:locale:alternate" content="en_US" />
     
-    <!-- Twitter -->
+    <!-- ✅ Twitter Card (Optimized) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://ground-eg.com/" />
-    <meta name="twitter:title" content="Ground Tech - خدمات الحماية من الصواعق في مصر" />
-    <meta name="twitter:description" content="متخصصون في أنظمة الحماية من الصواعق للمنشآت السكنية والتجارية والصناعية." />
-    <meta name="twitter:image" content="https://ground-eg.com/assets/logo/logo.png" />
+    <meta name="twitter:site" content="@groundeg" />
+    <meta name="twitter:creator" content="@groundeg" />
+    <meta name="twitter:title" content="جراوند تك | أفضل شركة حماية من الصواعق في مصر" />
+    <meta name="twitter:description" content="متخصصون في أنظمة الحماية من الصواعق والتأريض. 10+ سنوات خبرة، 2000+ مشروع ناجح." />
+    <meta name="twitter:image" content="https://ground-eg.com/assets/images/og-image.jpg" />
     
-    <!-- Theme Color -->
+    <!-- ✅ Theme & PWA -->
     <meta name="theme-color" content="#0E3A5D" />
     <meta name="msapplication-TileColor" content="#0E3A5D" />
+    <meta name="msapplication-TileImage" content="/assets/logo/logo.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
-    <title>Ground Tech - خدمات الحماية من الصواعق | Lightning Protection Services</title>
+    <!-- ✅ Geo Tags for Local SEO -->
+    <meta name="geo.region" content="EG-C" />
+    <meta name="geo.placename" content="Cairo, Egypt" />
+    <meta name="geo.position" content="30.0444;31.2357" />
+    <meta name="ICBM" content="30.0444, 31.2357" />
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- ⚡ Fonts: Load with display=swap (non-blocking) + font-display: optional for better LCP -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    </noscript>
+    
+    <!-- ⚡ Critical CSS: Inline above-the-fold styles to prevent render blocking -->
+    <style>
+      /* Critical CSS - Above the fold styles (optimized for LCP < 2.5s) */
+      *{margin:0;padding:0;box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      /* Font display: optional prevents FOIT and improves LCP */
+      @font-face{font-family:'Cairo';font-display:optional;src:local('Cairo')}
+      @font-face{font-family:'Inter';font-display:optional;src:local('Inter')}
+      body{font-family:'Cairo','Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;padding-top:120px;text-rendering:optimizeSpeed}
+      /* Hero section - critical for LCP */
+      .hero-section{margin-top:-120px;padding-top:120px;min-height:100vh;position:relative;overflow:hidden;contain:layout style paint}
+      .hero-section::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(14,58,93,.95),rgba(14,58,93,.6));z-index:1}
+      /* LCP image optimization */
+      .hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:opacity}
+      #root{min-height:100vh}
+      /* Below-fold content optimization */
+      .below-fold{content-visibility:auto;contain-intrinsic-size:0 500px}
+      /* Skeleton loader for hero */
+      .hero-skeleton{background:linear-gradient(90deg,#0E3A5D 0%,#1F6FA8 50%,#0E3A5D 100%);background-size:200% 100%;animation:shimmer 1.5s infinite}
+      @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+      /* Prevent CLS */
+      img,video{max-width:100%;height:auto}
+      .aspect-video{aspect-ratio:16/9}
+    </style>
+    
+    <!-- ✅ Structured Data: Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "جراوند تك - Ground Tech Egypt",
+      "alternateName": ["Ground Tech", "GroundTech", "جراوند تك مصر"],
+      "url": "https://ground-eg.com",
+      "logo": "https://ground-eg.com/assets/logo/logo.png",
+      "description": "الشركة الرائدة في مصر لأنظمة الحماية من الصواعق والتأريض للمنشآت السكنية والتجارية والصناعية",
+      "foundingDate": "2016",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Egypt"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+201044044855",
+        "contactType": "customer service",
+        "availableLanguage": ["Arabic", "English"],
+        "areaServed": "EG"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Protection Avenue, Business District",
+        "addressLocality": "Cairo",
+        "addressRegion": "Cairo Governorate",
+        "postalCode": "11511",
+        "addressCountry": "EG"
+      },
+      "sameAs": [
+        "https://www.facebook.com/groundtechegypt",
+        "https://www.linkedin.com/company/groundtechegypt",
+        "https://twitter.com/groundeg"
+      ]
+    }
+    </script>
+    
+    <!-- ✅ Structured Data: LocalBusiness Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://ground-eg.com/#localbusiness",
+      "name": "جراوند تك - Ground Tech Egypt",
+      "image": "https://ground-eg.com/assets/logo/logo.png",
+      "priceRange": "$$",
+      "telephone": "+201044044855",
+      "email": "info@ground-eg.com",
+      "url": "https://ground-eg.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Protection Avenue",
+        "addressLocality": "Cairo",
+        "addressCountry": "EG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 30.0444,
+        "longitude": 31.2357
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- ⚡ Deferred Google Analytics - Load after user interaction for better LCP -->
+    <script>
+      // Delay analytics until after first user interaction or 3s (whichever comes first)
+      const loadAnalytics = () => {
+        if (window.analyticsLoaded) return;
+        window.analyticsLoaded = true;
+        
+        const script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-VWZEG9L8Z2';
+        script.async = true;
+        document.head.appendChild(script);
+        
+        script.onload = () => {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-VWZEG9L8Z2', {
+            page_title: document.title,
+            page_location: window.location.href,
+            anonymize_ip: true
+          });
+        };
+      };
+      
+      // Load on first interaction or after 3s timeout
+      ['mousedown', 'keydown', 'touchstart', 'scroll'].forEach(event => {
+        document.addEventListener(event, loadAnalytics, { once: true, passive: true });
+      });
+      setTimeout(loadAnalytics, 3000);
+    </script>
+    
+    <!-- ✅ Service Worker Registration (deferred) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Delay SW registration to not compete with critical resources
+          requestIdleCallback ? requestIdleCallback(() => {
+            navigator.serviceWorker.register('/sw.js')
+              .then((reg) => console.log('SW registered:', reg.scope))
+              .catch((err) => console.warn('SW registration failed:', err));
+          }) : setTimeout(() => {
+            navigator.serviceWorker.register('/sw.js')
+              .then((reg) => console.log('SW registered:', reg.scope))
+              .catch((err) => console.warn('SW registration failed:', err));
+          }, 2000);
+        });
+      }
+    </script>
   </body>
 </html>

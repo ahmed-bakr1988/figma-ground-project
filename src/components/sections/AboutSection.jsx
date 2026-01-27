@@ -38,7 +38,7 @@ export default function AboutSection() {
           >
             <div className="relative">
               <img
-                src="\assets\images\aboutUs\Image-1.png"
+                src="\assets\images\aboutUs\Image-1.webp"
                 alt={t('about.imageAlt')}
                 className="rounded-2xl shadow-2xl w-full"
               />

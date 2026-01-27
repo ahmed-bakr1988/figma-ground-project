@@ -1,5 +1,5 @@
-/* Import Arabic font - must be at the top */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+/* ⚡ REMOVED: @import for Google Fonts - Now loaded async in index.html */
+/* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -28,15 +28,43 @@
   box-sizing: border-box;
 }
 
-/* Fix for fixed navbar overlay issue */
+/* ⚡ Performance: Optimize text rendering */
 body {
   padding-top: 120px; /* Height of fixed navbar */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fix for fixed navbar overlay issue */
 /* Hero section should start from top, ignoring body padding */
 .hero-section {
   margin-top: -120px;
   padding-top: 120px;
+  /* ⚡ CSS containment for better performance */
+  contain: layout style paint;
+}
+
+/* ⚡ Hero background image optimization */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: opacity;
+}
+
+/* ⚡ Shimmer animation for image placeholders */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ⚡ Below-fold content optimization */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }
 
 /* Ensure dropdowns appear above content */
@@ -50,8 +78,6 @@ html {
 
 body {
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* RTL Support - Font Family */

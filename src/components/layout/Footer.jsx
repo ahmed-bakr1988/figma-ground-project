@@ -101,6 +101,11 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">{t('footer.services')}</h4>
             <ul className="space-y-3">
               <li>
+                <Link to="/services/earthing-systems" className="text-white/70 hover:text-accent transition-colors">
+                  {t('footer.links.services.earthing', 'أنظمة التأريض')}
+                </Link>
+              </li>
+              <li>
                 <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
                   {t('footer.links.services.rod')}
                 </Link>

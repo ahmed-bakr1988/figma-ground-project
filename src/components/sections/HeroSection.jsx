@@ -1,9 +1,119 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Phone, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { useContactForm } from '../../services/hooks';
+
+/**
+ * ⚡ LCP-Optimized Hero Images Configuration
+ * - AVIF primary (best compression, ~30% smaller than WebP)
+ * - WebP fallback (wide browser support)
+ * - Responsive srcset for mobile/tablet/desktop
+ * - Target file sizes: mobile <15KB, tablet <25KB, desktop <35KB
+ */
+const HERO_IMAGES = [
+  {
+    // Primary hero image - LCP critical
+    avif: {
+      mobile: '/assets/images/backgroundImage/hero-optimized-mobile.avif',
+      tablet: '/assets/images/backgroundImage/hero-optimized-tablet.avif',
+      desktop: '/assets/images/backgroundImage/hero-optimized.avif',
+    },
+    webp: {
+      mobile: '/assets/images/backgroundImage/hero-optimized-mobile.webp',
+      tablet: '/assets/images/backgroundImage/hero-optimized-tablet.webp',
+      desktop: '/assets/images/backgroundImage/hero-optimized.webp',
+    },
+    fallback: '/assets/images/backgroundImage/hero-optimized.webp',
+  },
+  {
+    avif: {
+      mobile: '/assets/images/backgroundImage/hero-2-mobile.avif',
+      tablet: '/assets/images/backgroundImage/hero-2-tablet.avif',
+      desktop: '/assets/images/backgroundImage/hero-2.avif',
+    },
+    webp: {
+      mobile: '/assets/images/backgroundImage/hero-2-mobile.webp',
+      tablet: '/assets/images/backgroundImage/hero-2-tablet.webp',
+      desktop: '/assets/images/backgroundImage/hero-2.webp',
+    },
+    fallback: '/assets/images/backgroundImage/hero-2.webp',
+  },
+  {
+    avif: {
+      mobile: '/assets/images/backgroundImage/hero-3-mobile.avif',
+      tablet: '/assets/images/backgroundImage/hero-3-tablet.avif',
+      desktop: '/assets/images/backgroundImage/hero-3.avif',
+    },
+    webp: {
+      mobile: '/assets/images/backgroundImage/hero-3-mobile.webp',
+      tablet: '/assets/images/backgroundImage/hero-3-tablet.webp',
+      desktop: '/assets/images/backgroundImage/hero-3.webp',
+    },
+    fallback: '/assets/images/backgroundImage/hero-3.avif',
+  }
+];
+
+/**
+ * ⚡ LCP-Optimized Hero Background Component
+ * - Uses picture element with AVIF/WebP/fallback
+ * - Responsive srcset for different viewports
+ * - First image loaded eagerly with high priority
+ * - Subsequent images lazy loaded
+ * - Explicit dimensions prevent CLS
+ */
+const HeroBackground = memo(({ currentIndex }) => (
+  <div className="absolute inset-0" aria-hidden="true">
+    {HERO_IMAGES.map((image, index) => {
+      const isLCP = index === 0;
+      const isVisible = currentIndex === index;
+      
+      return (
+        <picture key={index}>
+          {/* AVIF - Best compression, modern browsers */}
+          <source
+            type="image/avif"
+            srcSet={`${image.avif.mobile} 640w, ${image.avif.tablet} 1024w, ${image.avif.desktop} 1920w`}
+            sizes="100vw"
+          />
+          {/* WebP - Good compression, wide support */}
+          <source
+            type="image/webp"
+            srcSet={`${image.webp.mobile} 640w, ${image.webp.tablet} 1024w, ${image.webp.desktop} 1920w`}
+            sizes="100vw"
+          />
+          {/* Fallback */}
+          <img
+            src={image.fallback}
+            alt=""
+            role="presentation"
+            // LCP image: eager load with high priority
+            loading={isLCP ? 'eager' : 'lazy'}
+            fetchpriority={isLCP ? 'high' : 'low'}
+            decoding={isLCP ? 'sync' : 'async'}
+            // Explicit dimensions prevent CLS
+            width="1920"
+            height="1080"
+            className="hero-bg-img transition-opacity duration-700"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              zIndex: isVisible ? 1 : 0,
+              // Prevent layout recalculation
+              contain: 'strict',
+            }}
+          />
+        </picture>
+      );
+    })}
+    {/* Gradient overlay - uses CSS for performance */}
+    <div 
+      className="absolute inset-0 bg-gradient-to-end from-slate-900/95 via-slate-900/80 to-slate-900/60" 
+      style={{ zIndex: 2 }} 
+    />
+  </div>
+));
+HeroBackground.displayName = 'HeroBackground';
 
 export default function HeroSection() {
   const { t, i18n } = useTranslation();
@@ -19,22 +129,21 @@ export default function HeroSection() {
     message: ''
   });
 
-  // Background images array
-  const backgroundImages = [
-    '/assets/images/backgroundImage/backgroundImage1.jpeg',
-    '/assets/images/backgroundImage/backgroundImage5.jpeg',
-    '/assets/images/backgroundImage/backgroundImage7.avif'
-  ];
-
-  // Auto-rotate images every 5 seconds
+  // ⚡ Optimized: Use requestAnimationFrame for smooth transitions
+  // Auto-rotate images every 5 seconds (only after initial paint)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        (prevIndex + 1) % backgroundImages.length
-      );
-    }, 5000);
+    // Delay carousel start to not interfere with LCP
+    const startDelay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) =>
+          (prevIndex + 1) % HERO_IMAGES.length
+        );
+      }, 5000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }, 2000); // Start carousel 2s after mount
+
+    return () => clearTimeout(startDelay);
   }, []);
 
   // إعادة تعيين رسالة النجاح بعد 5 ثوانٍ
@@ -98,23 +207,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="hero-section relative min-h-screen overflow-hidden">
-      {/* Background Image with Lightning - Auto Rotating */}
-      <div className="absolute inset-0">
-        {backgroundImages.map((image, index) => (
-          <div
-            key={index}
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-            style={{
-              backgroundImage: `url('${image}')`,
-              opacity: currentImageIndex === index ? 1 : 0,
-              zIndex: currentImageIndex === index ? 1 : 0
-            }}
-          />
-        ))}
-        {/* Gradient uses logical direction - start means left in LTR, right in RTL */}
-        <div className="absolute inset-0 bg-gradient-to-end from-slate-900/95 via-slate-900/80 to-slate-900/60" style={{ zIndex: 2 }} />
-      </div>
+    <section className="hero-section relative min-h-screen overflow-hidden" aria-label={t('hero.ariaLabel', 'قسم الترحيب الرئيسي')}>
+      {/* ⚡ Optimized Background with WebP + explicit dimensions */}
+      <HeroBackground currentIndex={currentImageIndex} />
 
       {/* Hero Content */}
       <div className="relative z-10 flex items-center min-h-screen px-6 lg:px-16">
@@ -133,6 +228,7 @@ export default function HeroSection() {
               </span>
             </div>
 
+            {/* ✅ SEO: Single H1 tag - most important for SEO */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               {t('hero.title')}{' '}
               <span className="text-accent">{t('hero.titleHighlight')}</span>{' '}

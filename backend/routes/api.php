@@ -61,7 +61,7 @@ Route::prefix('auth')->group(function () {
 // ================================
 // الخدمات (Services) - عام
 // ================================
-Route::prefix('services')->group(function () {
+Route::prefix('services')->middleware('cache.headers:api')->group(function () {
     Route::get('/', [ServiceController::class, 'index']);
     Route::get('/featured', [ServiceController::class, 'featured']);
     Route::get('/{slug}', [ServiceController::class, 'show']);
@@ -70,7 +70,7 @@ Route::prefix('services')->group(function () {
 // ================================
 // المشاريع (Projects) - عام
 // ================================
-Route::prefix('projects')->group(function () {
+Route::prefix('projects')->middleware('cache.headers:api')->group(function () {
     Route::get('/', [ProjectController::class, 'index']);
     Route::get('/featured', [ProjectController::class, 'featured']);
     Route::get('/stats', [ProjectController::class, 'stats']);
@@ -81,7 +81,7 @@ Route::prefix('projects')->group(function () {
 // ================================
 // المقالات (Blog) - عام
 // ================================
-Route::prefix('blog')->group(function () {
+Route::prefix('blog')->middleware('cache.headers:api')->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/featured', [BlogController::class, 'featured']);
     Route::get('/latest', [BlogController::class, 'latest']);
@@ -94,7 +94,7 @@ Route::prefix('blog')->group(function () {
 // ================================
 // الأسئلة الشائعة (FAQs) - عام
 // ================================
-Route::prefix('faqs')->group(function () {
+Route::prefix('faqs')->middleware('cache.headers:api')->group(function () {
     Route::get('/', [FaqController::class, 'index']);
     Route::get('/categories', [FaqController::class, 'categories']);
     Route::get('/{id}', [FaqController::class, 'show']);

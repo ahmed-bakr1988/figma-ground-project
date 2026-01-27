@@ -233,7 +233,7 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-              backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+              backgroundImage: `url("assets/images/backgroundImage/Image-17.webp")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               filter: 'blur(5px)'

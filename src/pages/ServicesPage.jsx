@@ -75,7 +75,7 @@ const ServiceCard = ({ service, index, isRTL }) => {
         </ul>
         
         <Link 
-          to="/contact" 
+          to={service.link || "/contact"} 
           className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
         >
           {service.cta}
@@ -148,7 +148,7 @@ export default function ServicesPage() {
         t('servicesPage.services.lightning.features.3')
       ],
       cta: t('servicesPage.requestQuote'),
-      image: 'https://images.unsplash.com/photo-1605980625600-88d6a6eb8b67?q=80&w=800'
+      image: '/assets/images/services/Lightning Protection Systems.png'
     },
     {
       id: 2,
@@ -161,8 +161,9 @@ export default function ServicesPage() {
         t('servicesPage.services.grounding.features.2'),
         t('servicesPage.services.grounding.features.3')
       ],
-      cta: t('servicesPage.requestQuote'),
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800'
+      cta: t('servicesPage.learnMore', 'اعرف المزيد'),
+      link: '/services/earthing-systems',
+      image: '/assets/images/services/Grounding &Earthing-Systems.png'
     },
     {
       id: 3,
@@ -176,7 +177,7 @@ export default function ServicesPage() {
         t('servicesPage.services.surge.features.3')
       ],
       cta: t('servicesPage.requestQuote'),
-      image: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800'
+      image: '/assets/images/services/Surge-Protection-Devices-(SPD).jpg'
     },
     {
       id: 4,
@@ -190,7 +191,7 @@ export default function ServicesPage() {
         t('servicesPage.services.risk.features.3')
       ],
       cta: t('servicesPage.requestQuote'),
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800'
+      image: '/assets/images/services/lightning-Risk-Assessment.webp'
     },
     {
       id: 5,
@@ -268,7 +269,7 @@ export default function ServicesPage() {
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.webp")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               filter: 'blur(5px)'
@@ -329,7 +330,7 @@ export default function ServicesPage() {
             >
               <div className="relative">
                 <img 
-                  src="assets/images/services/LightningProtection6-scaled.JPG"
+                  src="assets/images/services/LightningProtection6-scaled.webp"
                   alt="Lightning Protection"
                   className="rounded-2xl shadow-2xl"
                 />
@@ -530,9 +531,11 @@ export default function ServicesPage() {
               className="relative"
             >
               <img 
-                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800"
+                src="/assets/images/services/lightning.webp"
                 alt="Professional Team"
                 className="rounded-2xl shadow-2xl w-full"
+                  style={{filter: 'blur(1.1px)'}}
+                
               />
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-primary/50 to-transparent" />
             </motion.div>

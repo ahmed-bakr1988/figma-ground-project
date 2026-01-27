@@ -1,35 +1,34 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, memo } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { MobileMenuProvider, useMobileMenu } from './context/MobileMenuContext'
 import Navbar from './components/layout/Navbar'
 import HeroSection from './components/sections/HeroSection'
-import AboutSection from './components/sections/AboutSection'
-import ServicesSection from './components/sections/ServicesSection'
-import ProjectsSection from './components/sections/ProjectsSection'
-import StatsSection from './components/tools/StatsSection'
-import TestimonialsSection from './components/sections/TestimonialsSection'
-import ContactSection from './components/sections/ContactSection'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/common/ScrollToTop'
-import LiveChat from './components/common/LiveChat'
-import WhatsAppButton from './components/common/WhatsAppButton'
 import ErrorBoundary from './components/common/ErrorBoundary'
 import SEOHead from './components/common/SEOHead'
 import companyInfo from './config/companyInfo'
 
-// Loading Component محسّن
-const LoadingSpinner = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
-    <div className="text-center">
-      <div className="relative w-16 h-16 mx-auto mb-4">
-        <div className="absolute inset-0 border-4 border-accent/20 rounded-full"></div>
-        <div className="absolute inset-0 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
-      </div>
-      <p className="text-gray-500 text-sm">جارٍ التحميل...</p>
-    </div>
+// ⚡ Lazy load non-critical homepage sections (improves FCP/LCP)
+const AboutSection = lazy(() => import('./components/sections/AboutSection'))
+const ServicesSection = lazy(() => import('./components/sections/ServicesSection'))
+const ProjectsSection = lazy(() => import('./components/sections/ProjectsSection'))
+const StatsSection = lazy(() => import('./components/tools/StatsSection'))
+const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection'))
+const ContactSection = lazy(() => import('./components/sections/ContactSection'))
+
+// ⚡ Lazy load non-critical UI components (deferred)
+const LiveChat = lazy(() => import('./components/common/LiveChat'))
+const WhatsAppButton = lazy(() => import('./components/common/WhatsAppButton'))
+
+// ⚡ Optimized Loading Spinner - minimal DOM, CSS-only animation
+const LoadingSpinner = memo(() => (
+  <div className="min-h-[200px] flex items-center justify-center">
+    <div className="w-8 h-8 border-3 border-accent/30 border-t-accent rounded-full animate-spin" />
   </div>
-);
+));
+LoadingSpinner.displayName = 'LoadingSpinner';
 
 // Lazy-loaded pages for better code splitting
 const AboutUsPage = lazy(() => import('./pages/AboutUsPage'))
@@ -47,6 +46,9 @@ const LoginPage = lazy(() => import('./pages/LoginPage'))
 const RegisterPage = lazy(() => import('./pages/RegisterPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
+// Service Pages (Lazy Loaded)
+const EarthingSystemsPage = lazy(() => import('./pages/services/EarthingSystemsPage'))
+
 function HomePage() {
   const { i18n } = useTranslation()
   const locale = i18n.language === 'ar' ? 'ar' : 'en'
@@ -61,13 +63,29 @@ function HomePage() {
           { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website }
         ]}
       />
+      {/* ⚡ LCP-critical: HeroSection loads synchronously */}
       <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <StatsSection />
-      <ProjectsSection />
-      <TestimonialsSection />
-      <ContactSection />
+      {/* ⚡ Below-fold content: lazy loaded with content-visibility */}
+      <Suspense fallback={<LoadingSpinner />}>
+        <div className="below-fold">
+          <AboutSection />
+        </div>
+        <div className="below-fold">
+          <ServicesSection />
+        </div>
+        <div className="below-fold">
+          <StatsSection />
+        </div>
+        <div className="below-fold">
+          <ProjectsSection />
+        </div>
+        <div className="below-fold">
+          <TestimonialsSection />
+        </div>
+        <div className="below-fold">
+          <ContactSection />
+        </div>
+      </Suspense>
     </>
   )
 }
@@ -85,6 +103,7 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/earthing-systems" element={<EarthingSystemsPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
@@ -103,8 +122,11 @@ function AppContent() {
       
       <Footer />
       <ScrollToTop hidden={isMobileMenuOpen} />
-      <LiveChat />
-      <WhatsAppButton hidden={isMobileMenuOpen} />
+      {/* ⚡ Defer non-critical UI components */}
+      <Suspense fallback={null}>
+        <LiveChat />
+        <WhatsAppButton hidden={isMobileMenuOpen} />
+      </Suspense>
     </div>
   )
 }

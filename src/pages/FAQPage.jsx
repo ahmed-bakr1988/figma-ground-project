@@ -227,7 +227,7 @@ export default function FAQPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
-                           backgroundImage: `url("assets/images/backgroundImage/Image-17.png")`,
+                           backgroundImage: `url("assets/images/backgroundImage/Image-17.webp")`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               filter: 'blur(5px)'

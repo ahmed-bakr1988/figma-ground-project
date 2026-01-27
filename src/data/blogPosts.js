@@ -154,11 +154,11 @@ Protecting your building from lightning is not a luxury, but a necessary investm
     author: {
       name: { ar: 'م.يزن طارق', en: 'Eng. Yazan Tareq' },
       role: { ar: 'مهندس أنظمة الحماية', en: 'Protection Systems Engineer' },
-      avatar: '/assets/images/blog/persons/1.png'
+      avatar: '/assets/images/blog/persons/1.webp'
     },
     category: { ar: 'دلائل تقنية', en: 'Technical Guides' },
     tags: ['حماية', 'صواعق', 'مباني', 'أمان'],
-    image: '/assets/images/blog/photo-posts/Image-1.png',
+    image: '/assets/images/blog/photo-posts/Image-1.webp',
     readTime: 10,
     publishedAt: '2025-12-15',
     featured: true
@@ -303,11 +303,11 @@ Avoiding these five mistakes ensures effective and sustainable protection. Don't
     author: {
       name: { ar: 'م. سارة محمود', en: 'Eng. Sara Mahmoud' },
       role: { ar: 'مستشار تقني', en: 'Technical Consultant' },
-      avatar: '/assets/images/blog/persons/3.png'
+      avatar: '/assets/images/blog/persons/3.webp'
     },
     category: { ar: 'نصائح وإرشادات', en: 'Tips & Guides' },
     tags: ['أخطاء', 'تركيب', 'نصائح', 'حماية'],
-    image: '/assets/images/blog/photo-posts/Image-2.png',
+    image: '/assets/images/blog/photo-posts/Image-2.webp',
     readTime: 7,
     publishedAt: '2025-12-10',
     featured: false
@@ -420,11 +420,11 @@ The right choice saves money in the long run and ensures effective protection.
     author: {
       name: { ar: 'م. خالد حسن', en: 'Eng. Khaled Hassan' },
       role: { ar: 'مدير المشاريع', en: 'Project Manager' },
-      avatar: '/assets/images/blog/persons/2.png'
+      avatar: '/assets/images/blog/persons/2.webp'
     },
     category: { ar: 'دلائل عملية', en: 'Practical Guides' },
     tags: ['اختيار', 'أنظمة', 'مقارنة', 'نصائح'],
-    image: '/assets/images/blog/photo-posts/Image-3.png',
+    image: '/assets/images/blog/photo-posts/Image-3.webp',
     readTime: 8,
     publishedAt: '2025-12-05',
     featured: false
@@ -543,11 +543,11 @@ Regular maintenance is an investment in your safety and property protection.
     author: {
       name: { ar: 'م. فاطمة علي', en: 'Eng. Fatima Ali' },
       role: { ar: 'مهندسة صيانة', en: 'Maintenance Engineer' },
-      avatar: '/assets/images/blog/persons/person-12.jpg'
+      avatar: '/assets/images/blog/persons/person-12.webp'
     },
     category: { ar: 'صيانة', en: 'Maintenance' },
     tags: ['صيانة', 'دورية', 'فحص', 'إرشادات'],
-    image: '/assets/images/blog/photo-posts/Image-4.png',
+    image: '/assets/images/blog/photo-posts/Image-4.webp',
     readTime: 6,
     publishedAt: '2025-11-28',
     featured: false
@@ -686,11 +686,11 @@ A protection system is not an expense, but a smart investment that protects your
     author: {
       name: { ar: 'أ. محمد أحمد', en: 'Mr. Mohamed Ahmed' },
       role: { ar: 'مستشار مالي', en: 'Financial Consultant' },
-      avatar: '/assets/images/blog/persons/3.png'
+      avatar: '/assets/images/blog/persons/3.webp'
     },
     category: { ar: 'تحليل مالي', en: 'Financial Analysis' },
     tags: ['تكاليف', 'استثمار', 'تحليل', 'توفير'],
-    image: '/assets/images/blog/photo-posts/Image-5.png',
+    image: '/assets/images/blog/photo-posts/Image-5.webp',
     readTime: 9,
     publishedAt: '2025-11-20',
     featured: false
