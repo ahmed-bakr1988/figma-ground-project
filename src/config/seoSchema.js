@@ -10,7 +10,8 @@
 import companyInfo from './companyInfo';
 
 /**
- * Organization Schema - للموقع بالكامل
+ * Organization Schema
+ * Note: مدمج الآن مع LocalBusiness لتجنب التكرار
  */
 export const getOrganizationSchema = (locale = 'ar') => ({
   '@context': 'https://schema.org',
@@ -25,23 +26,6 @@ export const getOrganizationSchema = (locale = 'ar') => ({
     width: 512,
     height: 512,
   },
-  image: companyInfo.urls.ogImage,
-  description: companyInfo.description.long[locale],
-  email: companyInfo.contact.email.primary,
-  telephone: companyInfo.contact.phone.shortDisplay,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: companyInfo.contact.address.street[locale],
-    addressLocality: companyInfo.contact.address.city[locale],
-    addressRegion: companyInfo.contact.address.region[locale],
-    postalCode: companyInfo.contact.address.postalCode,
-    addressCountry: 'EG',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: companyInfo.contact.address.geo.latitude,
-    longitude: companyInfo.contact.address.geo.longitude,
-  },
   contactPoint: [
     {
       '@type': 'ContactPoint',
@@ -50,35 +34,26 @@ export const getOrganizationSchema = (locale = 'ar') => ({
       availableLanguage: ['Arabic', 'English'],
       areaServed: 'EG',
     },
-    {
-      '@type': 'ContactPoint',
-      telephone: companyInfo.contact.phone.shortDisplay,
-      contactType: 'sales',
-      availableLanguage: ['Arabic', 'English'],
-      areaServed: 'EG',
-    },
   ],
   sameAs: Object.values(companyInfo.social),
-  foundingDate: '2010',
-  numberOfEmployees: {
-    '@type': 'QuantitativeValue',
-    minValue: 50,
-    maxValue: 100,
-  },
-  slogan: locale === 'ar' 
-    ? 'حماية احترافية من الصواعق بمعايير عالمية' 
-    : 'Professional Lightning Protection with Global Standards',
 });
 
 /**
  * LocalBusiness Schema - للأعمال المحلية
+ * تم دمج خصائص Organization الهامة هنا لتقديم كيان واحد قوي
  */
 export const getLocalBusinessSchema = (locale = 'ar') => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${companyInfo.urls.website}/#localbusiness`,
   name: companyInfo.name[locale],
-  image: companyInfo.urls.logo,
+  alternateName: companyInfo.name.brand,
+  image: {
+    '@type': 'ImageObject',
+    url: companyInfo.urls.logo,
+    width: 512,
+    height: 512,
+  },
   url: companyInfo.urls.website,
   telephone: companyInfo.contact.phone.shortDisplay,
   email: companyInfo.contact.email.primary,
@@ -102,17 +77,29 @@ export const getLocalBusinessSchema = (locale = 'ar') => ({
     opens: schedule.opens,
     closes: schedule.closes,
   })),
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: companyInfo.stats.rating,
-    reviewCount: companyInfo.stats.reviewCount,
-    bestRating: 5,
-    worstRating: 1,
-  },
+  // وتمت إزالة AggregateRating لعدم وجود مراجعات مرئية على الموقع حالياً
+  // Google Policy: Reviews must be visible to users to use AggregateRating
   areaServed: companyInfo.serviceAreas.map((area) => ({
     '@type': 'City',
     name: area[locale],
   })),
+  sameAs: Object.values(companyInfo.social),
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: companyInfo.contact.phone.shortDisplay,
+      contactType: 'customer service',
+      availableLanguage: ['Arabic', 'English'],
+      areaServed: 'EG',
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: companyInfo.contact.phone.shortDisplay,
+      contactType: 'sales',
+      availableLanguage: ['Arabic', 'English'],
+      areaServed: 'EG',
+    },
+  ],
 });
 
 /**
@@ -240,7 +227,7 @@ export const getWebSiteSchema = (locale = 'ar') => ({
   name: companyInfo.name[locale],
   description: companyInfo.description.short[locale],
   publisher: {
-    '@id': `${companyInfo.urls.website}/#organization`,
+    '@id': `${companyInfo.urls.website}/#localbusiness`,
   },
   inLanguage: locale === 'ar' ? 'ar-EG' : 'en-US',
   potentialAction: {
@@ -267,7 +254,7 @@ export const getWebPageSchema = (page, locale = 'ar') => ({
     '@id': `${companyInfo.urls.website}/#website`,
   },
   about: {
-    '@id': `${companyInfo.urls.website}/#organization`,
+    '@id': `${companyInfo.urls.website}/#localbusiness`,
   },
   inLanguage: locale === 'ar' ? 'ar-EG' : 'en-US',
   datePublished: page.publishedAt,
@@ -275,7 +262,8 @@ export const getWebPageSchema = (page, locale = 'ar') => ({
 });
 
 /**
- * Product/Review Schema - للمنتجات والتقييمات
+ * Product Schema
+ * تمت إزالة التقييمات (AggregateRating) لعدم وجود مراجعات مرئية
  */
 export const getProductReviewSchema = (locale = 'ar') => ({
   '@context': 'https://schema.org',
@@ -286,20 +274,13 @@ export const getProductReviewSchema = (locale = 'ar') => ({
     '@type': 'Brand',
     name: companyInfo.name.brand,
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: companyInfo.stats.rating,
-    reviewCount: companyInfo.stats.reviewCount,
-    bestRating: 5,
-    worstRating: 1,
-  },
 });
 
 /**
  * دمج جميع الـ Schema في كائن واحد
+ * تم تحديثه لإرجاع LocalBusiness فقط (بدلاً من Organization + LocalBusiness) لمنع التكرار
  */
 export const getFullSchema = (locale = 'ar') => [
-  getOrganizationSchema(locale),
   getLocalBusinessSchema(locale),
   getWebSiteSchema(locale),
 ];
