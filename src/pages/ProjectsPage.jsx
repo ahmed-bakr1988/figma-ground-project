@@ -411,7 +411,7 @@ export default function ProjectsPage() {
             title: t('projectsPage.projects.mall.title'),
             category: 'Commercial',
             categoryLabel: t('projectsPage.categories.commercial.name'),
-            image: 'https://images.unsplash.com/photo-1567449303078-57ad995bd329?q=80&w=800',
+            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800',
             description: t('projectsPage.projects.mall.description'),
             fullDescription: t('projectsPage.projects.mall.fullDescription'),
             location: t('projectsPage.projects.mall.location'),

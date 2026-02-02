@@ -46,7 +46,7 @@ export default function ProjectsSection() {
       title: t('projects.items.mall.title'),
       category: 'Commercial',
       categoryLabel: t('projects.categories.commercial'),
-      image: 'https://images.unsplash.com/photo-1567449303078-57ad995bd329?q=80&w=600',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600',
       description: t('projects.items.mall.description')
     },
     {

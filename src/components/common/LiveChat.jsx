@@ -22,6 +22,10 @@ const TAWK_CONFIG = {
   WIDGET_ID: 'YOUR_WIDGET_ID' // e.g., '1h2i3j4k5l'
 };
 
+// Check if credentials are properly set
+const isValidConfig = TAWK_CONFIG.PROPERTY_ID !== 'YOUR_PROPERTY_ID' && 
+                     TAWK_CONFIG.WIDGET_ID !== 'YOUR_WIDGET_ID';
+
 // Custom attributes for branding
 const BRAND_CONFIG = {
   primaryColor: '#0E3A5D', // Navy
@@ -50,6 +54,9 @@ export default function LiveChat() {
   const currentLang = i18n.language || 'en';
 
   useEffect(() => {
+    // Skip loading if configuration is invalid (prevents 400 errors)
+    if (!isValidConfig) return;
+
     // Don't load in development if needed
     // if (process.env.NODE_ENV === 'development') return;
 

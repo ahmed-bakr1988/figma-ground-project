@@ -22,21 +22,10 @@
       imagesizes="100vw"
       fetchpriority="high"
     />
-    <!-- WebP fallback for browsers without AVIF support -->
-    <link 
-      rel="preload" 
-      as="image" 
-      type="image/webp" 
-      href="/assets/images/backgroundImage/hero-optimized.webp"
-      imagesrcset="/assets/images/backgroundImage/hero-optimized-mobile.webp 640w,
-                   /assets/images/backgroundImage/hero-optimized-tablet.webp 1024w,
-                   /assets/images/backgroundImage/hero-optimized.webp 1920w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
+    <!-- WebP fallback preload removed to prevent double download warnings in modern browsers -->
     
     <!-- ⚡ Critical: Preload fonts with display=swap (non-blocking) -->
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2" crossorigin />
+    <!-- Removed duplicate/brittle file preload for font to avoid warnings. Preconnect above is sufficient. -->
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/logo/logo.png" />

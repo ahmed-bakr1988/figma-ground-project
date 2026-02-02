@@ -22,21 +22,10 @@
       imagesizes="100vw"
       fetchpriority="high"
     />
-    <!-- WebP fallback for browsers without AVIF support -->
-    <link 
-      rel="preload" 
-      as="image" 
-      type="image/webp" 
-      href="./assets/images/backgroundImage/hero-optimized.webp"
-      imagesrcset="/assets/images/backgroundImage/hero-optimized-mobile.webp 640w,
-                   /assets/images/backgroundImage/hero-optimized-tablet.webp 1024w,
-                   /assets/images/backgroundImage/hero-optimized.webp 1920w"
-      imagesizes="100vw"
-      fetchpriority="high"
-    />
+    <!-- WebP fallback preload removed to prevent double download warnings in modern browsers -->
     
     <!-- ⚡ Critical: Preload fonts with display=swap (non-blocking) -->
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/cairo/v28/SLXVc1nY6HkvangtZmpQdkhzfH5lkSscQyyS4J0.woff2" crossorigin />
+    <!-- Removed duplicate/brittle file preload for font to avoid warnings. Preconnect above is sufficient. -->
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/logo/logo.png" />
@@ -200,7 +189,7 @@
       }
     }
     </script>
-    <script type="module" crossorigin src="./assets/js/index-D0dS5wru.js"></script>
+    <script type="module" crossorigin src="./assets/js/index-1fG4hszN.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/js/react-BDAXMsld.js">
     <link rel="modulepreload" crossorigin href="./assets/js/vendor-scheduler-ChIAAe2R.js">
     <link rel="modulepreload" crossorigin href="./assets/js/react-dom-B4NRmIP4.js">
@@ -210,7 +199,7 @@
     <link rel="modulepreload" crossorigin href="./assets/js/i18n-JeRspUu9.js">
     <link rel="modulepreload" crossorigin href="./assets/js/motion-B5Hd5cJf.js">
     <link rel="modulepreload" crossorigin href="./assets/js/http-4m6V5CeU.js">
-    <link rel="stylesheet" crossorigin href="./assets/css/index-C0qMHQyZ.css">
+    <link rel="stylesheet" crossorigin href="./assets/css/index-BG0o-bVI.css">
   </head>
   <body>
     <div id="root"></div>
