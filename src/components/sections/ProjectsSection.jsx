@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 export default function ProjectsSection() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
-  const [activeCategory, setActiveCategory] = React.useState('All');
+  const [activeCategory, setActiveCategory] = useState('All');
 
   const projects = [
     {

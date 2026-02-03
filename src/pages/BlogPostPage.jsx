@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
@@ -165,7 +165,7 @@ export default function BlogPostPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const isRTL = lang === 'ar';
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
 
   const post = blogPosts.find(p => p.slug === slug);
 

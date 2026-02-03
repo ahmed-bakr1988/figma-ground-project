@@ -9,7 +9,7 @@
  * Keywords: أنظمة التأريض، نظام التأريض الكهربائي، شركة تأريض في مصر
  */
 
-import React from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -473,7 +473,7 @@ export default function EarthingSystemsPage() {
   const data = pageData[locale];
 
   // FAQ state
-  const [openFAQ, setOpenFAQ] = React.useState(0);
+  const [openFAQ, setOpenFAQ] = useState(0);
 
   // SEO Data
   const seoTitle = locale === 'ar'
