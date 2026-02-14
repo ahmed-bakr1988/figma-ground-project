@@ -38,5 +38,11 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        // استخدام Handler المخصص
+        // معالجة استثناءات الـ API بشكل موحد
+        $exceptions->render(function (\Throwable $e, $request) {
+            if ($request->expectsJson() || $request->is('api/*')) {
+                $handler = new \App\Exceptions\Handler(app());
+                return $handler->render($request, $e);
+            }
+        });
     })->create();

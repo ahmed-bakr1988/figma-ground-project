@@ -3,6 +3,8 @@
 /**
  * Laravel - Web Entry Point
  * نقطة الدخول للتطبيق من الويب
+ * 
+ * يعمل سواء كان التطبيق في الجذر أو داخل مجلد api/ على cPanel
  */
 
 use Illuminate\Http\Request;

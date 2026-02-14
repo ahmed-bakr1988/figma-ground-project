@@ -75,15 +75,16 @@ return [
     | وقت التخزين المؤقت (بالثواني)
     |--------------------------------------------------------------------------
     */
-    'max_age' => 0,
+    'max_age' => 86400,
 
     /*
     |--------------------------------------------------------------------------
     | دعم الـ Credentials
     |--------------------------------------------------------------------------
     |
-    | مطلوب لإرسال الـ Cookies والـ Authentication headers
+    | false لأننا نستخدم Bearer Token فقط (بدون Cookies/Sessions)
+    | withCredentials: false في axios على الـ Frontend
     |
     */
-    'supports_credentials' => true,
+    'supports_credentials' => false,
 ];

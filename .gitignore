@@ -6,6 +6,18 @@ npm-debug.log*
 # Dependencies
 node_modules/
 
+# Backend vendor (Composer dependencies)
+backend/vendor/
+
+# Backend environment & caches
+backend/.env
+backend/storage/logs/*.log
+backend/storage/framework/cache/data/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*.php
+backend/bootstrap/cache/*.php
+!backend/bootstrap/cache/.gitkeep
+
 # Build output
 -dist/
 dist.zip/
@@ -15,6 +27,8 @@ dist-ssr/
 .vscode/*
 !.vscode/extensions.json
 .idea
+backend/.vscode/
+backend/.github/
 
 # OS files
 .DS_Store

@@ -5,9 +5,14 @@
 
     RewriteEngine On
 
-    # Handle Authorization Header
+    # Handle Authorization Header (مهم جداً لـ Bearer Token على cPanel)
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle when behind reverse proxy or subdirectory
+    RewriteCond %{HTTP:X-Forwarded-Proto} =https [OR]
+    RewriteCond %{HTTPS} on
+    RewriteRule .* - [E=HTTPS:on]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -19,3 +24,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# حماية ملفات البيئة
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>

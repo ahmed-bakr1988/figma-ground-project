@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
 
 /**
  * ================================
@@ -33,7 +31,7 @@ use Filament\Panel;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon|null $deleted_at
  */
-class User extends Authenticatable implements MustVerifyEmail, FilamentUser
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
@@ -182,27 +180,5 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
               ->orWhere('email', 'like', "%{$search}%")
               ->orWhere('company_name', 'like', "%{$search}%");
         });
-    }
-
-    // ================================
-    // Filament Methods
-    // ================================
-
-    /**
-     * التحقق من إمكانية دخول Filament Admin Panel
-     * فقط المستخدمين من نوع admin أو staff يمكنهم الدخول
-     */
-    public function canAccessPanel(Panel $panel): bool
-    {
-        // السماح فقط للـ admin و staff بالدخول للوحة التحكم
-        return in_array($this->role, ['admin', 'staff']) && $this->is_active;
-    }
-
-    /**
-     * الحصول على اسم المستخدم لـ Filament
-     */
-    public function getFilamentName(): string
-    {
-        return $this->name;
     }
 }
