@@ -9,9 +9,19 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ================================
  * Resource للخدمة
  * ================================
+ *
+ * @mixin \App\Models\Service
  */
 class ServiceResource extends JsonResource
 {
+    /**
+     * @param \App\Models\Service $resource
+     */
+    public function __construct($resource)
+    {
+        parent::__construct($resource);
+    }
+
     public function toArray(Request $request): array
     {
         $locale = app()->getLocale();
@@ -31,7 +41,7 @@ class ServiceResource extends JsonResource
             'starting_price' => $this->starting_price,
             'price_unit' => $this->price_unit,
             'formatted_price' => $this->starting_price 
-                ? number_format($this->starting_price, 0) . ' ' . $this->price_unit 
+                ? number_format((float) $this->starting_price, 0) . ' ' . $this->price_unit 
                 : null,
             'slug' => $this->slug,
             'is_featured' => $this->is_featured,

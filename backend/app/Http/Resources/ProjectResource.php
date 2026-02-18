@@ -9,6 +9,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ================================
  * Resource للمشروع
  * ================================
+ *
+ * @mixin \App\Models\Project
  */
 class ProjectResource extends JsonResource
 {
@@ -36,8 +38,8 @@ class ProjectResource extends JsonResource
             'project_type' => $isArabic ? $this->project_type_ar : $this->project_type_en,
             
             'dates' => [
-                'start_date' => $this->start_date?->format('Y-m-d'),
-                'completion_date' => $this->completion_date?->format('Y-m-d'),
+                'start_date' => $this->start_date ? \Carbon\Carbon::parse($this->start_date)->format('Y-m-d') : null,
+                'completion_date' => $this->completion_date ? \Carbon\Carbon::parse($this->completion_date)->format('Y-m-d') : null,
                 'duration_days' => $this->duration_days,
             ],
             

@@ -24,11 +24,12 @@ return [
     | الحراس (Guards)
     |--------------------------------------------------------------------------
     |
-    | استخدام 'api' guard بدلاً من 'web' لـ Bearer Token authentication
-    | 'web' guard يفعّل sessions/cookies مما يسبب تضارب مع CSRF
+    | الحارس الاحتياطي عند عدم وجود Bearer Token
+    | يجب أن يكون 'web' (session) وليس 'api' لأن 'api' يستخدم sanctum driver
+    | مما يسبب حلقة لانهائية: sanctum → api → sanctum → api → ...
     |
     */
-    'guard' => ['api'],
+    'guard' => ['web'],
 
     /*
     |--------------------------------------------------------------------------

@@ -146,8 +146,16 @@ export function useFormSubmit() {
       // رسالة خطأ واضحة للمستخدم
       let message = 'حدث خطأ أثناء الإرسال';
       if (err.response?.status === 422) {
-        // خطأ في التحقق من الصحة
-        message = err.response?.data?.message || 'بيانات غير صحيحة. يرجى التحقق من النموذج';
+        // خطأ في التحقق من الصحة - عرض تفاصيل الحقول الفاشلة
+        const fieldErrors = err.response?.data?.errors;
+        if (fieldErrors && Object.keys(fieldErrors).length > 0) {
+          const details = Object.entries(fieldErrors)
+            .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+            .join(' | ');
+          message = details;
+        } else {
+          message = err.response?.data?.message || 'بيانات غير صحيحة. يرجى التحقق من النموذج';
+        }
       } else if (err.response?.status === 500) {
         message = 'خطأ في الخادم. يرجى محاولة لاحقاً';
       } else if (err.response?.status === 0 || !err.response?.status) {

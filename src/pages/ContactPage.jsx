@@ -240,7 +240,8 @@ export default function ContactPage() {
       return;
     }
 
-    if (!formData.email.trim() || !formData.email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
       alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
       return;
     }
@@ -250,15 +251,18 @@ export default function ContactPage() {
       return;
     }
 
+    const sanitize = (str) => str.replace(/<[^>]*>/g, '');
     const submitData = {
-      name: `${formData.firstName} ${formData.lastName}`.trim(),
-      email: formData.email,
-      phone: formData.phone,
-      service: formData.service,
-      message: formData.message
+      name: sanitize(`${formData.firstName} ${formData.lastName}`.trim()),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      subject: sanitize(formData.service || (locale === 'ar' ? 'استفسار عام' : 'General Inquiry')),
+      message: sanitize(formData.message.trim()),
+      message_type: 'general',
+      source_page: 'contact_page',
+      preferred_language: i18n.language?.substring(0, 2) || 'ar'
     };
 
-    console.log('جارٍ إرسال البيانات من صفحة التواصل:', submitData);
     await sendMessage(submitData);
   };
 

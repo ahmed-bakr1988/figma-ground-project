@@ -55,7 +55,8 @@ export default function ContactSection() {
       return;
     }
     
-    if (!formData.email.trim() || !formData.email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
       alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
       return;
     }
@@ -66,18 +67,18 @@ export default function ContactSection() {
     }
     
     // تحضير البيانات للإرسال
+    const sanitize = (str) => str.replace(/<[^>]*>/g, '');
     const submitData = {
-      name: `${formData.firstName} ${formData.lastName}`.trim(),
+      name: sanitize(`${formData.firstName} ${formData.lastName}`.trim()),
       email: formData.email.trim(),
       phone: formData.phone.trim(),
-      subject: formData.service || t('contact.form.generalInquiry', 'استفسار عام'),
-      message: formData.message.trim(),
+      subject: sanitize(formData.service || t('contact.form.generalInquiry', 'استفسار عام')),
+      message: sanitize(formData.message.trim()),
       message_type: 'general',
       source_page: 'home_contact_section',
-      preferred_language: i18n.language
+      preferred_language: i18n.language?.substring(0, 2) || 'ar'
     };
 
-    console.log('جارٍ إرسال البيانات من قسم التواصل:', submitData);
     await sendMessage(submitData);
   };
 

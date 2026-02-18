@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * ================================
  * نموذج المشروع
  * ================================
+ *
+ * @property \Carbon\Carbon|null $start_date
+ * @property \Carbon\Carbon|null $completion_date
+ * @property string|null $project_value
  */
 class Project extends Model
 {
@@ -103,7 +107,7 @@ class Project extends Model
     public function getFormattedValueAttribute(): string
     {
         if (!$this->project_value) return '';
-        return number_format($this->project_value, 0) . ' ' . $this->value_unit;
+        return number_format((float) $this->project_value, 0) . ' ' . $this->value_unit;
     }
 
     // ================================

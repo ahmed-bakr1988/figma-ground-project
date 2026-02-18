@@ -9,6 +9,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ================================
  * Resource للأسئلة الشائعة
  * ================================
+ *
+ * @mixin \App\Models\Faq
  */
 class FaqResource extends JsonResource
 {

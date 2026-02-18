@@ -9,6 +9,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ================================
  * Resource للمقال
  * ================================
+ *
+ * @mixin \App\Models\BlogPost
  */
 class BlogPostResource extends JsonResource
 {

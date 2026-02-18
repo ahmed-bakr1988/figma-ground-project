@@ -24,7 +24,7 @@ class Handler extends ExceptionHandler
      * الاستثناءات التي لا يتم تسجيلها
      */
     protected $dontReport = [
-        //
+        AuthenticationException::class,
     ];
 
     /**
@@ -47,12 +47,12 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * عرض الاستثناء كـ JSON للـ API
+     * عرض الاستثناء كـ JSON للـ API و Admin
      */
     public function render($request, Throwable $e)
     {
-        // التأكد من أن الطلب للـ API
-        if ($request->expectsJson() || $request->is('api/*')) {
+        // التأكد من أن الطلب للـ API أو Admin
+        if ($request->expectsJson() || $request->is('api/*') || $request->is('admin/*')) {
             return $this->handleApiException($request, $e);
         }
 
@@ -113,20 +113,17 @@ class Handler extends ExceptionHandler
 
     /**
      * معالجة استثناء المصادقة
+     * التطبيق SPA - جميع المسارات ترجع JSON 401
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($request->expectsJson() || $request->is('api/*')) {
-            return response()->json([
-                'success' => false,
-                'message' => 'غير مصرح لك بالوصول. يرجى تسجيل الدخول.',
-                'errors' => [],
-                'meta' => [
-                    'timestamp' => now()->toIso8601String(),
-                ],
-            ], 401);
-        }
-
-        return redirect()->guest(route('login'));
+        return response()->json([
+            'success' => false,
+            'message' => 'غير مصرح لك بالوصول. يرجى تسجيل الدخول.',
+            'errors' => [],
+            'meta' => [
+                'timestamp' => now()->toIso8601String(),
+            ],
+        ], 401);
     }
 }

@@ -132,18 +132,20 @@ export default function HeroSection() {
   // ⚡ Optimized: Use requestAnimationFrame for smooth transitions
   // Auto-rotate images every 5 seconds (only after initial paint)
   useEffect(() => {
+    let interval;
     // Delay carousel start to not interfere with LCP
     const startDelay = setTimeout(() => {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setCurrentImageIndex((prevIndex) =>
           (prevIndex + 1) % HERO_IMAGES.length
         );
       }, 5000);
-
-      return () => clearInterval(interval);
     }, 2000); // Start carousel 2s after mount
 
-    return () => clearTimeout(startDelay);
+    return () => {
+      clearTimeout(startDelay);
+      if (interval) clearInterval(interval);
+    };
   }, []);
 
   // إعادة تعيين رسالة النجاح بعد 5 ثوانٍ
@@ -179,7 +181,8 @@ export default function HeroSection() {
       return;
     }
 
-    if (!formData.email.trim() || !formData.email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
       alert(t('contact.form.emailError', 'البريد الإلكتروني مطلوب وغير صحيح'));
       return;
     }
@@ -190,18 +193,17 @@ export default function HeroSection() {
     }
 
     // تحضير البيانات للإرسال
+    const sanitize = (str) => str.replace(/<[^>]*>/g, '');
     const submitData = {
-      name: formData.name.trim(),
+      name: sanitize(formData.name.trim()),
       email: formData.email.trim(),
       phone: formData.phone.trim(),
-      subject: formData.service || t('contact.form.quickInquiry', 'استفسار سريع'),
-      message: formData.message.trim(),
+      subject: sanitize(formData.service || t('contact.form.quickInquiry', 'استفسار سريع')),
+      message: sanitize(formData.message.trim()),
       message_type: 'general',
       source_page: 'hero_section',
-      preferred_language: i18n.language
+      preferred_language: i18n.language?.substring(0, 2) || 'ar'
     };
-
-    console.log('جارٍ إرسال البيانات:', submitData);
 
     await sendMessage(submitData);
   };

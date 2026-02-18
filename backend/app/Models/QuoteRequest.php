@@ -53,7 +53,7 @@ class QuoteRequest extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function handler()
+    public function handledBy()
     {
         return $this->belongsTo(User::class, 'handled_by');
     }
@@ -65,13 +65,13 @@ class QuoteRequest extends Model
     public function getFormattedBudgetAttribute(): string
     {
         if (!$this->estimated_budget) return 'غير محدد';
-        return number_format($this->estimated_budget, 0) . ' ' . $this->budget_unit;
+        return number_format((float) $this->estimated_budget, 0) . ' ' . $this->budget_unit;
     }
 
     public function getFormattedQuoteAttribute(): string
     {
         if (!$this->quoted_amount) return '';
-        return number_format($this->quoted_amount, 0) . ' ' . $this->budget_unit;
+        return number_format((float) $this->quoted_amount, 0) . ' ' . $this->budget_unit;
     }
 
     public function getStatusLabelAttribute(): string

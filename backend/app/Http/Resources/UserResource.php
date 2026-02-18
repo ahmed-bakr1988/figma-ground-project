@@ -9,8 +9,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ================================
  * Resource للمستخدم
  * ================================
- * 
+ *
  * يحدد البيانات التي يتم إرجاعها للمستخدم
+ *
+ * @mixin \App\Models\User
  */
 class UserResource extends JsonResource
 {

@@ -30,7 +30,8 @@ class ForgotPasswordRequest extends FormRequest
         return [
             'email.required' => 'البريد الإلكتروني مطلوب',
             'email.email' => 'يرجى إدخال بريد إلكتروني صحيح',
-            'email.exists' => 'البريد الإلكتروني غير مسجل',
+            // لا نكشف ما إذا كان البريد مسجلاً أم لا - حماية من user enumeration
+            'email.exists' => 'إذا كان البريد مسجلاً ستصلك رسالة إعادة التعيين',
         ];
     }
 

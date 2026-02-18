@@ -18,6 +18,16 @@ class NewsletterRequest extends FormRequest
         return true;
     }
 
+    /**
+     * تنظيف المدخلات قبل التحقق (XSS)
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'name' => $this->name ? strip_tags($this->name) : $this->name,
+        ]);
+    }
+
     public function rules(): array
     {
         return [

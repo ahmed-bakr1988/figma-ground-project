@@ -18,6 +18,27 @@ class QuoteRequest extends FormRequest
         return true;
     }
 
+    /**
+     * تنظيف المدخلات قبل التحقق (XSS)
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'name' => $this->name ? strip_tags($this->name) : $this->name,
+            'company_name' => $this->company_name ? strip_tags($this->company_name) : $this->company_name,
+            'project_location' => $this->project_location ? strip_tags($this->project_location) : $this->project_location,
+            'project_description' => $this->project_description ? strip_tags($this->project_description) : $this->project_description,
+            'service_type_other' => $this->service_type_other ? strip_tags($this->service_type_other) : $this->service_type_other,
+        ]);
+
+        // تطبيع اللغة
+        if ($this->preferred_language && strlen($this->preferred_language) > 2) {
+            $this->merge([
+                'preferred_language' => substr($this->preferred_language, 0, 2),
+            ]);
+        }
+    }
+
     public function rules(): array
     {
         return [

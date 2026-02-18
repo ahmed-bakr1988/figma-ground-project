@@ -22,6 +22,17 @@ class RegisterRequest extends FormRequest
     }
 
     /**
+     * تنظيف المدخلات قبل التحقق (XSS)
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'name' => $this->name ? strip_tags($this->name) : $this->name,
+            'company_name' => $this->company_name ? strip_tags($this->company_name) : $this->company_name,
+        ]);
+    }
+
+    /**
      * قواعد التحقق
      */
     public function rules(): array

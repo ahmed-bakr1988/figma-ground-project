@@ -9,6 +9,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * ================================
  * Resource للشهادات
  * ================================
+ *
+ * @mixin \App\Models\Testimonial
  */
 class TestimonialResource extends JsonResource
 {

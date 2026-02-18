@@ -321,16 +321,61 @@ export const contactService = {
 /**
  * طبقة الإدارة المركزية - Admin AJAX Layer
  * تدعم CRUD كامل لجميع الموارد مع RBAC
+ * تستخدم adminApi (مسار /admin على web routes) بدلاً من api (مسار /api)
  */
+
+// ================================
+// إعداد Axios للإدارة (Web Routes)
+// ================================
+const adminApi = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000',
+  timeout: 30000,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+  },
+  withCredentials: false, // نستخدم Bearer Token فقط
+});
+
+// إضافة Token تلقائياً لطلبات الإدارة
+adminApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('auth_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    const language = localStorage.getItem('i18nextLng') || 'ar';
+    config.headers['Accept-Language'] = language;
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// معالجة الاستجابات والأخطاء للإدارة
+adminApi.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem('auth_token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
+    }
+    if (error.response?.status === 503) {
+      window.location.href = '/maintenance';
+    }
+    return Promise.reject(error);
+  }
+);
 
 // إحصائيات لوحة التحكم
 export const adminDashboardService = {
   getStats: async () => {
-    const response = await api.get('/admin/dashboard/stats');
+    const response = await adminApi.get('/admin/dashboard/stats');
     return response.data;
   },
   getRecentActivity: async () => {
-    const response = await api.get('/admin/dashboard/activity');
+    const response = await adminApi.get('/admin/dashboard/activity');
     return response.data;
   },
 };
@@ -338,35 +383,35 @@ export const adminDashboardService = {
 // إدارة الخدمات
 export const adminServicesService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/services', { params });
+    const response = await adminApi.get('/admin/services', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/services/${id}`);
+    const response = await adminApi.get(`/admin/services/${id}`);
     return response.data;
   },
   create: async (data) => {
-    const response = await api.post('/admin/services', data);
+    const response = await adminApi.post('/admin/services', data);
     return response.data;
   },
   update: async (id, data) => {
-    const response = await api.put(`/admin/services/${id}`, data);
+    const response = await adminApi.put(`/admin/services/${id}`, data);
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/services/${id}`);
+    const response = await adminApi.delete(`/admin/services/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/services/${id}/restore`);
+    const response = await adminApi.post(`/admin/services/${id}/restore`);
     return response.data;
   },
   toggleActive: async (id) => {
-    const response = await api.patch(`/admin/services/${id}/toggle-active`);
+    const response = await adminApi.patch(`/admin/services/${id}/toggle-active`);
     return response.data;
   },
   toggleFeatured: async (id) => {
-    const response = await api.patch(`/admin/services/${id}/toggle-featured`);
+    const response = await adminApi.patch(`/admin/services/${id}/toggle-featured`);
     return response.data;
   },
 };
@@ -374,35 +419,35 @@ export const adminServicesService = {
 // إدارة المشاريع
 export const adminProjectsService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/projects', { params });
+    const response = await adminApi.get('/admin/projects', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/projects/${id}`);
+    const response = await adminApi.get(`/admin/projects/${id}`);
     return response.data;
   },
   create: async (data) => {
-    const response = await api.post('/admin/projects', data);
+    const response = await adminApi.post('/admin/projects', data);
     return response.data;
   },
   update: async (id, data) => {
-    const response = await api.put(`/admin/projects/${id}`, data);
+    const response = await adminApi.put(`/admin/projects/${id}`, data);
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/projects/${id}`);
+    const response = await adminApi.delete(`/admin/projects/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/projects/${id}/restore`);
+    const response = await adminApi.post(`/admin/projects/${id}/restore`);
     return response.data;
   },
   toggleActive: async (id) => {
-    const response = await api.patch(`/admin/projects/${id}/toggle-active`);
+    const response = await adminApi.patch(`/admin/projects/${id}/toggle-active`);
     return response.data;
   },
   toggleFeatured: async (id) => {
-    const response = await api.patch(`/admin/projects/${id}/toggle-featured`);
+    const response = await adminApi.patch(`/admin/projects/${id}/toggle-featured`);
     return response.data;
   },
 };
@@ -410,35 +455,35 @@ export const adminProjectsService = {
 // إدارة المقالات
 export const adminBlogService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/blog-posts', { params });
+    const response = await adminApi.get('/admin/blog-posts', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/blog-posts/${id}`);
+    const response = await adminApi.get(`/admin/blog-posts/${id}`);
     return response.data;
   },
   create: async (data) => {
-    const response = await api.post('/admin/blog-posts', data);
+    const response = await adminApi.post('/admin/blog-posts', data);
     return response.data;
   },
   update: async (id, data) => {
-    const response = await api.put(`/admin/blog-posts/${id}`, data);
+    const response = await adminApi.put(`/admin/blog-posts/${id}`, data);
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/blog-posts/${id}`);
+    const response = await adminApi.delete(`/admin/blog-posts/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/blog-posts/${id}/restore`);
+    const response = await adminApi.post(`/admin/blog-posts/${id}/restore`);
     return response.data;
   },
   togglePublished: async (id) => {
-    const response = await api.patch(`/admin/blog-posts/${id}/toggle-published`);
+    const response = await adminApi.patch(`/admin/blog-posts/${id}/toggle-published`);
     return response.data;
   },
   toggleFeatured: async (id) => {
-    const response = await api.patch(`/admin/blog-posts/${id}/toggle-featured`);
+    const response = await adminApi.patch(`/admin/blog-posts/${id}/toggle-featured`);
     return response.data;
   },
 };
@@ -446,35 +491,35 @@ export const adminBlogService = {
 // إدارة الأسئلة الشائعة
 export const adminFaqService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/faqs', { params });
+    const response = await adminApi.get('/admin/faqs', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/faqs/${id}`);
+    const response = await adminApi.get(`/admin/faqs/${id}`);
     return response.data;
   },
   create: async (data) => {
-    const response = await api.post('/admin/faqs', data);
+    const response = await adminApi.post('/admin/faqs', data);
     return response.data;
   },
   update: async (id, data) => {
-    const response = await api.put(`/admin/faqs/${id}`, data);
+    const response = await adminApi.put(`/admin/faqs/${id}`, data);
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/faqs/${id}`);
+    const response = await adminApi.delete(`/admin/faqs/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/faqs/${id}/restore`);
+    const response = await adminApi.post(`/admin/faqs/${id}/restore`);
     return response.data;
   },
   toggleActive: async (id) => {
-    const response = await api.patch(`/admin/faqs/${id}/toggle-active`);
+    const response = await adminApi.patch(`/admin/faqs/${id}/toggle-active`);
     return response.data;
   },
   reorder: async (items) => {
-    const response = await api.post('/admin/faqs/reorder', { items });
+    const response = await adminApi.post('/admin/faqs/reorder', { items });
     return response.data;
   },
 };
@@ -482,36 +527,36 @@ export const adminFaqService = {
 // إدارة رسائل التواصل
 export const adminContactService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/contact-messages', { params });
+    const response = await adminApi.get('/admin/contact-messages', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/contact-messages/${id}`);
+    const response = await adminApi.get(`/admin/contact-messages/${id}`);
     return response.data;
   },
   updateStatus: async (id, status, adminNotes = null) => {
-    const response = await api.patch(`/admin/contact-messages/${id}/status`, {
+    const response = await adminApi.patch(`/admin/contact-messages/${id}/status`, {
       status,
       admin_notes: adminNotes,
     });
     return response.data;
   },
   addNotes: async (id, notes) => {
-    const response = await api.patch(`/admin/contact-messages/${id}/notes`, {
+    const response = await adminApi.patch(`/admin/contact-messages/${id}/notes`, {
       admin_notes: notes,
     });
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/contact-messages/${id}`);
+    const response = await adminApi.delete(`/admin/contact-messages/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/contact-messages/${id}/restore`);
+    const response = await adminApi.post(`/admin/contact-messages/${id}/restore`);
     return response.data;
   },
   bulkUpdateStatus: async (ids, status) => {
-    const response = await api.post('/admin/contact-messages/bulk-status', { ids, status });
+    const response = await adminApi.post('/admin/contact-messages/bulk-status', { ids, status });
     return response.data;
   },
 };
@@ -519,15 +564,15 @@ export const adminContactService = {
 // إدارة طلبات عروض الأسعار
 export const adminQuoteService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/quote-requests', { params });
+    const response = await adminApi.get('/admin/quote-requests', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/quote-requests/${id}`);
+    const response = await adminApi.get(`/admin/quote-requests/${id}`);
     return response.data;
   },
   updateStatus: async (id, status, quotedAmount = null, quoteNotes = null) => {
-    const response = await api.patch(`/admin/quote-requests/${id}/status`, {
+    const response = await adminApi.patch(`/admin/quote-requests/${id}/status`, {
       status,
       quoted_amount: quotedAmount,
       quote_notes: quoteNotes,
@@ -535,22 +580,22 @@ export const adminQuoteService = {
     return response.data;
   },
   addQuote: async (id, amount, notes = null) => {
-    const response = await api.post(`/admin/quote-requests/${id}/quote`, {
+    const response = await adminApi.post(`/admin/quote-requests/${id}/quote`, {
       quoted_amount: amount,
       quote_notes: notes,
     });
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/quote-requests/${id}`);
+    const response = await adminApi.delete(`/admin/quote-requests/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/quote-requests/${id}/restore`);
+    const response = await adminApi.post(`/admin/quote-requests/${id}/restore`);
     return response.data;
   },
   bulkUpdateStatus: async (ids, status) => {
-    const response = await api.post('/admin/quote-requests/bulk-status', { ids, status });
+    const response = await adminApi.post('/admin/quote-requests/bulk-status', { ids, status });
     return response.data;
   },
 };
@@ -558,31 +603,31 @@ export const adminQuoteService = {
 // إدارة المستخدمين (admin فقط)
 export const adminUsersService = {
   getAll: async (params = {}) => {
-    const response = await api.get('/admin/users', { params });
+    const response = await adminApi.get('/admin/users', { params });
     return response.data;
   },
   getById: async (id) => {
-    const response = await api.get(`/admin/users/${id}`);
+    const response = await adminApi.get(`/admin/users/${id}`);
     return response.data;
   },
   create: async (data) => {
-    const response = await api.post('/admin/users', data);
+    const response = await adminApi.post('/admin/users', data);
     return response.data;
   },
   update: async (id, data) => {
-    const response = await api.put(`/admin/users/${id}`, data);
+    const response = await adminApi.put(`/admin/users/${id}`, data);
     return response.data;
   },
   delete: async (id) => {
-    const response = await api.delete(`/admin/users/${id}`);
+    const response = await adminApi.delete(`/admin/users/${id}`);
     return response.data;
   },
   restore: async (id) => {
-    const response = await api.post(`/admin/users/${id}/restore`);
+    const response = await adminApi.post(`/admin/users/${id}/restore`);
     return response.data;
   },
   toggleActive: async (id) => {
-    const response = await api.patch(`/admin/users/${id}/toggle-active`);
+    const response = await adminApi.patch(`/admin/users/${id}/toggle-active`);
     return response.data;
   },
 };

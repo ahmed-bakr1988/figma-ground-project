@@ -18,11 +18,16 @@ return Application::configure(basePath: dirname(__DIR__))
         apiPrefix: 'api',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // إعادة CSRF إلا لجميع مسارات الـ API
-        // الـ API تستخدم Bearer Tokens، لا تحتاج CSRF protection
+        // استثناء مسارات الـ API و Admin من CSRF
+        // كلاهما يستخدم Bearer Tokens، لا يحتاج CSRF protection
         $middleware->validateCsrfTokens(except: [
             'api/*',
+            'admin/*',
         ]);
+
+        // مسارات admin و API تعمل بدون redirect (ترجع 401 JSON)
+        // التطبيق SPA بالكامل، لا يوجد صفحة login على الباك إند
+        $middleware->redirectGuestsTo(fn () => null);
 
         // إضافة Security Headers لجميع الطلبات
         $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
@@ -38,9 +43,19 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        // معالجة استثناءات الـ API بشكل موحد
+        // معالجة خطأ المصادقة - إرجاع 401 JSON مباشرة (بدون logging ثقيل)
+        $exceptions->render(function (\Illuminate\Auth\AuthenticationException $e, $request) {
+            return response()->json([
+                'success' => false,
+                'message' => 'غير مصرح لك بالوصول - يرجى تسجيل الدخول',
+                'errors' => [],
+                'meta' => ['timestamp' => now()->toIso8601String()],
+            ], 401);
+        });
+
+        // معالجة استثناءات الـ API و Admin بشكل موحد (JSON responses)
         $exceptions->render(function (\Throwable $e, $request) {
-            if ($request->expectsJson() || $request->is('api/*')) {
+            if ($request->expectsJson() || $request->is('api/*') || $request->is('admin/*')) {
                 $handler = new \App\Exceptions\Handler(app());
                 return $handler->render($request, $e);
             }
