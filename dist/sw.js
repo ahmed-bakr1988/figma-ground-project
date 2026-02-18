@@ -10,7 +10,7 @@
  * @author Ground Tech Egypt
  */
 
-const CACHE_VERSION = 'ground-tech-v2';
+const CACHE_VERSION = 'ground-tech-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
 const FONT_CACHE = `${CACHE_VERSION}-fonts`;
@@ -169,8 +169,10 @@ async function staleWhileRevalidate(request, cacheName) {
   
   const fetchPromise = fetch(request).then((response) => {
     if (response.ok) {
+      // Clone immediately before body can be consumed
+      const responseClone = response.clone();
       caches.open(cacheName).then((cache) => {
-        cache.put(request, response.clone());
+        cache.put(request, responseClone);
       });
     }
     return response;

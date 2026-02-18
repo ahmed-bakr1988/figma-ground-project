@@ -17,6 +17,8 @@ export default defineConfig({
       ext: '.br', 
       threshold: 512, // Compress files > 512 bytes
       deleteOriginFile: false,
+      // Fix for Windows: use relative path to avoid nested C:/ path bug
+      filename: '[path][base][ext]',
     }),
     // ⚡ Generate gzip as fallback for older servers
     viteCompression({ 
@@ -24,6 +26,8 @@ export default defineConfig({
       ext: '.gz', 
       threshold: 512,
       deleteOriginFile: false,
+      // Fix for Windows: use relative path to avoid nested C:/ path bug
+      filename: '[path][base][ext]',
     }),
   ],
   server: {
