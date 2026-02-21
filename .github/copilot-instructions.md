@@ -2,71 +2,48 @@
 
 ## 🏗️ Architecture Overview
 
-**Full-stack bilingual (Arabic/English) SPA** for a lightning protection company.
+**Static bilingual (Arabic/English) SPA** for a lightning protection company.
+Contact forms submit to **Google Sheets** via Google Apps Script.
 
 ```
-Frontend (React 18 + Vite)  →  Backend API (Laravel 11 + Sanctum)  →  MySQL
-       ↓                              ↓
-   localhost:3000               localhost:8000/api
-                                       ↓
-                            Filament Admin Panel
-                               localhost:8000/admin
+Frontend (React 18 + Vite)  →  Google Sheets (via Apps Script)
+       ↓
+   localhost:3000 (dev)
+   Netlify/Vercel (prod)
 ```
 
-### Authentication (CRITICAL)
-- **API:** Bearer token ONLY (`Authorization: Bearer {token}`) - NO cookies/sessions/CSRF
-- **Filament Admin:** Session-based with CSRF (separate `web` guard)
-- Config: `withCredentials: false` in axios - NEVER change this
+### No Backend
+- No Laravel, no MySQL, no authentication
+- All content is static (hardcoded or in `src/data/` files)
+- Contact forms send data to Google Sheets via `fetch()`
 
 ## 📁 Key Files & Patterns
 
 ### Frontend Structure
 ```
 src/
-├── services/api.js       # Axios + all API service objects
-├── services/hooks.js     # useFetch(), useServices(), etc. - ALWAYS use these
+├── services/api.js       # Google Sheets contact API (fetch-based)
+├── services/hooks.js     # useContactForm(), useNewsletterSubscribe()
+├── services/emailService.js  # Validation helpers
 ├── config/companyInfo.js # Company data + SEO titles (single source of truth)
 ├── config/seoSchema.js   # Schema.org generators (Organization, FAQ, etc.)
 ├── components/common/SEOHead.jsx  # Dynamic meta tags + schema injection
+├── data/blogPosts.js     # Static blog posts (bilingual)
+├── data/caseStudies.js   # Static case studies (bilingual)
 ├── pages/                # Top-level pages (*Page.jsx)
 └── pages/services/       # Service pillar pages (e.g., EarthingSystemsPage.jsx)
 ```
 
-**Pattern - Custom hooks for data fetching:**
+**Pattern - Contact form hooks:**
 ```javascript
 // ✅ Always use hooks from services/hooks.js
-const { data, loading, error } = useServices({ featured: true });
-const { data } = useFetch(() => servicesService.getAll(), []);
+const { loading, error, success, sendMessage, reset } = useContactForm();
+const { loading, error, success, subscribe, reset } = useNewsletterSubscribe();
 
-// ❌ Never call API directly in components
-```
-
-### Backend Structure
-```
-backend/app/
-├── Traits/ApiResponseTrait.php   # MANDATORY in all controllers
-├── Http/Controllers/Api/         # API endpoints
-├── Http/Middleware/SetCacheHeaders.php  # Cache-Control for API responses
-└── Models/                       # Eloquent with SoftDeletes + bilingual accessors
-```
-
-**API Response Pattern:**
-```php
-use App\Traits\ApiResponseTrait;  // Required in every controller
-return $this->successResponse($data, 'رسالة', 200);
-return $this->paginatedResponse(Service::paginate(15));
+// ❌ Never call contactService directly in components
 ```
 
 ## 🌐 Bilingual Content
-
-**Database:** Separate columns, NOT JSON:
-```php
-// Model
-protected $fillable = ['title_ar', 'title_en', 'description_ar', 'description_en'];
-public function getTitleAttribute(): string {
-    return app()->getLocale() === 'ar' ? $this->title_ar : $this->title_en;
-}
-```
 
 **Frontend:** Use `i18n.language` to pick field:
 ```javascript
@@ -83,14 +60,13 @@ const title = i18n.language === 'ar' ? data.title_ar : data.title_en;
 import SEOHead from '../../components/common/SEOHead';
 import { getFAQSchema } from '../../config/seoSchema';
 
-// In component:
 const faqSchema = getFAQSchema(faqItems, locale);
 <SEOHead
   title="Page Title | Ground Tech"
   description="150+ chars description with CTA"
   url={`${companyInfo.urls.website}/services/service-slug`}
   breadcrumbs={[...]}
-  schema={faqSchema}  // FAQPage schema for rich results
+  schema={faqSchema}
 />
 ```
 
@@ -115,9 +91,7 @@ const NewServicePage = lazy(() => import('./pages/services/NewServicePage'));
 
 **Styling:** Tailwind CSS with RTL support
 ```jsx
-// RTL-aware spacing
 <div className={`${isRTL ? 'text-right pr-4' : 'text-left pl-4'}`}>
-// Or use modifiers: className="rtl:pr-4 ltr:pl-4"
 ```
 
 **Animations:** Framer Motion pattern:
@@ -132,35 +106,24 @@ const NewServicePage = lazy(() => import('./pages/services/NewServicePage'));
 ## 🛠️ Developer Commands
 
 ```bash
-# Frontend (project root)
 npm run dev        # Vite dev server (port 3000)
 npm run build      # Production build → dist/
-
-# Backend (backend/ directory)
-php artisan serve  # API server (port 8000)
-php artisan migrate:fresh --seed  # Reset DB with seed data
-
-# Development: Run both in separate terminals
+npm run preview    # Preview production build
 ```
 
 ## ⚠️ Critical Rules
 
-1. **Bearer Auth:** Never add CSRF/cookies to API - causes 419 errors
-2. **API Trait:** Every controller MUST use `ApiResponseTrait`
-3. **Hooks:** Never call API services directly in components
-4. **Bilingual:** Always provide both `_ar` and `_en` fields
+1. **No Backend:** This is a static site — no Laravel, no API server
+2. **Google Sheets:** Contact forms send to Google Sheets via Apps Script
+3. **Hooks:** Always use `useContactForm()` / `useNewsletterSubscribe()` from hooks.js
+4. **Bilingual:** All static content has both AR and EN versions
 5. **SEO:** New pages MUST update sitemap.xml + add to Navbar/Footer
-6. **Soft Deletes:** All models use SoftDeletes - nothing permanently deleted
-7. **Comments:** Backend comments in Arabic (client requirement)
+6. **No Auth:** No login, register, or user management
 
-## 🔌 API Quick Reference
+## 🔌 Environment Variables
 
-| Resource | Endpoint | Auth |
-|----------|----------|------|
-| Services | `GET /api/services?featured=1` | No |
-| Projects | `GET /api/projects` | No |
-| Contact | `POST /api/contact/message` | No |
-| Auth | `POST /api/auth/login` | No |
-| User | `GET /api/user` | Yes |
-
-Query params: `?featured=1`, `?search=term`, `?per_page=15`, `?all=1`
+| Variable | Purpose |
+|----------|---------|
+| `VITE_GOOGLE_SHEETS_URL` | Google Apps Script Web App URL for contact forms |
+| `VITE_APP_NAME` | Application name |
+| `VITE_APP_VERSION` | Version number |

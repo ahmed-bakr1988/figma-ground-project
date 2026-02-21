@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { useMobileMenu } from '../../context/MobileMenuContext';
 import Logo from '../common/Logo';
 import LanguageSwitcher from '../common/LanguageSwitcher';
-import UserMenu from '../common/UserMenu';
 import { Phone, Mail, ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import companyInfo from '../../config/companyInfo';
 
@@ -156,9 +155,14 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Desktop User Menu & Actions */}
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <UserMenu />
+            <Link
+              to="/contact"
+              className="bg-accent hover:bg-accent-dark text-primary px-6 py-2.5 rounded-lg font-bold transition-colors text-sm"
+            >
+              {t('nav.getQuote', 'احصل على عرض سعر')}
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

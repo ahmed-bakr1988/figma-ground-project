@@ -42,8 +42,6 @@ const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage'))
 const CaseStudyDetailPage = lazy(() => import('./pages/CaseStudyDetailPage'))
 const ProductsPage = lazy(() => import('./pages/ProductsPage'))
 const ToolsPage = lazy(() => import('./pages/ToolsPage'))
-const LoginPage = lazy(() => import('./pages/LoginPage'))
-const RegisterPage = lazy(() => import('./pages/RegisterPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 // Service Pages (Lazy Loaded)
@@ -113,8 +111,6 @@ function AppContent() {
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
           {/* 404 Page - يجب أن يكون آخر Route */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
