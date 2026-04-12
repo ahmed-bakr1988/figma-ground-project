@@ -47,6 +47,10 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 // Service Pages (Lazy Loaded)
 const EarthingSystemsPage = lazy(() => import('./pages/services/EarthingSystemsPage'))
 
+// Legal Pages (Lazy Loaded)
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'))
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'))
+
 function HomePage() {
   const { i18n } = useTranslation()
   const locale = i18n.language === 'ar' ? 'ar' : 'en'
@@ -111,6 +115,9 @@ function AppContent() {
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+          {/* Legal Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           {/* 404 Page - يجب أن يكون آخر Route */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

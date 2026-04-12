@@ -19,25 +19,31 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'ar',
+    supportedLngs: ['ar', 'en'],
+    load: 'languageOnly',
     debug: false,
     interpolation: {
       escapeValue: false
     },
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
+      lookupQuerystring: 'lang',
       caches: ['localStorage']
     }
   });
 
+const normalizeLanguage = (lng) => (lng || '').startsWith('en') ? 'en' : 'ar';
+
 // Function to update document direction based on language
 export const updateDirection = (lng) => {
-  const dir = lng === 'ar' ? 'rtl' : 'ltr';
+  const normalizedLanguage = normalizeLanguage(lng);
+  const dir = normalizedLanguage === 'ar' ? 'rtl' : 'ltr';
   document.documentElement.dir = dir;
-  document.documentElement.lang = lng;
+  document.documentElement.lang = normalizedLanguage;
   
   // Update body class for RTL-specific styles
-  if (lng === 'ar') {
+  if (normalizedLanguage === 'ar') {
     document.body.classList.add('rtl');
     document.body.classList.remove('ltr');
   } else {
@@ -46,12 +52,32 @@ export const updateDirection = (lng) => {
   }
 };
 
+export const syncLanguageUrl = (lng) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const normalizedLanguage = normalizeLanguage(lng);
+  const url = new URL(window.location.href);
+
+  if (normalizedLanguage === 'en') {
+    url.searchParams.set('lang', 'en');
+  } else {
+    url.searchParams.delete('lang');
+  }
+
+  const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+  window.history.replaceState(window.history.state, '', nextUrl || '/');
+};
+
 // Set initial direction
 updateDirection(i18n.language);
+syncLanguageUrl(i18n.language);
 
 // Listen for language changes
 i18n.on('languageChanged', (lng) => {
   updateDirection(lng);
+  syncLanguageUrl(lng);
 });
 
 export default i18n;

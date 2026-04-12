@@ -220,8 +220,8 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/50 text-sm text-center md:text-start">
               {t('footer.copyright')} |
-              <a href="#" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.privacy')}</a> |
-              <a href="#" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.terms')}</a>
+              <Link to="/privacy-policy" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.privacy')}</Link> |
+              <Link to="/terms-of-service" className={`hover:text-accent ${isRTL ? 'me-1' : 'ms-1'}`}>{t('footer.terms')}</Link>
             </p>
 
             <div className="flex items-center gap-4">

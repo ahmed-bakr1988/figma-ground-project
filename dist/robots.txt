@@ -7,20 +7,22 @@
 # Allow all legitimate crawlers
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.avif$
+Allow: /*.png$
 
 # Disallow admin and API routes
 Disallow: /admin/
 Disallow: /api/
 Disallow: /login
 Disallow: /register
-Disallow: /*.json$
 Disallow: /*?*token=
 
 # Sitemap location (Critical for SEO)
 Sitemap: https://ground-eg.com/sitemap.xml
-
-# Crawl delay (be nice to server)
-Crawl-delay: 1
 
 # ================================
 # Specific Bot Rules
@@ -29,7 +31,6 @@ Crawl-delay: 1
 # Google (Priority crawler)
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
 User-agent: Googlebot-Image
 Allow: /assets/images/
@@ -38,7 +39,6 @@ Allow: /assets/logo/
 # Bing
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 # ================================
 # Block Bad/Aggressive Bots

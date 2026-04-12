@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Home, ArrowRight, Search, AlertCircle } from 'lucide-react';
+import SEOHead from '../components/common/SEOHead';
 
 /**
  * ================================
@@ -21,8 +22,15 @@ export default function NotFoundPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary via-primary-dark to-gray-900 flex items-center justify-center p-4">
-      <div className="text-center max-w-2xl mx-auto">
+    <>
+      <SEOHead
+        title={isRTL ? 'الصفحة غير موجودة | جراوند تك مصر' : 'Page Not Found | Ground Tech Egypt'}
+        description={isRTL ? 'الصفحة المطلوبة غير موجودة. يمكنك العودة إلى الصفحة الرئيسية أو التواصل معنا.' : 'The requested page could not be found. You can return to the homepage or contact us.'}
+        noIndex
+      />
+
+      <div className="min-h-screen bg-gradient-to-br from-primary via-primary-dark to-gray-900 flex items-center justify-center p-4">
+        <div className="text-center max-w-2xl mx-auto">
         {/* الرقم 404 */}
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
@@ -93,7 +101,8 @@ export default function NotFoundPage() {
             </div>
           </div>
         </motion.div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

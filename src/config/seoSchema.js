@@ -225,19 +225,13 @@ export const getWebSiteSchema = (locale = 'ar') => ({
   '@id': `${companyInfo.urls.website}/#website`,
   url: companyInfo.urls.website,
   name: companyInfo.name[locale],
+  alternateName: companyInfo.name.brand,
   description: companyInfo.description.short[locale],
+  image: companyInfo.urls.ogImage,
   publisher: {
     '@id': `${companyInfo.urls.website}/#localbusiness`,
   },
   inLanguage: locale === 'ar' ? 'ar-EG' : 'en-US',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${companyInfo.urls.website}/search?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
 });
 
 /**

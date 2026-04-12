@@ -3,6 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var lang = params.get('lang') === 'en' ? 'en' : 'ar';
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      })();
+    </script>
     
     <!-- ⚡ Critical: Preconnect to external origins FIRST (before any other resources) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,8 +43,8 @@
     <link rel="manifest" href="./manifest.json" />
     
     <!-- ✅ SEO: Primary Meta Tags (Optimized) -->
-    <title>جراوند تك | أفضل شركة حماية من الصواعق في مصر - Ground Tech Egypt</title>
-    <meta name="description" content="جراوند تك - الشركة الرائدة في مصر لأنظمة الحماية من الصواعق والتأريض. أكثر من 10 سنوات خبرة، 2000+ مشروع ناجح. احصل على استشارة مجانية الآن! ☎ 01044044855" />
+    <title>جراوند تك مصر | أنظمة الحماية من الصواعق والتأريض</title>
+    <meta name="description" content="جراوند تك مصر متخصصة في أنظمة الحماية من الصواعق والتأريض وحماية زيادة الجهد للمنشآت السكنية والتجارية والصناعية في مصر." />
     <meta name="keywords" content="الحماية من الصواعق مصر, مانعات الصواعق, شركة تأريض, Ground Tech Egypt, جراوند تك, حماية المباني من البرق, Lightning Protection Egypt, نظام الأرضي, surge protection" />
     <meta name="author" content="Ground Tech Egypt - جراوند تك مصر" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -52,9 +60,11 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ground-eg.com/" />
     <meta property="og:site_name" content="جراوند تك - Ground Tech Egypt" />
-    <meta property="og:title" content="جراوند تك | أفضل شركة حماية من الصواعق في مصر" />
-    <meta property="og:description" content="متخصصون في أنظمة الحماية من الصواعق والتأريض للمنشآت السكنية والتجارية والصناعية. 10+ سنوات خبرة، معايير عالمية، ضمان شامل." />
-    <meta property="og:image" content="https://ground-eg.com/assets/images/og-image.jpg" />
+    <meta property="og:title" content="جراوند تك مصر | أنظمة الحماية من الصواعق والتأريض" />
+    <meta property="og:description" content="حلول احترافية للحماية من الصواعق والتأريض وحماية زيادة الجهد للمنشآت السكنية والتجارية والصناعية في مصر." />
+    <meta property="og:image" content="https://ground-eg.com/assets/images/og-image.webp" />
+    <meta property="og:image:secure_url" content="https://ground-eg.com/assets/images/og-image.webp" />
+    <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="جراوند تك - خدمات الحماية من الصواعق في مصر" />
@@ -65,9 +75,10 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@groundeg" />
     <meta name="twitter:creator" content="@groundeg" />
-    <meta name="twitter:title" content="جراوند تك | أفضل شركة حماية من الصواعق في مصر" />
-    <meta name="twitter:description" content="متخصصون في أنظمة الحماية من الصواعق والتأريض. 10+ سنوات خبرة، 2000+ مشروع ناجح." />
-    <meta name="twitter:image" content="https://ground-eg.com/assets/images/og-image.jpg" />
+    <meta name="twitter:title" content="جراوند تك مصر | أنظمة الحماية من الصواعق والتأريض" />
+    <meta name="twitter:description" content="حلول احترافية للحماية من الصواعق والتأريض وحماية زيادة الجهد في مصر." />
+    <meta name="twitter:image" content="https://ground-eg.com/assets/images/og-image.webp" />
+    <meta name="twitter:image:alt" content="جراوند تك مصر - خدمات الحماية من الصواعق والتأريض" />
     
     <!-- ✅ Theme & PWA -->
     <meta name="theme-color" content="#0E3A5D" />
@@ -144,9 +155,11 @@
         "addressCountry": "EG"
       },
       "sameAs": [
-        "https://www.facebook.com/groundtechegypt",
-        "https://www.linkedin.com/company/groundtechegypt",
-        "https://twitter.com/groundeg"
+        "https://www.facebook.com/groundeg",
+        "https://www.linkedin.com/company/groundeg",
+        "https://twitter.com/groundeg",
+        "https://www.instagram.com/groundeg",
+        "https://www.youtube.com/@groundeg"
       ]
     }
     </script>
@@ -158,7 +171,7 @@
       "@type": "LocalBusiness",
       "@id": "https://ground-eg.com/#localbusiness",
       "name": "جراوند تك - Ground Tech Egypt",
-      "image": "https://ground-eg.com/assets/logo/logo.png",
+      "image": "https://ground-eg.com/assets/images/og-image.webp",
       "priceRange": "$$",
       "telephone": "+201044044855",
       "email": "info@ground-eg.com",
@@ -175,11 +188,6 @@
         "longitude": 31.2357
       },
       "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
-          "opens": "08:00",
-          "closes": "18:00"
         }
       ],
       "aggregateRating": {
@@ -189,19 +197,19 @@
       }
     }
     </script>
-    <script type="module" crossorigin src="./assets/js/index-CSJweMPo.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/js/react-Bl8zAqnI.js">
+    <script type="module" crossorigin src="./assets/js/index-BvMeWuFH.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/js/react-CvdZbDti.js">
     <link rel="modulepreload" crossorigin href="./assets/js/vendor-scheduler-ChIAAe2R.js">
-    <link rel="modulepreload" crossorigin href="./assets/js/react-dom-CqRrKvkQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/js/react-dom-Cni5hmsj.js">
     <link rel="modulepreload" crossorigin href="./assets/js/vendor-@remix-run-DeS9vjM3.js">
-    <link rel="modulepreload" crossorigin href="./assets/js/router-BRceSKJ5.js">
+    <link rel="modulepreload" crossorigin href="./assets/js/router-BmnhCR7J.js">
     <link rel="modulepreload" crossorigin href="./assets/js/vendor-@babel-BezxJGGm.js">
-    <link rel="modulepreload" crossorigin href="./assets/js/i18n-C8VCcNmh.js">
-    <link rel="modulepreload" crossorigin href="./assets/js/motion-DRNFxNvy.js">
-    <link rel="stylesheet" crossorigin href="./assets/css/index-C8OcJR_T.css">
+    <link rel="modulepreload" crossorigin href="./assets/js/i18n-3RgEX_hd.js">
+    <link rel="modulepreload" crossorigin href="./assets/js/motion-DFRaa-gC.js">
+    <link rel="stylesheet" crossorigin href="./assets/css/index-YDRmUjwx.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
     
     <!-- ⚡ Deferred Google Analytics - Load after user interaction for better LCP -->
     <script>

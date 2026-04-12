@@ -38,7 +38,7 @@ const companyInfo = {
   urls: {
     website: 'https://ground-eg.com',
     logo: 'https://ground-eg.com/assets/logo/logo.png',
-    ogImage: 'https://ground-eg.com/assets/images/og-image.jpg',
+    ogImage: 'https://ground-eg.com/assets/images/og-image.webp',
   },
 
   // ================================
@@ -159,6 +159,8 @@ const companyInfo = {
   // SEO الكلمات المفتاحية
   // ================================
   seo: {
+    themeColor: '#0E3A5D',
+    twitterHandle: '@groundeg',
     keywords: {
       ar: [
         'حماية من الصواعق',

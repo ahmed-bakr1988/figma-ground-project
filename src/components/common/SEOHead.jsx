@@ -47,8 +47,14 @@ export default function SEOHead({
   const pageDescription = description || companyInfo.description.short[locale];
   const pageKeywords = keywords || companyInfo.seo.keywords[locale].join(', ');
   const pageImage = image || companyInfo.urls.ogImage;
-  const pageUrl = url || companyInfo.urls.website;
+  const pageUrl = url || getCurrentAbsolutePageUrl();
   const siteName = companyInfo.name[locale];
+  const pagePath = normalizePath(getPathFromUrl(pageUrl));
+  const alternateUrls = getAlternateUrls(pagePath);
+  const canonicalUrl = locale === 'en' ? alternateUrls.en : alternateUrls.ar;
+  const robotsContent = noIndex
+    ? 'noindex, nofollow, max-image-preview:none, max-snippet:0, max-video-preview:0'
+    : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
   useEffect(() => {
     // تحديث عنوان الصفحة
@@ -62,21 +68,27 @@ export default function SEOHead({
     updateMetaTag('description', pageDescription);
     updateMetaTag('keywords', pageKeywords);
     updateMetaTag('author', siteName);
-    updateMetaTag('robots', noIndex ? 'noindex, nofollow' : 'index, follow');
+    updateMetaTag('robots', robotsContent);
+    updateMetaTag('googlebot', robotsContent);
+    updateMetaTag('language', locale);
+    updateMetaTag('application-name', companyInfo.name.brand);
+    updateMetaTag('theme-color', companyInfo.seo.themeColor || '#0E3A5D');
 
     // Canonical URL
-    updateLinkTag('canonical', pageUrl);
+    updateLinkTag('canonical', canonicalUrl);
 
     // hreflang tags
-    updateLinkTag('alternate', `${companyInfo.urls.website}${getPathFromUrl(pageUrl)}?lang=ar`, 'hreflang', 'ar');
-    updateLinkTag('alternate', `${companyInfo.urls.website}${getPathFromUrl(pageUrl)}?lang=en`, 'hreflang', 'en');
-    updateLinkTag('alternate', `${companyInfo.urls.website}${getPathFromUrl(pageUrl)}`, 'hreflang', 'x-default');
+    updateLinkTag('alternate', alternateUrls.ar, 'hreflang', 'ar');
+    updateLinkTag('alternate', alternateUrls.en, 'hreflang', 'en');
+    updateLinkTag('alternate', alternateUrls.ar, 'hreflang', 'x-default');
 
     // Open Graph
     updateMetaTag('og:title', pageTitle, 'property');
     updateMetaTag('og:description', pageDescription, 'property');
     updateMetaTag('og:image', pageImage, 'property');
-    updateMetaTag('og:url', pageUrl, 'property');
+    updateMetaTag('og:image:secure_url', pageImage, 'property');
+    updateMetaTag('og:image:alt', pageTitle, 'property');
+    updateMetaTag('og:url', canonicalUrl, 'property');
     updateMetaTag('og:type', type, 'property');
     updateMetaTag('og:site_name', siteName, 'property');
     updateMetaTag('og:locale', locale === 'ar' ? 'ar_EG' : 'en_US', 'property');
@@ -87,9 +99,13 @@ export default function SEOHead({
     updateMetaTag('twitter:title', pageTitle);
     updateMetaTag('twitter:description', pageDescription);
     updateMetaTag('twitter:image', pageImage);
-    updateMetaTag('twitter:site', '@groundeg');
+    updateMetaTag('twitter:image:alt', pageTitle);
+    updateMetaTag('twitter:url', canonicalUrl);
+    updateMetaTag('twitter:site', companyInfo.seo.twitterHandle || '@groundeg');
+    updateMetaTag('twitter:creator', companyInfo.seo.twitterHandle || '@groundeg');
 
     // Article specific meta (for blog posts)
+    removeMetaTags('article:tag', 'property');
     if (type === 'article' && article) {
       updateMetaTag('article:published_time', article.publishedAt, 'property');
       updateMetaTag('article:modified_time', article.updatedAt || article.publishedAt, 'property');
@@ -106,9 +122,10 @@ export default function SEOHead({
 
     // Cleanup function
     return () => {
-      // يمكن إضافة تنظيف هنا إذا لزم الأمر
+      removeMetaTags('article:tag', 'property');
+      removeSchemaScripts();
     };
-  }, [pageTitle, pageDescription, pageKeywords, pageImage, pageUrl, locale, type, article, breadcrumbs, schema, noIndex, isRTL, siteName]);
+  }, [pageTitle, pageDescription, pageKeywords, pageImage, canonicalUrl, locale, type, article, breadcrumbs, schema, noIndex, isRTL, siteName, robotsContent, alternateUrls.ar, alternateUrls.en]);
 
   return null; // هذا المكون لا يعرض أي شيء مرئي
 }
@@ -140,6 +157,12 @@ function addMetaTag(name, content, attribute = 'name') {
   element.setAttribute(attribute, name);
   element.setAttribute('content', content);
   document.head.appendChild(element);
+}
+
+function removeMetaTags(name, attribute = 'name') {
+  document.querySelectorAll(`meta[${attribute}="${name}"]`).forEach((element) => {
+    element.remove();
+  });
 }
 
 /**
@@ -179,15 +202,53 @@ function getPathFromUrl(url) {
   }
 }
 
+function getCurrentAbsolutePageUrl() {
+  if (typeof window === 'undefined') {
+    return companyInfo.urls.website;
+  }
+
+  return `${companyInfo.urls.website}${window.location.pathname}`;
+}
+
+function normalizePath(path) {
+  if (!path || path === '') {
+    return '/';
+  }
+
+  return path.startsWith('/') ? path : `/${path}`;
+}
+
+function buildLocalizedUrl(path, locale) {
+  const url = new URL(path, companyInfo.urls.website);
+
+  if (locale === 'en') {
+    url.searchParams.set('lang', 'en');
+  } else {
+    url.searchParams.delete('lang');
+  }
+
+  return url.toString();
+}
+
+function getAlternateUrls(path) {
+  return {
+    ar: buildLocalizedUrl(path, 'ar'),
+    en: buildLocalizedUrl(path, 'en'),
+  };
+}
+
+function removeSchemaScripts() {
+  document.querySelectorAll('script[data-schema="seo"]').forEach((script) => {
+    script.remove();
+  });
+}
+
 /**
  * تحديث Schema.org JSON-LD
  */
 function updateSchemaScript(locale, breadcrumbs, additionalSchema) {
   // إزالة السكريبت القديم
-  const existingScript = document.querySelector('script[data-schema="seo"]');
-  if (existingScript) {
-    existingScript.remove();
-  }
+  removeSchemaScripts();
 
   // إنشاء Schema جديد
   const schemas = [...getFullSchema(locale)];
