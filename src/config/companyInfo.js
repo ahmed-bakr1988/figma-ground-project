@@ -46,8 +46,8 @@ const companyInfo = {
   // ================================
   contact: {
     phone: {
-      primary: '+02 (44) 55-8904',
-      secondary: '+2 (010) 440-44855',
+      primary: '+02 44 55-8904',
+      secondary: '+2 010 440-44855',
       telHref: 'tel:+201044044855',
       shortDisplay: '+201044044855',
       whatsapp: '+201044044855',
@@ -61,16 +61,16 @@ const companyInfo = {
     },
     address: {
       street: {
-        en: '123 Protection Avenue',
-        ar: '123 شارع الحماية',
+        en: '5th District, Plot 3, Block 16079',
+        ar: 'الحي الخامس، قطعة 3، بلوك 16079',
       },
       city: {
-        en: 'Cairo',
-        ar: 'القاهرة',
+        en: 'Obour City',
+        ar: 'مدينة العبور',
       },
       region: {
-        en: 'Cairo Governorate',
-        ar: 'محافظة القاهرة',
+        en: 'Qalyubia Governorate',
+        ar: 'محافظة القليوبية',
       },
       country: {
         en: 'Egypt',
@@ -78,17 +78,17 @@ const companyInfo = {
       },
       postalCode: '11511',
       full: {
-        en: '123 Protection Avenue, Business District, Cairo, Egypt',
-        ar: '123 شارع الحماية، حي الأعمال، القاهرة، مصر',
+        en: 'Obour City, 5th District, Plot 3, Block 16079, Egypt',
+        ar: 'مدينة العبور، الحي الخامس، قطعة 3، بلوك 16079، مصر',
       },
       // للتوافق مع الكود القديم
       line1: {
-        en: '123 Protection Avenue',
-        ar: '123 شارع الحماية',
+        en: '5th District, Plot 3, Block 16079',
+        ar: 'الحي الخامس، قطعة 3، بلوك 16079',
       },
       line2: {
-        en: 'Business District, Cairo, Egypt',
-        ar: 'حي الأعمال، القاهرة، مصر',
+        en: 'Obour City, Egypt',
+        ar: 'مدينة العبور، مصر',
       },
       mapLink: 'https://maps.google.com/?q=30.0444,31.2357',
       mapEmbedUrl:
