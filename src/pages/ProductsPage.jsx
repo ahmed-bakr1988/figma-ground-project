@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import SEOHead from '../components/common/SEOHead';
 import companyInfo from '../config/companyInfo';
+import { getProductCatalogSchema } from '../config/seoSchema';
 
 // Product Card Component
 const ProductCard = ({ product, index, isRTL }) => {
@@ -183,6 +184,7 @@ export default function ProductsPage() {
           ? 'منتجات حماية صواعق, مانعة صواعق للبيع, قضبان تأريض, كابلات نحاس, أجهزة SPD'
           : 'lightning protection products, lightning arresters for sale, grounding rods, copper cables, SPD devices'}
         breadcrumbs={breadcrumbs}
+        schema={getProductCatalogSchema(products, locale)}
       />
 
       {/* Hero Section */}

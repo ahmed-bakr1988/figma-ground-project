@@ -109,13 +109,17 @@ export const getServiceSchema = (serviceId, locale = 'ar') => {
   const service = companyInfo.services.find((s) => s.id === serviceId);
   if (!service) return null;
 
+  const serviceUrl = `${companyInfo.urls.website}/services/${serviceId}`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `${companyInfo.urls.website}/services/${serviceId}`,
+    '@id': serviceUrl,
+    url: serviceUrl,
     name: service.name[locale],
     description: service.description[locale],
     provider: {
+      '@id': `${companyInfo.urls.website}/#localbusiness`,
       '@type': 'Organization',
       name: companyInfo.name[locale],
       url: companyInfo.urls.website,
@@ -148,6 +152,7 @@ export const getAllServicesSchema = (locale = 'ar') => ({
       position: index + 1,
       itemOffered: {
         '@type': 'Service',
+        url: `${companyInfo.urls.website}/services/${service.id}`,
         name: service.name[locale],
         description: service.description[locale],
       },
@@ -270,6 +275,27 @@ export const getProductReviewSchema = (locale = 'ar') => ({
   },
 });
 
+export const getProductCatalogSchema = (products, locale = 'ar') => ({
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  '@id': `${companyInfo.urls.website}/products#catalog`,
+  name: locale === 'ar' ? 'كتالوج منتجات الحماية من الصواعق والتأريض' : 'Lightning Protection and Grounding Product Catalog',
+  itemListElement: products.map((product, index) => ({
+    '@type': 'Offer',
+    position: index + 1,
+    itemOffered: {
+      '@type': 'Product',
+      name: product.name,
+      description: product.description,
+      category: product.category,
+      brand: {
+        '@type': 'Brand',
+        name: companyInfo.name.brand,
+      },
+    },
+  })),
+});
+
 /**
  * دمج جميع الـ Schema في كائن واحد
  * تم تحديثه لإرجاع LocalBusiness فقط (بدلاً من Organization + LocalBusiness) لمنع التكرار
@@ -290,5 +316,6 @@ export default {
   getWebSiteSchema,
   getWebPageSchema,
   getProductReviewSchema,
+  getProductCatalogSchema,
   getFullSchema,
 };

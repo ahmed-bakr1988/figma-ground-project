@@ -46,6 +46,11 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 // Service Pages (Lazy Loaded)
 const EarthingSystemsPage = lazy(() => import('./pages/services/EarthingSystemsPage'))
+const LightningProtectionSystemsPage = lazy(() => import('./pages/services/LightningProtectionSystemsPage'))
+const LightningRodInstallationPage = lazy(() => import('./pages/services/LightningRodInstallationPage'))
+const SurgeProtectionPage = lazy(() => import('./pages/services/SurgeProtectionPage'))
+const LightningRiskAssessmentPage = lazy(() => import('./pages/services/LightningRiskAssessmentPage'))
+const MaintenanceInspectionPage = lazy(() => import('./pages/services/MaintenanceInspectionPage'))
 
 // Legal Pages (Lazy Loaded)
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'))
@@ -105,7 +110,12 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/lightning-protection-systems" element={<LightningProtectionSystemsPage />} />
+          <Route path="/services/lightning-rod-installation" element={<LightningRodInstallationPage />} />
           <Route path="/services/earthing-systems" element={<EarthingSystemsPage />} />
+          <Route path="/services/surge-protection" element={<SurgeProtectionPage />} />
+          <Route path="/services/lightning-risk-assessment" element={<LightningRiskAssessmentPage />} />
+          <Route path="/services/maintenance-inspection" element={<MaintenanceInspectionPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />

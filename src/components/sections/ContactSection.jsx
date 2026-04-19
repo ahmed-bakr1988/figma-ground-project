@@ -86,13 +86,19 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: t('contact.info.phone'),
-      details: [companyInfo.contact.phone.primary, companyInfo.contact.phone.secondary],
+      details: [
+        { value: companyInfo.contact.phone.primary, dir: 'ltr' },
+        { value: companyInfo.contact.phone.secondary, dir: 'ltr' }
+      ],
       color: 'bg-blue-500'
     },
     {
       icon: Mail,
       title: t('contact.info.email'),
-      details: [companyInfo.contact.email.primary, companyInfo.contact.email.secondary],
+      details: [
+        { value: companyInfo.contact.email.primary, dir: 'ltr' },
+        { value: companyInfo.contact.email.secondary, dir: 'ltr' }
+      ],
       color: 'bg-green-500'
     },
     {
@@ -166,9 +172,22 @@ export default function ContactSection() {
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <h4 className="text-lg font-bold text-gray-900 mb-2">{info.title}</h4>
-                    {info.details.map((detail, i) => (
-                      <p key={i} className="text-gray-600 text-sm">{detail}</p>
-                    ))}
+                    {info.details.map((detail, i) => {
+                      const detailValue = typeof detail === 'string' ? detail : detail.value;
+                      const detailDirection = typeof detail === 'string' ? undefined : detail.dir;
+
+                      return (
+                        <p key={i} className="text-gray-600 text-sm text-start">
+                          {detailDirection ? (
+                            <span dir={detailDirection} style={{ unicodeBidi: 'isolate' }} className="inline-block">
+                              {detailValue}
+                            </span>
+                          ) : (
+                            detailValue
+                          )}
+                        </p>
+                      );
+                    })}
                   </motion.div>
                 );
               })}
@@ -278,7 +297,10 @@ export default function ContactSection() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder={t('contact.form.phone')}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                  dir="ltr"
+                  inputMode="tel"
+                  style={{ unicodeBidi: 'isolate' }}
+                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-start"
                 />
                 
                 <select 

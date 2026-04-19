@@ -31,6 +31,7 @@ import Logo from '../components/common/Logo';
 import SEOHead from '../components/common/SEOHead';
 import companyInfo from '../config/companyInfo';
 import { getAllServicesSchema } from '../config/seoSchema';
+import { servicePageSummaries } from '../data/servicePages';
 
 // Service Card Component
 const ServiceCard = ({ service, index, isRTL }) => {
@@ -127,6 +128,10 @@ export default function ServicesPage() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const locale = isRTL ? 'ar' : 'en';
+  const serviceLinks = servicePageSummaries.reduce((accumulator, item) => {
+    accumulator[item.slug] = `/services/${item.slug}`;
+    return accumulator;
+  }, {});
 
   // SEO Breadcrumbs
   const breadcrumbs = [
@@ -148,6 +153,7 @@ export default function ServicesPage() {
         t('servicesPage.services.lightning.features.3')
       ],
       cta: t('servicesPage.requestQuote'),
+      link: serviceLinks['lightning-protection-systems'],
       image: '/assets/images/services/Lightning Protection Systems.png'
     },
     {
@@ -162,7 +168,7 @@ export default function ServicesPage() {
         t('servicesPage.services.grounding.features.3')
       ],
       cta: t('servicesPage.learnMore', 'اعرف المزيد'),
-      link: '/services/earthing-systems',
+      link: serviceLinks['earthing-systems'],
       image: '/assets/images/services/Grounding &Earthing-Systems.png'
     },
     {
@@ -176,7 +182,8 @@ export default function ServicesPage() {
         t('servicesPage.services.surge.features.2'),
         t('servicesPage.services.surge.features.3')
       ],
-      cta: t('servicesPage.requestQuote'),
+      cta: t('servicesPage.learnMore', 'اعرف المزيد'),
+      link: serviceLinks['surge-protection'],
       image: '/assets/images/services/Surge-Protection-Devices-(SPD).jpg'
     },
     {
@@ -190,7 +197,8 @@ export default function ServicesPage() {
         t('servicesPage.services.risk.features.2'),
         t('servicesPage.services.risk.features.3')
       ],
-      cta: t('servicesPage.requestQuote'),
+      cta: t('servicesPage.learnMore', 'اعرف المزيد'),
+      link: serviceLinks['lightning-risk-assessment'],
       image: '/assets/images/services/lightning-Risk-Assessment.webp'
     },
     {
@@ -204,7 +212,8 @@ export default function ServicesPage() {
         t('servicesPage.services.maintenance.features.2'),
         t('servicesPage.services.maintenance.features.3')
       ],
-      cta: t('servicesPage.requestQuote'),
+      cta: t('servicesPage.learnMore', 'اعرف المزيد'),
+      link: serviceLinks['maintenance-inspection'],
       image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800'
     },
     {
@@ -303,6 +312,18 @@ export default function ServicesPage() {
               <p className="text-lg text-white/80 mb-8 leading-relaxed max-w-xl">
                 {t('servicesPage.hero.description')}
               </p>
+
+              <div className="flex flex-wrap gap-3 mb-8">
+                {servicePageSummaries.slice(0, 6).map((service) => (
+                  <Link
+                    key={service.slug}
+                    to={`/services/${service.slug}`}
+                    className="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/85 text-sm hover:bg-white/15 transition-colors"
+                  >
+                    {service.label[locale]}
+                  </Link>
+                ))}
+              </div>
               
               <div className="flex flex-wrap gap-4">
                 <a 

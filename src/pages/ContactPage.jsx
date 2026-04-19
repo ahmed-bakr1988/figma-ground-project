@@ -40,9 +40,22 @@ const ContactInfoCard = ({ info, index, isRTL }) => {
         <Icon className={`w-7 h-7 ${info.iconColor}`} />
       </div>
       <h4 className="text-lg font-bold text-gray-900 mb-2">{info.title}</h4>
-      {info.details.map((detail, i) => (
-        <p key={i} className="text-gray-600 text-sm leading-relaxed">{detail}</p>
-      ))}
+      {info.details.map((detail, i) => {
+        const detailValue = typeof detail === 'string' ? detail : detail.value;
+        const detailDirection = typeof detail === 'string' ? undefined : detail.dir;
+
+        return (
+          <p key={i} className="text-gray-600 text-sm leading-relaxed text-start">
+            {detailDirection ? (
+              <span dir={detailDirection} style={{ unicodeBidi: 'isolate' }} className="inline-block">
+                {detailValue}
+              </span>
+            ) : (
+              detailValue
+            )}
+          </p>
+        );
+      })}
       {info.action && (
         <a 
           href={info.actionLink} 
@@ -145,8 +158,8 @@ export default function ContactPage() {
       icon: Phone,
       title: t('contactPage.info.phone.title'),
       details: [
-        companyInfo.contact.phone.primary,
-        companyInfo.contact.phone.secondary
+        { value: companyInfo.contact.phone.primary, dir: 'ltr' },
+        { value: companyInfo.contact.phone.secondary, dir: 'ltr' }
       ],
       bgColor: 'bg-blue-100',
       iconColor: 'text-blue-600',
@@ -157,8 +170,8 @@ export default function ContactPage() {
       icon: Mail,
       title: t('contactPage.info.email.title'),
       details: [
-        companyInfo.contact.email.primary,
-        companyInfo.contact.email.secondary
+        { value: companyInfo.contact.email.primary, dir: 'ltr' },
+        { value: companyInfo.contact.email.secondary, dir: 'ltr' }
       ],
       bgColor: 'bg-green-100',
       iconColor: 'text-green-600',
@@ -465,7 +478,10 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder={t('contactPage.form.phone')}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none"
+                    dir="ltr"
+                    inputMode="tel"
+                    style={{ unicodeBidi: 'isolate' }}
+                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-start"
                   />
                   <select 
                     name="service"

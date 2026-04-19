@@ -6,6 +6,7 @@ import Logo from '../common/Logo';
 import LanguageSwitcher from '../common/LanguageSwitcher';
 import { Phone, Mail, ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import companyInfo from '../../config/companyInfo';
+import { servicePageSummaries } from '../../data/servicePages';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
@@ -48,6 +49,16 @@ const Navbar = () => {
     setMobileDropdown(mobileDropdown === itemName ? null : itemName);
   };
 
+  const serviceDropdownItems = [
+    { name: t('nav.allServices', 'جميع الخدمات'), href: '/services' },
+    ...servicePageSummaries.map((service) => ({
+      name: service.label[isRTL ? 'ar' : 'en'],
+      href: `/services/${service.slug}`,
+    })),
+    { name: t('nav.products'), href: '/products' },
+    { name: t('nav.tools'), href: '/tools' },
+  ];
+
   // القائمة الرئيسية مع dropdown للخدمات والمشاريع
   const navigation = [
     { name: t('nav.home'), href: '/' },
@@ -56,12 +67,7 @@ const Navbar = () => {
       name: t('nav.services'), 
       href: '/services',
       hasDropdown: true,
-      dropdownItems: [
-        { name: t('nav.allServices', 'جميع الخدمات'), href: '/services' },
-        { name: t('nav.earthingSystems', 'أنظمة التأريض'), href: '/services/earthing-systems' },
-        { name: t('nav.products'), href: '/products' },
-        { name: t('nav.tools'), href: '/tools' },
-      ]
+      dropdownItems: serviceDropdownItems,
     },
     { 
       name: t('nav.projects'), 

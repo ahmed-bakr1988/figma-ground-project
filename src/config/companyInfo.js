@@ -133,7 +133,7 @@ const companyInfo = {
   social: {
     facebook: 'https://www.facebook.com/groundeg',
     twitter: 'https://twitter.com/groundeg',
-    linkedin: 'https://www.linkedin.com/company/groundeg',
+    linkedin: 'https://www.linkedin.com/in/ground-tech-4831063a1/',
     instagram: 'https://www.instagram.com/groundeg',
     youtube: 'https://www.youtube.com/@groundeg',
   },
@@ -177,7 +177,22 @@ const companyInfo = {
         'أنظمة الحماية من الصواعق',
         'مانع الصواعق للمباني',
         'شركة حماية من الصواعق في مصر',
-
+        'أنظمة الحماية من الصواعق في مصر',
+        'تركيب مانع صواعق في القاهرة',
+        'تركيب مانع صواعق في الجيزة',
+        'شركة تأريض في مصر',
+        'مقاومة التأريض',
+        'قياس مقاومة التربة',
+        'الحماية من زيادة الجهد',
+        'SPD مصر',
+        'تقييم مخاطر الصواعق',
+        'صيانة مانع الصواعق',
+        'فحص نظام الحماية من الصواعق',
+        'حماية المباني من الصواعق في مصر',
+        'شركة مانعات صواعق',
+        'تكلفة مانع صواعق',
+        'تركيب SPD',
+        'أجهزة حماية اللوحات الكهربائية',
       ],
       en: [
         'Lightning Protection',
@@ -195,6 +210,19 @@ const companyInfo = {
         'Lightning Rod for Buildings',
         'Lightning Protection Company in Egypt',
         'lightning protection system Egypt',
+        'lightning protection systems in Egypt',
+        'lightning rod installation Egypt',
+        'grounding company Egypt',
+        'earthing systems Egypt',
+        'surge protection Egypt',
+        'SPD Egypt',
+        'lightning risk assessment Egypt',
+        'lightning protection maintenance',
+        'ground resistance testing',
+        'lightning protection contractor',
+        'building lightning protection Egypt',
+        'electrical panel surge protection',
+        'lightning inspection service',
       ],
     },
     titles: {
@@ -226,6 +254,26 @@ const companyInfo = {
         en: 'FAQ | Lightning Protection Questions Answered',
         ar: 'الأسئلة الشائعة | إجابات عن الحماية من الصواعق',
       },
+      lightningProtectionSystems: {
+        en: 'Lightning Protection Systems | Ground Tech Egypt',
+        ar: 'أنظمة الحماية من الصواعق | جراوند تك مصر',
+      },
+      lightningRodInstallation: {
+        en: 'Lightning Rod Installation | Ground Tech Egypt',
+        ar: 'تركيب مانع صواعق | جراوند تك مصر',
+      },
+      surgeProtection: {
+        en: 'Surge Protection | Ground Tech Egypt',
+        ar: 'الحماية من زيادة الجهد | جراوند تك مصر',
+      },
+      lightningRiskAssessment: {
+        en: 'Lightning Risk Assessment | Ground Tech Egypt',
+        ar: 'تقييم مخاطر الصواعق | جراوند تك مصر',
+      },
+      maintenanceInspection: {
+        en: 'Maintenance & Inspection | Ground Tech Egypt',
+        ar: 'صيانة وفحص الأنظمة | جراوند تك مصر',
+      },
     },
   },
 
@@ -245,7 +293,7 @@ const companyInfo = {
   // ================================
   services: [
     {
-      id: 'lightning-protection',
+      id: 'lightning-protection-systems',
       name: { en: 'Lightning Protection Systems', ar: 'أنظمة الحماية من الصواعق' },
       description: {
         en: 'Complete lightning protection solutions for buildings and facilities',
@@ -253,7 +301,15 @@ const companyInfo = {
       },
     },
     {
-      id: 'earthing-grounding',
+      id: 'lightning-rod-installation',
+      name: { en: 'Lightning Rod Installation', ar: 'تركيب مانع صواعق' },
+      description: {
+        en: 'Supply, installation, and inspection of lightning rod systems for buildings and facilities',
+        ar: 'توريد وتركيب وفحص أنظمة مانعات الصواعق للمباني والمنشآت',
+      },
+    },
+    {
+      id: 'earthing-systems',
       name: { en: 'Earthing & Grounding Systems', ar: 'أنظمة التأريض' },
       description: {
         en: 'Professional earthing and grounding system installation',
@@ -269,7 +325,15 @@ const companyInfo = {
       },
     },
     {
-      id: 'maintenance',
+      id: 'lightning-risk-assessment',
+      name: { en: 'Lightning Risk Assessment', ar: 'تقييم مخاطر الصواعق' },
+      description: {
+        en: 'Engineering assessment to determine lightning protection requirements and scope',
+        ar: 'تقييم هندسي لتحديد الحاجة إلى الحماية من الصواعق ونطاق الأعمال المطلوب',
+      },
+    },
+    {
+      id: 'maintenance-inspection',
       name: { en: 'Maintenance & Inspection', ar: 'الصيانة والفحص' },
       description: {
         en: 'Regular maintenance and inspection services',

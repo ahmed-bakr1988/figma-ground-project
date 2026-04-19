@@ -41,6 +41,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services"/>
   </url>
 
+  <!-- أنظمة الحماية من الصواعق - Lightning Protection Systems -->
+  <url>
+    <loc>https://ground-eg.com/services/lightning-protection-systems</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/lightning-protection-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/lightning-protection-systems?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/lightning-protection-systems"/>
+  </url>
+
+  <!-- تركيب مانع صواعق - Lightning Rod Installation -->
+  <url>
+    <loc>https://ground-eg.com/services/lightning-rod-installation</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/lightning-rod-installation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/lightning-rod-installation?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/lightning-rod-installation"/>
+  </url>
+
   <!-- أنظمة التأريض - Earthing Systems -->
   <url>
     <loc>https://ground-eg.com/services/earthing-systems</loc>
@@ -55,6 +77,39 @@
       <image:title>أنظمة التأريض الكهربائية - Earthing Systems</image:title>
       <image:caption>تصميم وتنفيذ أنظمة التأريض في مصر</image:caption>
     </image:image>
+  </url>
+
+  <!-- الحماية من زيادة الجهد - Surge Protection -->
+  <url>
+    <loc>https://ground-eg.com/services/surge-protection</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/surge-protection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/surge-protection?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/surge-protection"/>
+  </url>
+
+  <!-- تقييم مخاطر الصواعق - Lightning Risk Assessment -->
+  <url>
+    <loc>https://ground-eg.com/services/lightning-risk-assessment</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/lightning-risk-assessment"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/lightning-risk-assessment?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/lightning-risk-assessment"/>
+  </url>
+
+  <!-- الصيانة والفحص - Maintenance & Inspection -->
+  <url>
+    <loc>https://ground-eg.com/services/maintenance-inspection</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/maintenance-inspection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/maintenance-inspection?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/maintenance-inspection"/>
   </url>
 
   <!-- المنتجات - Products -->

@@ -4,45 +4,20 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import Logo from '../common/Logo';
 import companyInfo from '../../config/companyInfo';
-
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Instagram, href: '#', label: 'Instagram' }
-];
+import { servicePageSummaries } from '../../data/servicePages';
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const locale = isRTL ? 'ar' : 'en';
+  const socialLinks = [
+    { icon: Facebook, href: companyInfo.social.facebook, label: 'Facebook' },
+    { icon: Twitter, href: companyInfo.social.twitter, label: 'Twitter' },
+    { icon: Linkedin, href: companyInfo.social.linkedin, label: 'LinkedIn' },
+    { icon: Instagram, href: companyInfo.social.instagram, label: 'Instagram' },
+  ];
 
-  const footerLinks = {
-    services: [
-      t('footer.links.services.rod'),
-      t('footer.links.services.commercial'),
-      t('footer.links.services.industrial'),
-      t('footer.links.services.surge'),
-      t('footer.links.services.risk'),
-      t('footer.links.services.maintenance')
-    ],
-    company: [
-      t('footer.links.company.about'),
-      t('footer.links.company.team'),
-      t('footer.links.company.careers'),
-      t('footer.links.company.blog'),
-      t('footer.links.company.cases'),
-      t('footer.links.company.contact')
-    ],
-    support: [
-      t('footer.links.support.faq'),
-      t('footer.links.support.docs'),
-      t('footer.links.support.emergency'),
-      t('footer.links.support.warranty'),
-      t('footer.links.support.areas'),
-      t('footer.links.support.quote')
-    ]
-  };
+  const footerServiceLinks = servicePageSummaries;
   return (
     <footer className="bg-slate-900 text-white">
       {/* CTA Section */}
@@ -100,41 +75,13 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-6">{t('footer.services')}</h4>
             <ul className="space-y-3">
-              <li>
-                <Link to="/services/earthing-systems" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.earthing', 'أنظمة التأريض')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.rod')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.commercial')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.industrial')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.surge')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.risk')}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-white/70 hover:text-accent transition-colors">
-                  {t('footer.links.services.maintenance')}
-                </Link>
-              </li>
+              {footerServiceLinks.map((service) => (
+                <li key={service.slug}>
+                  <Link to={`/services/${service.slug}`} className="text-white/70 hover:text-accent transition-colors">
+                    {service.label[locale]}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
