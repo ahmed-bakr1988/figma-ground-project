@@ -838,6 +838,7 @@ export default function EarthingSystemsPage() {
                     href={companyInfo.contact.phone.telHref}
                     className="text-xl font-bold text-accent hover:text-accent/90 transition-colors"
                     dir="ltr"
+                    style={{ unicodeBidi: 'isolate' }}
                   >
                     {companyInfo.contact.phone.shortDisplay}
                   </a>

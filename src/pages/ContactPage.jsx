@@ -47,7 +47,7 @@ const ContactInfoCard = ({ info, index, isRTL }) => {
         return (
           <p key={i} className="text-gray-600 text-sm leading-relaxed text-start">
             {detailDirection ? (
-              <span dir={detailDirection} style={{ unicodeBidi: 'isolate' }} className="inline-block">
+              <span dir={detailDirection} style={{ unicodeBidi: 'isolate', display: 'inline-block' }}>
                 {detailValue}
               </span>
             ) : (

@@ -260,6 +260,12 @@ export default function ServicesPage() {
     { icon: Clock, title: t('servicesPage.benefits.support.title'), description: t('servicesPage.benefits.support.description') }
   ];
 
+  const portfolioPoints = [
+    t('servicesPage.portfolioProof.pointOne'),
+    t('servicesPage.portfolioProof.pointTwo'),
+    t('servicesPage.portfolioProof.pointThree')
+  ];
+
   return (
     <>
       {/* SEO Head */}
@@ -420,6 +426,69 @@ export default function ServicesPage() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="px-6 lg:px-16 pb-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-3xl bg-primary px-8 py-10 lg:px-12 lg:py-12 shadow-2xl"
+          >
+            <div className="absolute top-0 right-0 h-56 w-56 rounded-full bg-accent/15 blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+
+            <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-12 h-[2px] bg-accent"></div>
+                  <span className="text-accent font-semibold uppercase tracking-wider text-sm">
+                    {t('servicesPage.portfolioProof.badge')}
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+                  {t('servicesPage.portfolioProof.title')} <span className="text-accent">{t('servicesPage.portfolioProof.titleHighlight')}</span>
+                </h2>
+
+                <p className="text-lg leading-relaxed text-white/80 mb-8 max-w-2xl">
+                  {t('servicesPage.portfolioProof.description')}
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    to="/case-studies"
+                    className="bg-accent hover:bg-accent-dark text-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2"
+                  >
+                    {t('servicesPage.portfolioProof.button')}
+                    <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="border border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2"
+                  >
+                    {t('servicesPage.portfolioProof.contactButton')}
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                {portfolioPoints.map((point) => (
+                  <div key={point} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 backdrop-blur-sm">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/20">
+                        <CheckCircle2 className="w-5 h-5 text-accent" />
+                      </div>
+                      <p className="text-white/85 leading-relaxed">{point}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -594,9 +663,11 @@ export default function ServicesPage() {
               <a 
                 href="tel:+201234567890"
                 className="bg-white/20 hover:bg-white/30 text-primary px-8 py-4 rounded-lg font-semibold transition-all inline-flex items-center gap-2"
+                dir="ltr"
+                style={{ unicodeBidi: 'isolate' }}
               >
                 <Phone className="w-5 h-5" />
-                {t('servicesPage.cta.call')}
+                <span dir="ltr">{t('servicesPage.cta.call')}</span>
               </a>
             </div>
           </motion.div>

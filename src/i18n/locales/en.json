@@ -22,7 +22,7 @@
     "titleEnd": "Protection Services",
     "description": "Professional lightning protection systems installed by certified engineers. We safeguard homes, businesses, and industrial facilities from electrical storms.",
     "cta": "Get Free Consultation",
-    "ctaSecondary": "Our Services",
+    "ctaSecondary": "Our Portfolio",
     "stats": {
       "experience": "Years Experience",
       "projects": "Projects Done",
@@ -100,10 +100,21 @@
   },
   "projects": {
     "badge": "Our Portfolio",
-    "title": "Recent",
-    "titleHighlight": "Projects",
-    "description": "Explore our portfolio of successful lightning protection installations across various industries.",
-    "viewProject": "View Project",
+    "title": "Selected",
+    "titleHighlight": "Execution Highlights",
+    "description": "Review real delivery examples that demonstrate how we execute lightning protection and grounding solutions across high-value facilities.",
+    "viewProject": "View Case Study",
+    "browseAll": "Browse Full Portfolio",
+    "discussProject": "Discuss Your Project",
+    "featuredLabel": "Recommended",
+    "proof": {
+      "projectsValue": "500+",
+      "projectsLabel": "protected sites and completed projects",
+      "sectorsValue": "8+",
+      "sectorsLabel": "industry segments served with documented delivery",
+      "resultsValue": "Proof",
+      "resultsLabel": "measurable outcomes clients can review before engagement"
+    },
     "categories": {
       "all": "All",
       "industrial": "Industrial",
@@ -384,6 +395,17 @@
       "title": "Our Comprehensive",
       "titleHighlight": "Protection Services",
       "description": "From initial risk assessment to complete installation and ongoing maintenance, we deliver end-to-end lightning protection solutions that meet international standards and exceed client expectations."
+    },
+    "portfolioProof": {
+      "badge": "Trust Backed by Delivery",
+      "title": "Review Our Portfolio Before",
+      "titleHighlight": "Making a Decision",
+      "description": "Once you understand our service scope, explore real execution examples that show how we turn technical requirements into dependable protection solutions for commercial, industrial, and healthcare facilities.",
+      "button": "View Portfolio",
+      "contactButton": "Request Custom Consultation",
+      "pointOne": "Real execution examples across industrial, commercial, and healthcare environments.",
+      "pointTwo": "Documented outcomes and performance indicators that help decision-makers evaluate delivery quality.",
+      "pointThree": "A strong confidence-building step before requesting a site visit or proposal."
     },
     "services": {
       "lightning": {

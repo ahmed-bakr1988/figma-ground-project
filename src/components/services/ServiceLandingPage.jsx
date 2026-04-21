@@ -275,6 +275,7 @@ export default function ServiceLandingPage({ slug }) {
                   href={companyInfo.contact.phone.telHref}
                   className="inline-flex items-center justify-center gap-2 border border-white/25 text-white hover:bg-white/10 px-8 py-4 rounded-xl transition-all"
                   dir="ltr"
+                  style={{ unicodeBidi: 'isolate' }}
                 >
                   {companyInfo.contact.phone.shortDisplay}
                 </a>

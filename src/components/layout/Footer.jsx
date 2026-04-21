@@ -58,11 +58,11 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-white/70">
                 <Phone className="w-5 h-5 text-accent" />
-                <span dir="ltr" className={isRTL ? 'text-right w-full' : ''}>{companyInfo.contact.phone.secondary}</span>
+                <span dir="ltr" style={{ unicodeBidi: 'isolate' }} className={isRTL ? 'text-right w-full' : ''}>{companyInfo.contact.phone.secondary}</span>
               </div>
               <div className="flex items-center gap-3 text-white/70">
                 <Mail className="w-5 h-5 text-accent" />
-                <span dir="ltr">{companyInfo.contact.email.primary}</span>
+                <span dir="ltr" style={{ unicodeBidi: 'isolate' }}>{companyInfo.contact.email.primary}</span>
               </div>
               <div className="flex items-center gap-3 text-white/70">
                 <MapPin className="w-5 h-5 text-accent" />

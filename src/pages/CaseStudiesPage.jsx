@@ -341,9 +341,9 @@ export default function CaseStudiesPage() {
               
               <div className="flex items-center gap-2 text-white/80">
                 <span>{c.callUs}</span>
-                <a href="tel:+966123456789" className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors font-bold">
+                <a href="/contact" className="flex items-center gap-2 text-accent hover:text-accent-dark transition-colors font-bold" dir="ltr" style={{ unicodeBidi: 'isolate' }}>
                   <Phone className="w-5 h-5" />
-                  +966 12 345 6789
+                  <span dir="ltr">+20 104 404 4855</span>
                 </a>
               </div>
             </div>

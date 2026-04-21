@@ -223,11 +223,11 @@ const Navbar = () => {
           <div className="p-4 bg-primary/5 border-b border-gray-100">
             <a href={companyInfo.contact.phone.telHref} className="flex items-center gap-3 text-gray-700 py-2">
               <Phone className="w-5 h-5 text-accent" />
-              <span className="font-medium">{companyInfo.contact.phone.shortDisplay}</span>
+              <span className="font-medium" dir="ltr" style={{ unicodeBidi: 'isolate' }}>{companyInfo.contact.phone.shortDisplay}</span>
             </a>
             <a href={companyInfo.contact.email.mailto} className="flex items-center gap-3 text-gray-700 py-2">
               <Mail className="w-5 h-5 text-accent" />
-              <span className="font-medium">{companyInfo.contact.email.primary}</span>
+              <span className="font-medium" dir="ltr" style={{ unicodeBidi: 'isolate' }}>{companyInfo.contact.email.primary}</span>
             </a>
           </div>
 

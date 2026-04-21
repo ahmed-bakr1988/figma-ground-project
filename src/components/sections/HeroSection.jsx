@@ -252,15 +252,16 @@ export default function HeroSection() {
                   <ChevronRight className="w-5 h-5 rtl-flip" />
                 </motion.button>
               </Link>
-              <Link to="/services">
+              <a href="/assets/documents/GROUND-TECH.pdf" download target="_blank" rel="noopener noreferrer">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 w-full"
+                  type="button"
                 >
                   {t('hero.ctaSecondary')}
                 </motion.button>
-              </Link>
+              </a>
             </div>
 
             {/* Stats */}

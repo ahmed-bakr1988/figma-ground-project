@@ -11,9 +11,6 @@ import {
   DollarSign,
   Clock,
   ChevronRight,
-  Zap,
-  Award,
-  CheckCircle,
   Quote,
   Phone,
   Share2,
@@ -156,9 +153,9 @@ export default function CaseStudyDetailPage() {
       ctaTitle: 'هل لديك مشروع مماثل؟',
       ctaDesc: 'تواصل معنا للحصول على استشارة مجانية',
       ctaButton: 'احجز استشارة',
-      backToList: 'العودة للمشاريع',
-      notFound: 'دراسة الحالة غير موجودة',
-      notFoundDesc: 'عذراً، لم نتمكن من العثور على دراسة الحالة المطلوبة',
+      backToList: 'العودة إلى سابقة الأعمال',
+      notFound: 'سابقة العمل غير موجودة',
+      notFoundDesc: 'عذراً، لم نتمكن من العثور على سابقة العمل المطلوبة',
       projectInfo: 'معلومات المشروع',
       client: 'العميل',
       location: 'الموقع',
@@ -221,7 +218,7 @@ export default function CaseStudyDetailPage() {
   // Breadcrumbs for SEO
   const breadcrumbs = [
     { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
-    { name: locale === 'ar' ? 'دراسات الحالة' : 'Case Studies', url: `${companyInfo.urls.website}/case-studies` },
+    { name: locale === 'ar' ? 'سابقة الأعمال' : 'Case Studies', url: `${companyInfo.urls.website}/case-studies` },
     { name: study.title[lang], url: `${companyInfo.urls.website}/case-study/${study.slug}` },
   ];
 
@@ -229,7 +226,7 @@ export default function CaseStudyDetailPage() {
     <div className="min-h-screen bg-white">
       {/* SEO Head */}
       <SEOHead
-        title={`${study.title[lang]} | ${locale === 'ar' ? 'دراسة حالة - جراوند' : 'Case Study - Ground'}`}
+        title={`${study.title[lang]} | ${locale === 'ar' ? 'سابقة أعمال - جراوند' : 'Case Study - Ground'}`}
         description={study.description?.[lang] || study.excerpt?.[lang] || (locale === 'ar' 
           ? `دراسة حالة تفصيلية لمشروع ${study.title[lang]} - الحماية من الصواعق والتأريض`
           : `Detailed case study for ${study.title[lang]} project - Lightning protection and grounding`)}
@@ -246,7 +243,7 @@ export default function CaseStudyDetailPage() {
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Link to="/" className="hover:text-accent transition-colors">{t('nav.home')}</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link to="/case-studies" className="hover:text-accent transition-colors">{lang === 'ar' ? 'دراسات الحالة' : 'Case Studies'}</Link>
+            <Link to="/case-studies" className="hover:text-accent transition-colors">{lang === 'ar' ? 'سابقة الأعمال' : 'Case Studies'}</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-gray-900 font-medium line-clamp-1">{study.title[lang]}</span>
           </div>
@@ -507,13 +504,14 @@ export default function CaseStudyDetailPage() {
                   <ArrowRight className={`w-5 h-5 ${isRTL ? 'rotate-180' : ''}`} />
                 </Link>
                 
-                <a
-                  href="tel:+966123456789"
+                <Link
+                  dir={lang === 'ar' ? 'rtl' : 'ltr'}
+                  to="/contact"
                   className="w-full mt-3 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-light text-white px-6 py-3 rounded-lg font-semibold transition-all"
                 >
                   <Phone className="w-5 h-5" />
-                  +966 12 345 6789
-                </a>
+                  <span dir="ltr" style={{ unicodeBidi: 'isolate' }}>+20 104 404 4855</span>
+                </Link>
               </div>
             </motion.div>
           </div>
