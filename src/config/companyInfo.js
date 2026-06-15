@@ -134,7 +134,7 @@ const companyInfo = {
     facebook: 'https://www.facebook.com/groundeg',
     twitter: 'https://twitter.com/groundeg',
     linkedin: 'https://www.linkedin.com/in/ground-tech-4831063a1/',
-    instagram: 'https://www.instagram.com/groundeg',
+    instagram: 'https://www.instagram.com/groundtech.eg',
     youtube: 'https://www.youtube.com/@groundeg',
   },
 
