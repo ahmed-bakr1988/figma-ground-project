@@ -219,7 +219,7 @@ export default function CaseStudyDetailPage() {
   const breadcrumbs = [
     { name: locale === 'ar' ? 'الرئيسية' : 'Home', url: companyInfo.urls.website },
     { name: locale === 'ar' ? 'سابقة الأعمال' : 'Case Studies', url: `${companyInfo.urls.website}/case-studies` },
-    { name: study.title[lang], url: `${companyInfo.urls.website}/case-study/${study.slug}` },
+    { name: study.title[lang], url: `${companyInfo.urls.website}/case-studies/${study.slug}` },
   ];
 
   return (

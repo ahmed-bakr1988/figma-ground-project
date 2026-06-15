@@ -52,6 +52,16 @@ const SurgeProtectionPage = lazy(() => import('./pages/services/SurgeProtectionP
 const LightningRiskAssessmentPage = lazy(() => import('./pages/services/LightningRiskAssessmentPage'))
 const MaintenanceInspectionPage = lazy(() => import('./pages/services/MaintenanceInspectionPage'))
 
+// Earthing Cluster Pages (Lazy Loaded)
+const EarthingIndustrialPage = lazy(() => import('./pages/earthing/EarthingIndustrialPage'))
+const EarthingSoilResistancePage = lazy(() => import('./pages/earthing/EarthingSoilResistancePage'))
+const EarthingMaintenancePage = lazy(() => import('./pages/earthing/EarthingMaintenancePage'))
+const EarthingSpecificationsPage = lazy(() => import('./pages/earthing/EarthingSpecificationsPage'))
+
+// Knowledge Hub Pages (Lazy Loaded)
+const KnowledgeHubPage = lazy(() => import('./pages/knowledge/KnowledgeHubPage'))
+const KnowledgeArticlePage = lazy(() => import('./pages/knowledge/KnowledgeArticlePage'))
+
 // Legal Pages (Lazy Loaded)
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'))
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'))
@@ -116,6 +126,14 @@ function AppContent() {
           <Route path="/services/surge-protection" element={<SurgeProtectionPage />} />
           <Route path="/services/lightning-risk-assessment" element={<LightningRiskAssessmentPage />} />
           <Route path="/services/maintenance-inspection" element={<MaintenanceInspectionPage />} />
+          {/* Earthing Service Cluster */}
+          <Route path="/services/earthing/industrial" element={<EarthingIndustrialPage />} />
+          <Route path="/services/earthing/soil-resistance" element={<EarthingSoilResistancePage />} />
+          <Route path="/services/earthing/maintenance" element={<EarthingMaintenancePage />} />
+          <Route path="/services/earthing/specifications" element={<EarthingSpecificationsPage />} />
+          {/* Knowledge Hub */}
+          <Route path="/knowledge" element={<KnowledgeHubPage />} />
+          <Route path="/knowledge/:slug" element={<KnowledgeArticlePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />

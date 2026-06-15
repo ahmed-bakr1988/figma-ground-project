@@ -370,7 +370,368 @@ export const caseStudies = [
     },
     services: ['lightning-protection', 'grounding', 'surge-protection', 'maintenance'],
     featured: false
-  }
+  },
+  {
+    id: 4,
+    slug: 'factory-earthing',
+    title: {
+      ar: 'مصنع بلاستيك - نظام تأريض صناعي متكامل',
+      en: 'Plastic Factory - Complete Industrial Earthing System'
+    },
+    client: {
+      ar: 'مجموعة الصناعات البلاستيكية المتطورة',
+      en: 'Advanced Plastics Industries Group'
+    },
+    location: {
+      ar: 'المنطقة الصناعية - العاشر من رمضان، مصر',
+      en: 'Industrial Zone - 10th of Ramadan, Egypt'
+    },
+    projectType: {
+      ar: 'مصنع صناعي',
+      en: 'Industrial Factory'
+    },
+    buildingSize: '25,000 m²',
+    projectValue: '$450K',
+    duration: {
+      ar: '3 أشهر',
+      en: '3 months'
+    },
+    completedAt: '2025-09-20',
+    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&h=800&fit=crop',
+    gallery: [
+      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&h=600&fit=crop'
+    ],
+    challenge: {
+      ar: `واجه المصنع تحديات في نظام التأريض الحالي:
+
+- **مقاومة تأريض عالية**: تتجاوز 50 أوم بسبب التربة الرملية الجافة
+- **معدات حساسة**: 12 خط إنتاج بتحكم إلكتروني دقيق
+- **تيارات بدء تشغيل عالية**: تسبب تداخلات في أنظمة التحكم
+- **مساحة كبيرة**: 25,000 متر مربع تغطيها شبكة تأريض واحدة
+- **توقف الإنتاج**: أعطال متكررة تؤدي إلى توقف خطوط الإنتاج`,
+      en: `The factory faced challenges with the existing earthing system:
+
+- **High ground resistance**: Exceeding 50 ohms due to dry sandy soil
+- **Sensitive equipment**: 12 production lines with precise electronic control
+- **High starting currents**: Causing interference in control systems
+- **Large area**: 25,000 square meters covered by a single earthing network
+- **Production downtime**: Frequent faults causing production line stoppages`
+    },
+    solution: {
+      ar: `صممنا ونفذنا نظام تأريض صناعي متكامل:
+
+### شبكة تأريض رئيسية
+- شبكة نحاسية مدفونة بعمق 1 متر تغطي كامل مساحة المصنع
+- 45 قضيب تأريض نحاسي بطول 3 أمتار
+- مقاومة تأريض أقل من 2 أوم بعد التحسين
+
+### تأريض المعدات
+- ربط جميع الهياكل المعدنية والمعدات بشبكة التأريض
+- تأريض منفصل للوحات التحكم PLC
+- نظام ربط equipotential شامل
+
+### تحسين التربة
+- معالجة كيميائية للتربة حول القضبان
+- نظام ترطيب أوتوماتيكي للحفاظ على رطوبة التربة
+
+### الحماية من التداخل
+- كابلات محمية للتوصيلات الحساسة
+- مرشحات EMI على مصادر التداخل`,
+      en: `We designed and installed a complete industrial earthing system:
+
+### Main Ground Grid
+- Copper grid buried at 1m depth covering entire factory area
+- 45 copper-clad ground rods, 3 meters each
+- Ground resistance below 2 ohms after improvement
+
+### Equipment Grounding
+- Bonding all metallic structures and equipment to the grid
+- Separate grounding for PLC control panels
+- Comprehensive equipotential bonding system
+
+### Soil Improvement
+- Chemical treatment around ground rods
+- Automatic moisture system to maintain soil conductivity
+
+### Interference Protection
+- Shielded cables for sensitive connections
+- EMI filters on interference sources`
+    },
+    results: {
+      ar: [
+        { metric: 'مقاومة التأريض', value: '<2 أوم', description: 'انخفاض من 50+ أوم' },
+        { metric: 'توقف الإنتاج', value: '0', description: 'ساعات توقف بسبب أعطال التأريض' },
+        { metric: 'خطوط الإنتاج', value: '12', description: 'خط إنتاج محمي بالكامل' },
+        { metric: 'وفر سنوي', value: '$120K', description: 'توفير في تكاليف الصيانة والإصلاح' }
+      ],
+      en: [
+        { metric: 'Ground Resistance', value: '<2 Ohm', description: 'Reduced from 50+ ohms' },
+        { metric: 'Production Downtime', value: '0', description: 'Hours due to earthing faults' },
+        { metric: 'Production Lines', value: '12', description: 'Fully protected lines' },
+        { metric: 'Annual Savings', value: '$120K', description: 'Saved in maintenance and repairs' }
+      ]
+    },
+    testimonial: {
+      quote: {
+        ar: 'حل مشكلة التأريض التي عانينا منها لسنوات. الفريق فهم طبيعة عملنا وقدموا حلاً عملياً يضمن استمرارية الإنتاج دون انقطاع.',
+        en: 'They solved the earthing problem we suffered from for years. The team understood our operation and provided a practical solution ensuring uninterrupted production.'
+      },
+      author: {
+        ar: 'م. أحمد السيد',
+        en: 'Eng. Ahmed El-Sayed'
+      },
+      role: {
+        ar: 'مدير المصنع',
+        en: 'Factory Manager'
+      }
+    },
+    services: ['grounding', 'maintenance'],
+    featured: false
+  },
+  {
+    id: 5,
+    slug: 'office-building-lightning-protection',
+    title: {
+      ar: 'مبنى إداري - نظام حماية من الصواعق وتأريض شامل',
+      en: 'Office Building - Comprehensive Lightning Protection & Earthing'
+    },
+    client: {
+      ar: 'شركة القاهرة للاستثمار العقاري',
+      en: 'Cairo Real Estate Investment Company'
+    },
+    location: {
+      ar: 'القاهرة الجديدة، مصر',
+      en: 'New Cairo, Egypt'
+    },
+    projectType: {
+      ar: 'مبنى إداري تجاري',
+      en: 'Commercial Office Building'
+    },
+    buildingSize: '12,000 m²',
+    projectValue: '$280K',
+    duration: {
+      ar: 'شهرين',
+      en: '2 months'
+    },
+    completedAt: '2025-07-15',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop',
+    gallery: [
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop'
+    ],
+    challenge: {
+      ar: `المبنى الإداري الجديد يحتاج إلى حماية متكاملة:
+
+- **ارتفاع المبنى**: 12 طابقاً مع سطح معدني ومعدات تكييف مركزية
+- **أنظمة حساسة**: 4 سيرفرات، شبكة IT، وأنظمة أمن ومراقبة
+- **متطلبات التأمين**: شرط الحصول على وثيقة تأمين ضد الصواعق
+- **التصميم المعماري**: عدم التأثير على الشكل الجمالي للمبنى
+- **الاستمرارية**: ضمان عدم توقف الأعمال الإدارية`,
+      en: `The new office building needed complete protection:
+
+- **Building height**: 12 floors with metal roof and central HVAC
+- **Sensitive systems**: 4 server rooms, IT network, security systems
+- **Insurance requirements**: Lightning protection insurance policy requirement
+- **Architectural design**: No impact on building aesthetics
+- **Business continuity**: Ensure no administrative work stoppage`
+    },
+    solution: {
+      ar: `نفذنا حل حماية متكامل للمبنى الإداري:
+
+### مانعات الصواعق
+- 8 مانعات صواعق من نوع ESE موزعة على السطح
+- موصلات هبوط نحاسية مخفية داخل الأعمدة
+- 6 نقاط قياس لفحص النظام دورياً
+
+### نظام التأريض
+- شبكة تأريض محيطية حول أساسات المبنى
+- 25 قضيب تأريض نحاسي
+- مقاومة تأريض أقل من 5 أوم
+
+### الحماية الداخلية SPD
+- أجهزة Type 1+2 في اللوحة الرئيسية
+- أجهزة Type 2 في لوحات الطوابق
+- أجهزة Type 3 لغرف السيرفرات
+
+### التكامل المعماري
+- الملتقطات مطلية بلون المبنى
+- الموصلات مخفية تماماً`,
+      en: `We implemented a complete protection solution:
+
+### Lightning Rods
+- 8 ESE lightning rods distributed on the roof
+- Copper down conductors hidden inside columns
+- 6 test points for periodic inspection
+
+### Earthing System
+- Perimeter ground grid around building foundations
+- 25 copper-clad ground rods
+- Ground resistance below 5 ohms
+
+### Internal SPD Protection
+- Type 1+2 devices at main distribution board
+- Type 2 devices at floor distribution boards
+- Type 3 devices for server rooms
+
+### Architectural Integration
+- Rods painted to match building color
+- Conductors completely hidden`
+    },
+    results: {
+      ar: [
+        { metric: 'نقاط الحماية', value: '8', description: 'مانع صواعق ESE' },
+        { metric: 'مقاومة التأريض', value: '<5 أوم', description: 'مطابقة للمواصفات' },
+        { metric: 'السيرفرات', value: '4', description: 'غرف سيرفرات محمية' },
+        { metric: 'الامتثال', value: '100%', description: 'متطلبات التأمين' }
+      ],
+      en: [
+        { metric: 'Protection Points', value: '8', description: 'ESE lightning rods' },
+        { metric: 'Ground Resistance', value: '<5 Ohm', description: 'Within specifications' },
+        { metric: 'Servers', value: '4', description: 'Protected server rooms' },
+        { metric: 'Compliance', value: '100%', description: 'Insurance requirements met' }
+      ]
+    },
+    testimonial: {
+      quote: {
+        ar: 'تنفيذ احترافي مع الحفاظ على جمالية المبنى. الحصول على وثيقة التأمين أصبح أسهل بكثير بعد تركيب النظام.',
+        en: 'Professional execution while maintaining building aesthetics. Getting the insurance policy became much easier after system installation.'
+      },
+      author: {
+        ar: 'م. هاني عبد الرحمن',
+        en: 'Eng. Hany Abdelrahman'
+      },
+      role: {
+        ar: 'مدير المشاريع',
+        en: 'Projects Manager'
+      }
+    },
+    services: ['lightning-protection', 'grounding', 'surge-protection'],
+    featured: false
+  },
+  {
+    id: 6,
+    slug: 'solar-station-earthing',
+    title: {
+      ar: 'محطة طاقة شمسية - نظام تأريض وحماية من الصواعق',
+      en: 'Solar Power Station - Earthing & Lightning Protection System'
+    },
+    client: {
+      ar: 'شركة الطاقة المتجددة المصرية',
+      en: 'Egyptian Renewable Energy Company'
+    },
+    location: {
+      ar: 'بني سويف، مصر',
+      en: 'Beni Suef, Egypt'
+    },
+    projectType: {
+      ar: 'محطة طاقة شمسية',
+      en: 'Solar Power Plant'
+    },
+    buildingSize: '150,000 m²',
+    projectValue: '$680K',
+    duration: {
+      ar: '5 أشهر',
+      en: '5 months'
+    },
+    completedAt: '2025-05-10',
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&h=800&fit=crop',
+    gallery: [
+      'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&h=600&fit=crop'
+    ],
+    challenge: {
+      ar: `محطات الطاقة الشمسية لها متطلبات خاصة في التأريض والحماية:
+
+- **مساحة مفتوحة شاسعة**: 150,000 متر مربع من الألواح الشمسية
+- **ارتفاع خطر الصواعق**: الموقع مفتوح ومعرض للعواصف الرعدية
+- **العاكسات والمحولات**: معدات حساسة للجهد العالي
+- **فروق الجهد**: خطورة فروق الجهد بين نقاط مختلفة من المحطة
+- **التربة الصحراوية**: مقاومة تربة عالية`,
+      en: `Solar power plants have special earthing and protection requirements:
+
+- **Vast open area**: 150,000 square meters of solar panels
+- **High lightning risk**: Open site exposed to thunderstorms
+- **Inverters and transformers**: High-voltage sensitive equipment
+- **Voltage differentials**: Dangerous potential differences across the site
+- **Desert soil**: High soil resistivity`
+    },
+    solution: {
+      ar: `صممنا نظام حماية وتأريض متكامل للمحطة الشمسية:
+
+### شبكة التأريض
+- شبكة نحاسية كثيفة تغطي كامل مساحة المحطة
+- 120 قضيب تأريض نحاسي موزعة بشكل استراتيجي
+- مقاومة تأريض أقل من 5 أوم
+
+### الحماية من الصواعق
+- 15 مانعة صواعق لحماية الألواح والمحولات
+- نظام كشف مبكر للعواصف
+- حماية خاصة للعاكسات (Inverters)
+
+### ربط متساوي الجهد
+- ربط جميع هياكل الألواح المعدنية
+- ربط المحولات والعاكسات
+- نظام مراقبة مستمر للجهد
+
+### الحماية من التيار الزائد
+- أجهزة SPD للتيار المستمر (DC side)
+- أجهزة SPD للتيار المتردد (AC side)`,
+      en: `We designed a complete protection and earthing system:
+
+### Ground Grid
+- Dense copper grid covering the entire plant area
+- 120 copper-clad ground rods strategically distributed
+- Ground resistance below 5 ohms
+
+### Lightning Protection
+- 15 lightning rods protecting panels and transformers
+- Early storm detection system
+- Special protection for inverters
+
+### Equipotential Bonding
+- Bonding all metallic panel structures
+- Bonding transformers and inverters
+- Continuous voltage monitoring system
+
+### Surge Protection
+- DC side SPD devices
+- AC side SPD devices`
+    },
+    results: {
+      ar: [
+        { metric: 'الألواح المحمية', value: '45,000+', description: 'لوح شمسي محمي' },
+        { metric: 'مقاومة التأريض', value: '<5 أوم', description: 'في تربة صحراوية' },
+        { metric: 'نقاط الحماية', value: '15', description: 'مانعة صواعق' },
+        { metric: 'كفاءة التشغيل', value: '99.5%', description: 'نسبة جهوزية المحطة' }
+      ],
+      en: [
+        { metric: 'Protected Panels', value: '45,000+', description: 'Solar panels protected' },
+        { metric: 'Ground Resistance', value: '<5 Ohm', description: 'In desert soil' },
+        { metric: 'Protection Points', value: '15', description: 'Lightning rods' },
+        { metric: 'Efficiency', value: '99.5%', description: 'Plant uptime' }
+      ]
+    },
+    testimonial: {
+      quote: {
+        ar: 'خبرة واضحة في مجال محطات الطاقة الشمسية. التصميم راعى كل التفاصيل الفنية وقدم حلولاً عملية للمشاكل الخاصة بهذا النوع من المشاريع.',
+        en: 'Clear expertise in solar power plant projects. The design considered every technical detail and provided practical solutions for the specific challenges of this project type.'
+      },
+      author: {
+        ar: 'د. محمد فتحي',
+        en: 'Dr. Mohamed Fathy'
+      },
+      role: {
+        ar: 'المدير الفني - شركة الطاقة المتجددة',
+        en: 'Technical Director - Renewable Energy Company'
+      }
+    },
+    services: ['grounding', 'lightning-protection', 'surge-protection'],
+    featured: false
+  },
 ];
 
 // Helper function to get case study by slug

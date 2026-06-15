@@ -858,6 +858,30 @@ export default function EarthingSystemsPage() {
                     {locale === 'ar' ? 'جميع الخدمات' : 'All Services'}
                   </Link>
                   <Link
+                    to="/services/earthing/industrial"
+                    className="text-white/80 hover:text-accent transition-colors text-sm"
+                  >
+                    {locale === 'ar' ? 'تأريض المنشآت الصناعية' : 'Industrial Earthing'}
+                  </Link>
+                  <Link
+                    to="/services/earthing/soil-resistance"
+                    className="text-white/80 hover:text-accent transition-colors text-sm"
+                  >
+                    {locale === 'ar' ? 'قياس مقاومة التربة' : 'Soil Resistance Testing'}
+                  </Link>
+                  <Link
+                    to="/services/earthing/maintenance"
+                    className="text-white/80 hover:text-accent transition-colors text-sm"
+                  >
+                    {locale === 'ar' ? 'صيانة أنظمة التأريض' : 'Earthing Maintenance'}
+                  </Link>
+                  <Link
+                    to="/services/earthing/specifications"
+                    className="text-white/80 hover:text-accent transition-colors text-sm"
+                  >
+                    {locale === 'ar' ? 'مواصفات التأريض الفنية' : 'Earthing Specifications'}
+                  </Link>
+                  <Link
                     to="/projects"
                     className="text-white/80 hover:text-accent transition-colors text-sm"
                   >

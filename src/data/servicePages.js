@@ -55,6 +55,54 @@ export const servicePageSummaries = [
     },
   },
   {
+    slug: 'earthing-industrial',
+    serviceId: 'earthing-industrial',
+    label: {
+      ar: 'تأريض المنشآت الصناعية',
+      en: 'Industrial Earthing',
+    },
+    shortLabel: {
+      ar: 'تأريض صناعي',
+      en: 'Industrial Earthing',
+    },
+  },
+  {
+    slug: 'earthing-soil-resistance',
+    serviceId: 'earthing-soil-resistance',
+    label: {
+      ar: 'قياس مقاومة التربة',
+      en: 'Soil Resistance Testing',
+    },
+    shortLabel: {
+      ar: 'قياس التربة',
+      en: 'Soil Testing',
+    },
+  },
+  {
+    slug: 'earthing-maintenance',
+    serviceId: 'earthing-maintenance',
+    label: {
+      ar: 'صيانة أنظمة التأريض',
+      en: 'Earthing Maintenance',
+    },
+    shortLabel: {
+      ar: 'صيانة التأريض',
+      en: 'Earthing Maintenance',
+    },
+  },
+  {
+    slug: 'earthing-specifications',
+    serviceId: 'earthing-specifications',
+    label: {
+      ar: 'مواصفات التأريض الفنية',
+      en: 'Earthing Specifications',
+    },
+    shortLabel: {
+      ar: 'مواصفات التأريض',
+      en: 'Earthing Specs',
+    },
+  },
+  {
     slug: 'surge-protection',
     serviceId: 'surge-protection',
     label: {

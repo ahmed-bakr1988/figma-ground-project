@@ -79,6 +79,7 @@ const Navbar = () => {
       ]
     },
     { name: t('nav.blog'), href: '/blog' },
+    { name: isRTL ? 'المعرفة' : 'Knowledge', href: '/knowledge' },
     { name: t('nav.faq'), href: '/faq' },
     { name: t('nav.contact'), href: '/contact' },
   ];

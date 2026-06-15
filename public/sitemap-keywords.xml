@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 1: الحماية من الصواعق / Lightning Protection       -->
+  <!-- الصيغة: الكلمة المفتاحية → الصفحة الأكثر صلة                    -->
+  <!-- Keywords: حماية من الصواعق, مانع صواعق, Lightning Protection     -->
+  <!-- =============================================================== -->
+
+  <!-- Keyword: حماية من الصواعق في مصر / Lightning Protection Egypt -->
+  <url>
+    <loc>https://ground-eg.com/services/lightning-protection-systems</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/lightning-protection-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/lightning-protection-systems?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/lightning-protection-systems"/>
+    <image:image>
+      <image:loc>https://ground-eg.com/assets/images/services/Lightning%20Protection%20Systems.png</image:loc>
+      <image:title>حماية من الصواعق في مصر | Lightning Protection Systems Egypt</image:title>
+      <image:caption>تصميم وتركيب أنظمة الحماية من الصواعق للمباني والمصانع في مصر</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Keyword: تركيب مانع صواعق / Lightning Rod Installation -->
+  <url>
+    <loc>https://ground-eg.com/services/lightning-rod-installation</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/lightning-rod-installation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/lightning-rod-installation?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/lightning-rod-installation"/>
+    <image:image>
+      <image:loc>https://ground-eg.com/assets/images/services/Lightning%20Rod%20Installation.png</image:loc>
+      <image:title>تركيب مانع صواعق في القاهرة والجيزة | Lightning Rod Installation Egypt</image:title>
+      <image:caption>توريد وتركيب وفحص مانعات الصواعق للمباني والمنشآت</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Keyword: تقييم مخاطر الصواعق / Lightning Risk Assessment -->
+  <url>
+    <loc>https://ground-eg.com/services/lightning-risk-assessment</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/lightning-risk-assessment"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/lightning-risk-assessment?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/lightning-risk-assessment"/>
+    <image:image>
+      <image:loc>https://ground-eg.com/assets/images/services/Lightning%20Risk%20Assessment.png</image:loc>
+      <image:title>تقييم مخاطر الصواعق للمباني | Lightning Risk Assessment for Buildings</image:title>
+      <image:caption>دراسة وتقييم مخاطر الصواعق وفق المعايير الدولية IEC 62305</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Keyword: دليل الحماية من الصواعق / Lightning Protection Guide -->
+  <url>
+    <loc>https://ground-eg.com/knowledge/lightning-vs-earthing</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/knowledge/lightning-vs-earthing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/knowledge/lightning-vs-earthing?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/knowledge/lightning-vs-earthing"/>
+  </url>
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 2: أنظمة التأريض / Earthing & Grounding            -->
+  <!-- Keywords: تأريض, أنظمة التأريض, Earthing, Grounding Systems     -->
+  <!-- =============================================================== -->
+
+  <!-- Keyword: أنظمة التأريض الكهربائية / Electrical Earthing Systems -->
+  <url>
+    <loc>https://ground-eg.com/services/earthing-systems</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/earthing-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/earthing-systems?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/earthing-systems"/>
+    <image:image>
+      <image:loc>https://ground-eg.com/assets/images/services/Grounding%20%26Earthing-Systems.webp</image:loc>
+      <image:title>أنظمة التأريض الكهربائية في مصر | Electrical Earthing Systems Egypt</image:title>
+      <image:caption>تصميم وتنفيذ أنظمة التأريض للمباني والمنشآت الصناعية في مصر</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Keyword: تأريض صناعي / Industrial Earthing -->
+  <url>
+    <loc>https://ground-eg.com/services/earthing/industrial</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/earthing/industrial"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/earthing/industrial?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/earthing/industrial"/>
+  </url>
+
+  <!-- Keyword: قياس مقاومة التربة / Soil Resistivity Testing -->
+  <url>
+    <loc>https://ground-eg.com/services/earthing/soil-resistance</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/earthing/soil-resistance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/earthing/soil-resistance?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/earthing/soil-resistance"/>
+  </url>
+
+  <!-- Keyword: صيانة التأريض / Earthing Maintenance -->
+  <url>
+    <loc>https://ground-eg.com/services/earthing/maintenance</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/earthing/maintenance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/earthing/maintenance?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/earthing/maintenance"/>
+  </url>
+
+  <!-- Keyword: مواصفات التأريض / Earthing Specifications -->
+  <url>
+    <loc>https://ground-eg.com/services/earthing/specifications</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/earthing/specifications"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/earthing/specifications?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/earthing/specifications"/>
+  </url>
+
+  <!-- Keyword: دليل التأريض الشامل / Earthing System Guide -->
+  <url>
+    <loc>https://ground-eg.com/knowledge/earthing-system-guide</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/knowledge/earthing-system-guide"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/knowledge/earthing-system-guide?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/knowledge/earthing-system-guide"/>
+  </url>
+
+  <!-- Keyword: اختبار مقاومة التربة / Soil Resistance Test -->
+  <url>
+    <loc>https://ground-eg.com/knowledge/soil-resistance-testing</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/knowledge/soil-resistance-testing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/knowledge/soil-resistance-testing?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/knowledge/soil-resistance-testing"/>
+  </url>
+
+  <!-- Keyword: صيانة التأريض الدورية / Periodic Earthing Maintenance -->
+  <url>
+    <loc>https://ground-eg.com/knowledge/earthing-maintenance</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/knowledge/earthing-maintenance"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/knowledge/earthing-maintenance?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/knowledge/earthing-maintenance"/>
+  </url>
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 3: الحماية من زيادة الجهد / Surge Protection      -->
+  <!-- Keywords: SPD, الحماية من زيادة الجهد, Surge Protection         -->
+  <!-- =============================================================== -->
+
+  <!-- Keyword: الحماية من زيادة الجهد SPD / Surge Protection Devices -->
+  <url>
+    <loc>https://ground-eg.com/services/surge-protection</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/surge-protection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/surge-protection?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/surge-protection"/>
+    <image:image>
+      <image:loc>https://ground-eg.com/assets/images/services/Surge%20Protection.png</image:loc>
+      <image:title>أجهزة الحماية من زيادة الجهد SPD في مصر | Surge Protection Devices Egypt</image:title>
+      <image:caption>تركيب أجهزة الحماية من زيادة الجهد للوحات الكهربائية والمعدات الحساسة</image:caption>
+    </image:image>
+  </url>
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 4: الصيانة والفحص / Maintenance & Inspection      -->
+  <!-- Keywords: صيانة أنظمة الحماية, فحص مانعات الصواعق                -->
+  <!-- =============================================================== -->
+
+  <!-- Keyword: صيانة وفحص أنظمة الحماية / Maintenance & Inspection -->
+  <url>
+    <loc>https://ground-eg.com/services/maintenance-inspection</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/services/maintenance-inspection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/services/maintenance-inspection?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/services/maintenance-inspection"/>
+  </url>
+
+  <!-- Keyword: صيانة مانع الصواعق / Lightning Rod Maintenance -->
+  <url>
+    <loc>https://ground-eg.com/blog/maintenance-guide-protection-systems</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/blog/maintenance-guide-protection-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/blog/maintenance-guide-protection-systems?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/blog/maintenance-guide-protection-systems"/>
+  </url>
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 5: الأسئلة الشائعة / FAQ & Help                   -->
+  <!-- =============================================================== -->
+
+  <!-- Keyword: أسئلة عن الحماية من الصواعق والتأريض -->
+  <url>
+    <loc>https://ground-eg.com/faq</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/faq?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/faq"/>
+  </url>
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 6: مشاريع حقيقية / Case Studies & Projects        -->
+  <!-- Keywords: مشاريع حماية من الصواعق, دراسات حالة                   -->
+  <!-- =============================================================== -->
+
+  <url>
+    <loc>https://ground-eg.com/case-studies/factory-earthing</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/case-studies/factory-earthing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/case-studies/factory-earthing?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/case-studies/factory-earthing"/>
+  </url>
+
+  <url>
+    <loc>https://ground-eg.com/case-studies/solar-station-earthing</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/case-studies/solar-station-earthing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/case-studies/solar-station-earthing?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/case-studies/solar-station-earthing"/>
+  </url>
+
+  <url>
+    <loc>https://ground-eg.com/case-studies/office-building-lightning-protection</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/case-studies/office-building-lightning-protection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/case-studies/office-building-lightning-protection?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/case-studies/office-building-lightning-protection"/>
+  </url>
+
+  <!-- =============================================================== -->
+  <!-- KEYWORD GROUP 7: محتوى المدونة / Blog Keywords                  -->
+  <!-- Keywords: نصائح الحماية, تكاليف, اختيار النظام المناسب           -->
+  <!-- =============================================================== -->
+
+  <!-- Keyword: دليل شامل للحماية من الصواعق / Complete Protection Guide -->
+  <url>
+    <loc>https://ground-eg.com/blog/complete-guide-lightning-protection</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/blog/complete-guide-lightning-protection"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/blog/complete-guide-lightning-protection?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/blog/complete-guide-lightning-protection"/>
+  </url>
+
+  <!-- Keyword: تحليل تكاليف أنظمة الحماية / Cost Analysis -->
+  <url>
+    <loc>https://ground-eg.com/blog/cost-analysis-protection-systems</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/blog/cost-analysis-protection-systems"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/blog/cost-analysis-protection-systems?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/blog/cost-analysis-protection-systems"/>
+  </url>
+
+</urlset>

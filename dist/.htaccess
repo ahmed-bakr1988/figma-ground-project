@@ -14,6 +14,24 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   
+  # ================================
+  # Prerender.io Middleware for SEO
+  # Crawlers get prerendered HTML, real users get the SPA
+  # ================================
+  # Enable if using Prerender.io service (replace YOUR_TOKEN)
+  # See: prerender.io for setup
+  
+  <IfModule mod_proxy.c>
+    RewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|yandexbot|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|w3c_validator|redditbot|applebot|whatsapp|flipboard|tumblr|bitlybot|semrushbot|ahrefsbot|dotbot) [NC,OR]
+    RewriteCond %{QUERY_STRING} _escaped_fragment_
+    
+    # Only proxy if the request is not for static assets
+    RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|ico|webp|avif|svg|woff|woff2|ttf|json|xml|br|gz)(\?.*)?$
+    
+    # Proxy to Prerender.io (uncomment and add token in production)
+    # RewriteRule ^(?!.*?(\.js|\.css|\.png|\.jpg|\.webp|\.avif|\.svg)).*$ http://service.prerender.io/http://%{HTTP_HOST}/$1 [P,L]
+  </IfModule>
+  
   # Serve existing files/directories directly
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
