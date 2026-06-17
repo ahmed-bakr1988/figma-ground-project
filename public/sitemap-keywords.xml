@@ -70,8 +70,26 @@
 
   <!-- =============================================================== -->
   <!-- KEYWORD GROUP 2: أنظمة التأريض / Earthing & Grounding            -->
-  <!-- Keywords: تأريض, أنظمة التأريض, Earthing, Grounding Systems     -->
+  <!-- Keywords: تأريض, أنظمة التأريض, Earthing, Grounding Systems,     -->
+  <!--           شركات التأريض في مصر, شركات التاريض فى مصر,           -->
+  <!--           شركة تأريض في مصر, شركات تركيب شبكات التأريض             -->
   <!-- =============================================================== -->
+
+  <!-- Keyword: شركات التأريض في مصر / Earthing Companies in Egypt -->
+  <url>
+    <loc>https://ground-eg.com/</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ground-eg.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ground-eg.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ground-eg.com/"/>
+    <image:image>
+      <image:loc>https://ground-eg.com/assets/logo/logo.png</image:loc>
+      <image:title>شركات التأريض في مصر | Earthing Companies in Egypt</image:title>
+      <image:caption>أفضل شركات التأريض وأنظمة الحماية من الصواعق وتوريد وتركيب شبكات التأريض في مصر</image:caption>
+    </image:image>
+  </url>
 
   <!-- Keyword: أنظمة التأريض الكهربائية / Electrical Earthing Systems -->
   <url>
